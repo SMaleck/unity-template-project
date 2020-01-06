@@ -34,10 +34,6 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
-# Ignore Plugins
-/Assets/Plugins/
-/Assets/Plugins.meta
-
 # UniRx Extra Files
 /Assets/Plugins/UniRx/Examples
 /Assets/Plugins/UniRx/Examples.meta
