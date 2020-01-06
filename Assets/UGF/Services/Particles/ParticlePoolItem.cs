@@ -1,0 +1,54 @@
+﻿using UGF.Util.MonoObjectPooling;
+using UnityEngine;
+using Zenject;
+
+namespace UGF.Services.Particles
+{
+    public class ParticlePoolItem : MonoBehaviour, IPoolItem
+    {
+        public class Factory : PlaceholderFactory<UnityEngine.Object, ParticlePoolItem> { }
+
+        [SerializeField] private ParticleSystem _particleSystem;
+
+        [SerializeField] private ParticleEffectType _particleEffectType;
+        public ParticleEffectType ParticleEffectType => _particleEffectType;
+
+        public bool IsPaused { get; private set; }
+        public bool IsQueued { get; private set; }
+        public bool IsFree => !IsQueued && !_particleSystem.isPlaying;
+
+        public void QueueForPlay()
+        {
+            IsQueued = true;
+        }
+
+        public void Play()
+        {
+            IsPaused = false;
+            IsQueued = false;
+            _particleSystem.Play();
+        }
+
+        public void Stop()
+        {
+            IsPaused = false;
+            _particleSystem.Stop();
+        }
+
+        public void Pause()
+        {
+            if (IsPaused || !_particleSystem.isPlaying) { return; }
+
+            IsPaused = true;
+            _particleSystem.Pause(true);
+        }
+
+        public void Resume()
+        {
+            if (!IsPaused) { return; }
+
+            IsPaused = false;
+            _particleSystem.Play();
+        }
+    }
+}
