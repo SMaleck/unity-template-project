@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999fee1846a7e1343af54a09389318cd, type: 3}
   m_Name: AudioConfig
   m_EditorClassIdentifier: 
-  _audioSourcePrefab: {fileID: 0}
+  _audioSourcePrefab: {fileID: 3527160144234777528, guid: 4f7672b32a3ca4d44b80c31b74c990a0,
+    type: 3}
   _minPitch: 0
   _maxPitch: 0
-  _audioClipItems: []
+  _audioClipItems:
+  - _audioClipType: 0
+    _audioClip: {fileID: 8300000, guid: de2f2de6c56ed0941b723c0d29c9cddc, type: 3}
