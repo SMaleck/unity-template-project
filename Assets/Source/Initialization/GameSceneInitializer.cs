@@ -6,13 +6,13 @@ using Zenject;
 
 namespace Source.Initialization
 {
-    public class GameSceneInitializer : AbstractSceneInitializer, IInitializable
+    public class GameSceneInitializer : AbstractSceneInitializer
     {
         [Inject] private readonly ViewPrefabConfig _viewPrefabConfig;
         [Inject] private readonly HelloWorldHudView.Factory _helloWorldHudViewFactory;
         [Inject] private readonly HelloWorldGameView.Factory _helloWorldGameViewFactory;
 
-        public void Initialize()
+        public override void Initialize()
         {
             InitViews();
         }

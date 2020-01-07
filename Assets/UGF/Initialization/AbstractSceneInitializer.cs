@@ -5,10 +5,12 @@ using Zenject;
 
 namespace UGF.Initialization
 {
-    public class AbstractSceneInitializer : ISceneInitializer
+    public abstract class AbstractSceneInitializer : ISceneInitializer
     {
         [Inject] private readonly IClosableViewRegistrar _closableViewRegistrar;
         [Inject] private readonly ClosableViewController.Factory _closableViewControllerFactory;
+
+        public abstract void Initialize();
 
         protected void SetupView<T>(T view) where T : AbstractView
         {

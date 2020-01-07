@@ -1,9 +1,10 @@
-﻿using UGF.Services.SceneManagement;
+﻿using UGF.Initialization;
+using UGF.Services.SceneManagement;
 using Zenject;
 
 namespace Source.Initialization
 {
-    public class InitSceneInitializer : IInitializable
+    public class InitSceneInitializer : ISceneInitializer
     {
         [Inject] private readonly ISceneManagementService _sceneManagementService;
 

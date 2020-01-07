@@ -5,7 +5,7 @@ using Zenject;
 
 namespace UGF.Initialization
 {
-    public class UgfProjectInitializer : MonoInstaller
+    public class UgfProjectInitializer : ISceneInitializer
     {
         [Inject] private DiContainer _container;
 

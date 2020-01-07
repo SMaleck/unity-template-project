@@ -1,4 +1,5 @@
-﻿using UGF.Services.Audio;
+﻿using UGF.Initialization;
+using UGF.Services.Audio;
 using UGF.Services.Particles;
 using UGF.Services.Savegames;
 using UGF.Services.SceneManagement;
@@ -13,6 +14,9 @@ namespace UGF.Installation
     {
         public override void InstallBindings()
         {
+            Container.BindExecutionOrder<ISceneInitializer>(998);
+            Container.BindInterfacesAndSelfTo<UgfProjectInitializer>().AsSingle().NonLazy();
+
             Container.BindInterfacesAndSelfTo<JsonDataStorageStrategy>().AsSingle();
             Container.BindInterfacesAndSelfTo<SavegameService>().AsSingle();
             Container.BindInterfacesAndSelfTo<SavegamePersistenceScheduler>().AsSingle();
@@ -20,6 +24,7 @@ namespace UGF.Installation
             Container.BindInterfacesAndSelfTo<SceneManagementService>().AsSingle();
             Container.BindInterfacesAndSelfTo<SceneManagementModel>().AsSingle();
             Container.BindInterfacesAndSelfTo<LoadingScreenModel>().AsSingle();
+            Container.BindPrefabFactory<LoadingScreenView, LoadingScreenView.Factory>();
 
             Container.BindPrefabFactory<ParticlePoolItem, ParticlePoolItem.Factory>();
             Container.BindInterfacesAndSelfTo<ParticleService>().AsSingle().NonLazy();

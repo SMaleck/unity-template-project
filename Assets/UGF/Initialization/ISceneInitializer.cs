@@ -1,6 +1,8 @@
-﻿namespace UGF.Initialization
+﻿using Zenject;
+
+namespace UGF.Initialization
 {
-    public interface ISceneInitializer
+    public interface ISceneInitializer : IInitializable
     {
     }
 }
