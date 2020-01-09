@@ -39,11 +39,10 @@ namespace UGF.Services.Audio
             CleanupChannels();
 
             var audioSourceItem = _audioSourceItemPool.Spawn(
-                new AudioSourceItem.AudioSourceItemSetupBundle(
-                    audioClip,
-                    _channelVolumes[audioChannel],
-                    pitch,
-                    loop));
+                audioClip,
+                _channelVolumes[audioChannel],
+                pitch,
+                loop);
 
             audioSourceItem.Play();
             _audioChannels[audioChannel].Add(audioSourceItem);

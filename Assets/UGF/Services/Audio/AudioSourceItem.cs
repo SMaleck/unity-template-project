@@ -6,28 +6,21 @@ namespace UGF.Services.Audio
 {
     public class AudioSourceItem : AbstractDisposableMonoBehaviour
     {
-        public class AudioSourceItemSetupBundle
+        public class Pool : MonoMemoryPool<AudioClip, float, float, bool, AudioSourceItem>
         {
-            public AudioClip AudioClip { get; private set; }
-            public float Volume { get; private set; }
-            public float Pitch { get; private set; }
-            public bool Loop { get; private set; }
-
-            public AudioSourceItemSetupBundle(AudioClip audioClip, float volume, float pitch, bool loop)
-            {
-                AudioClip = audioClip;
-                Volume = volume;
-                Pitch = pitch;
-                Loop = loop;
-            }
-        }
-
-        public class Pool : MonoMemoryPool<AudioSourceItemSetupBundle, AudioSourceItem>
-        {
-            protected override void Reinitialize(AudioSourceItemSetupBundle audioSourceItemSetupBundle, AudioSourceItem audioSourceItem)
+            protected override void Reinitialize(
+                AudioClip audioClip,
+                float volume,
+                float pitch,
+                bool loop, 
+                AudioSourceItem audioSourceItem)
             {
                 audioSourceItem.SetIsActive(true);
-                audioSourceItem.Construct(audioSourceItemSetupBundle);
+                audioSourceItem.Construct(
+                    audioClip,
+                    volume,
+                    pitch,
+                    loop);
             }
 
             protected override void OnDespawned(AudioSourceItem audioSourceItem)
@@ -42,12 +35,16 @@ namespace UGF.Services.Audio
         public bool IsPlaying => _audioSource.isPlaying;
         public bool IsPaused { get; private set; }
 
-        public void Construct(AudioSourceItemSetupBundle audioSourceItemSetupBundle)
+        public void Construct(
+            AudioClip audioClip,
+            float volume,
+            float pitch,
+            bool loop)
         {
-            _audioSource.clip = audioSourceItemSetupBundle.AudioClip;
-            _audioSource.volume = audioSourceItemSetupBundle.Volume;
-            _audioSource.pitch = audioSourceItemSetupBundle.Pitch;
-            _audioSource.loop = audioSourceItemSetupBundle.Loop;
+            _audioSource.clip = audioClip;
+            _audioSource.volume = volume;
+            _audioSource.pitch = pitch;
+            _audioSource.loop = loop;
 
             IsPaused = false;
         }
