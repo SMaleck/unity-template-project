@@ -17,4 +17,5 @@ MonoBehaviour:
   _savegamesConfig: {fileID: 11400000, guid: bcfca33fc0137dd4093f8e7b5f75d942, type: 2}
   _particleEffectConfig: {fileID: 11400000, guid: 2b2968c878798a84ebb463f03f4dfd13,
     type: 2}
-  _audioConfig: {fileID: 11400000, guid: 78347c28e83a6a444aa31b956544c568, type: 2}
+  _audioServiceConfig: {fileID: 11400000, guid: 78347c28e83a6a444aa31b956544c568,
+    type: 2}

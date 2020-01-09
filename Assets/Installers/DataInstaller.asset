@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: DataInstaller
   m_EditorClassIdentifier: 
   _viewPrefabConfig: {fileID: 11400000, guid: 4b192d77c6fb58f44ad949ee8db46eed, type: 2}
+  _audioClipsConfig: {fileID: 11400000, guid: cb908933b822f0a4c8fc7f8e41cbf078, type: 2}

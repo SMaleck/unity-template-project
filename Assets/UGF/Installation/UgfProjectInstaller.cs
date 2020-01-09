@@ -1,5 +1,6 @@
 ﻿using UGF.Initialization;
 using UGF.Services.Audio;
+using UGF.Services.Audio.Config;
 using UGF.Services.Particles;
 using UGF.Services.Savegames;
 using UGF.Services.SceneManagement;
@@ -12,6 +13,8 @@ namespace UGF.Installation
 {
     public class UgfProjectInstaller : MonoInstaller
     {
+        [Inject] private AudioServiceConfig _audioServiceConfig;
+
         public override void InstallBindings()
         {
             Container.BindExecutionOrder<ISceneInitializer>(998);
@@ -29,7 +32,10 @@ namespace UGF.Installation
             Container.BindPrefabFactory<ParticlePoolItem, ParticlePoolItem.Factory>();
             Container.BindInterfacesAndSelfTo<ParticleService>().AsSingle().NonLazy();
 
-            Container.BindPrefabFactory<AudioPoolItem, AudioPoolItem.Factory>();
+            Container.BindMemoryPool<AudioSourceItem, AudioSourceItem.Pool>()
+                .FromComponentInNewPrefab(_audioServiceConfig.AudioSourcePrefab)
+                .UnderTransformGroup("Audio");
+
             Container.BindInterfacesAndSelfTo<AudioService>().AsSingle().NonLazy();
         }
     }
