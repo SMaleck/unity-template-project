@@ -1,5 +1,4 @@
 using UGF.Services.Audio.Config;
-using UGF.Services.Particles.Config;
 using UGF.Services.Savegames.Config;
 using UGF.Services.SceneManagement.Config;
 using UnityEngine;
@@ -12,14 +11,12 @@ namespace UGF.Installation
     {
         [SerializeField] private SceneManagementConfig _sceneManagementConfig;
         [SerializeField] private SavegamesConfig _savegamesConfig;
-        [SerializeField] private ParticleEffectConfig _particleEffectConfig;
         [SerializeField] private AudioServiceConfig _audioServiceConfig;
 
         public override void InstallBindings()
         {
             Container.BindInstance(_sceneManagementConfig);
             Container.BindInstance(_savegamesConfig);
-            Container.BindInstance(_particleEffectConfig);
             Container.BindInstance(_audioServiceConfig);
         }
     }

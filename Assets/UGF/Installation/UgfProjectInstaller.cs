@@ -1,7 +1,6 @@
 ﻿using UGF.Initialization;
 using UGF.Services.Audio;
 using UGF.Services.Audio.Config;
-using UGF.Services.Particles;
 using UGF.Services.Savegames;
 using UGF.Services.SceneManagement;
 using UGF.Services.SceneManagement.LoadingScreen;
@@ -23,14 +22,11 @@ namespace UGF.Installation
             Container.BindInterfacesAndSelfTo<JsonDataStorageStrategy>().AsSingle();
             Container.BindInterfacesAndSelfTo<SavegameService>().AsSingle();
             Container.BindInterfacesAndSelfTo<SavegamePersistenceScheduler>().AsSingle();
-            
+
             Container.BindInterfacesAndSelfTo<SceneManagementService>().AsSingle();
             Container.BindInterfacesAndSelfTo<SceneManagementModel>().AsSingle();
             Container.BindInterfacesAndSelfTo<LoadingScreenModel>().AsSingle();
             Container.BindPrefabFactory<LoadingScreenView, LoadingScreenView.Factory>();
-
-            Container.BindPrefabFactory<ParticlePoolItem, ParticlePoolItem.Factory>();
-            Container.BindInterfacesAndSelfTo<ParticleService>().AsSingle().NonLazy();
 
             Container.BindMemoryPool<AudioSourceItem, AudioSourceItem.Pool>()
                 .FromComponentInNewPrefab(_audioServiceConfig.AudioSourcePrefab)
