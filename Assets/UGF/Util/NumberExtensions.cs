@@ -1,6 +1,8 @@
-﻿namespace UGF.Util
+﻿using UnityEngine;
+
+namespace UGF.Util
 {
-    public static class PrimitiveExtensions
+    public static class NumberExtensions
     {
         /// <summary>
         /// Returns the representation of this float in percentage relative to the max value given.
@@ -22,6 +24,16 @@
         public static float AsRelativeTo(this float value, float max)
         {
             return (value / max);
+        }
+
+        /// <summary>
+        /// Returns value * deltaTime
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static float AsTimeAdjusted(this float value)
+        {
+            return value * Time.deltaTime;
         }
     }
 }

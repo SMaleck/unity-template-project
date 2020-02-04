@@ -1,6 +1,6 @@
-﻿using TMPro;
+﻿using Source.Services.SceneTransition;
+using TMPro;
 using UGF.Services.Localization;
-using UGF.Services.SceneManagement;
 using UGF.Views;
 using UniRx;
 using UnityEngine;
@@ -16,18 +16,18 @@ namespace Source.Features.HelloWorld
         [SerializeField] private TextMeshProUGUI _helloWorldText;
         [SerializeField] private Button _startButton;
 
-        private ISceneManagementService _sceneManagementService;
+        private ISceneTransitionService _sceneTransitionService;
 
         [Inject]
-        private void Inject(ISceneManagementService sceneManagementService)
+        private void Inject(ISceneTransitionService sceneTransitionService)
         {
-            _sceneManagementService = sceneManagementService;
+            _sceneTransitionService = sceneTransitionService;
         }
 
         public override void OnInitialize()
         {
             _startButton.OnClickAsObservable()
-                .Subscribe(_ => _sceneManagementService.ToGame())
+                .Subscribe(_ => _sceneTransitionService.ToGame())
                 .AddTo(Disposer);
         }
 

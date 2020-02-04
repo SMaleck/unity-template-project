@@ -1,13 +1,12 @@
 ﻿using Source.Installation.Config;
 using Source.Services.AudioPlayer.Config;
-using UGF.Installation;
 using UnityEngine;
 using Zenject;
 
 namespace Source.Installation
 {
     [CreateAssetMenu(fileName = nameof(DataInstaller), menuName = Constants.UMenuInstallers + nameof(DataInstaller))]
-    public class DataInstaller : ScriptableObjectInstaller<UgfDataInstaller>
+    public class DataInstaller : ScriptableObjectInstaller<DataInstaller>
     {
         [SerializeField] private ViewPrefabConfig _viewPrefabConfig;
         [SerializeField] private AudioClipsConfig _audioClipsConfig;
