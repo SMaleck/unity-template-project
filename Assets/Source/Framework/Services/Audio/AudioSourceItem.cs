@@ -1,8 +1,8 @@
-﻿using UGF.Util.Mono;
+﻿using Source.Framework.Util.Mono;
 using UnityEngine;
 using Zenject;
 
-namespace UGF.Services.Audio
+namespace Source.Framework.Services.Audio
 {
     public class AudioSourceItem : AbstractDisposableMonoBehaviour
     {

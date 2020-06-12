@@ -1,10 +1,10 @@
-using UGF.Services.Audio.Config;
-using UGF.Services.Savegames.Config;
-using UGF.Services.SceneManagement.Config;
+using Source.Framework.Services.Audio.Config;
+using Source.Framework.Services.Savegames.Config;
+using Source.Framework.Services.SceneManagement.Config;
 using UnityEngine;
 using Zenject;
 
-namespace UGF.Installation
+namespace Source.Framework.Installation
 {
     [CreateAssetMenu(fileName = nameof(UgfDataInstaller), menuName = Constants.InstallersMenu + nameof(UgfDataInstaller))]
     public class UgfDataInstaller : ScriptableObjectInstaller<UgfDataInstaller>

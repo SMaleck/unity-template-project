@@ -1,7 +1,7 @@
 ﻿using System;
 using UniRx;
 
-namespace UGF.Util.UniRx
+namespace Source.Framework.Util.UniRx
 {
     public abstract class AbstractDisposable : IDisposable
     {

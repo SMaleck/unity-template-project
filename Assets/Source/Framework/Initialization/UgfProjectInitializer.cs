@@ -1,9 +1,9 @@
 ﻿using System.Linq;
-using UGF.Services.SceneManagement.Config;
-using UGF.Services.SceneManagement.LoadingScreen;
+using Source.Framework.Services.SceneManagement.Config;
+using Source.Framework.Services.SceneManagement.LoadingScreen;
 using Zenject;
 
-namespace UGF.Initialization
+namespace Source.Framework.Initialization
 {
     public class UgfProjectInitializer : ISceneInitializer
     {

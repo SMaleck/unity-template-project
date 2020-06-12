@@ -1,14 +1,14 @@
-﻿using UGF.Initialization;
-using UGF.Services.Audio;
-using UGF.Services.Audio.Config;
-using UGF.Services.Savegames;
-using UGF.Services.SceneManagement;
-using UGF.Services.SceneManagement.LoadingScreen;
-using UGF.Util;
-using UGF.Util.DataStorageStrategies;
+﻿using Source.Framework.Initialization;
+using Source.Framework.Services.Audio;
+using Source.Framework.Services.Audio.Config;
+using Source.Framework.Services.Savegames;
+using Source.Framework.Services.SceneManagement;
+using Source.Framework.Services.SceneManagement.LoadingScreen;
+using Source.Framework.Util;
+using Source.Framework.Util.DataStorageStrategies;
 using Zenject;
 
-namespace UGF.Installation
+namespace Source.Framework.Installation
 {
     public class UgfProjectInstaller : MonoInstaller
     {

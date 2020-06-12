@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-namespace UGF
+namespace Source.Framework
 {
     public static class Logger
     {

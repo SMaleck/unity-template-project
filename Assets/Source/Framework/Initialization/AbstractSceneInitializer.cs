@@ -1,9 +1,9 @@
 ﻿using System.Linq;
-using UGF.Views;
-using UGF.Views.Mediation;
+using Source.Framework.Views;
+using Source.Framework.Views.Mediation;
 using Zenject;
 
-namespace UGF.Initialization
+namespace Source.Framework.Initialization
 {
     public abstract class AbstractSceneInitializer : ISceneInitializer
     {

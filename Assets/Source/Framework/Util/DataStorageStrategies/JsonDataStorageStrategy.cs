@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
-using System.IO;
+﻿using System.IO;
+using Newtonsoft.Json;
 using UnityEngine;
 
-namespace UGF.Util.DataStorageStrategies
+namespace Source.Framework.Util.DataStorageStrategies
 {
     public class JsonDataStorageStrategy : IDataStorageStrategy
     {

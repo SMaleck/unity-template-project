@@ -1,7 +1,7 @@
-﻿using UGF.Util.Mono;
+﻿using Source.Framework.Util.Mono;
 using Zenject;
 
-namespace UGF.Views
+namespace Source.Framework.Views
 {
     public abstract class AbstractView : AbstractDisposableMonoBehaviour, IInitializable
     {

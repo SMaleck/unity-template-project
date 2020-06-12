@@ -1,11 +1,11 @@
 ﻿using DG.Tweening;
-using UGF.Util.UniRx;
-using UGF.Views;
+using Source.Framework.Util.UniRx;
+using Source.Framework.Views;
 using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace UGF.Services.SceneManagement.LoadingScreen
+namespace Source.Framework.Services.SceneManagement.LoadingScreen
 {
     public class LoadingScreenView : AbstractView
     {

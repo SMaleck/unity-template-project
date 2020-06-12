@@ -1,7 +1,7 @@
-﻿using TMPro;
-using UGF.Services.Localization;
-using UGF.Views;
-using UGF.Views.Mediation;
+﻿using Source.Framework.Services.Localization;
+using Source.Framework.Views;
+using Source.Framework.Views.Mediation;
+using TMPro;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;

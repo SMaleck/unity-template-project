@@ -1,4 +1,4 @@
-﻿namespace UGF.Views.Mediation
+﻿namespace Source.Framework.Views.Mediation
 {
     public interface IClosableViewRegistrar
     {

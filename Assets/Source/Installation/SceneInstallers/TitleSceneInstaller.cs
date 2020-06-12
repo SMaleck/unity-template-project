@@ -1,8 +1,8 @@
 ﻿using Source.Features.HelloWorld;
+using Source.Framework.Installation;
+using Source.Framework.Util;
+using Source.Framework.Views.Mediation;
 using Source.Initialization;
-using UGF.Installation;
-using UGF.Util;
-using UGF.Views.Mediation;
 
 namespace Source.Installation.SceneInstallers
 {

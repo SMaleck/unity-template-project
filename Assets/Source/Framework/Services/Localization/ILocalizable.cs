@@ -1,4 +1,4 @@
-﻿namespace UGF.Services.Localization
+﻿namespace Source.Framework.Services.Localization
 {
     public interface ILocalizable
     {

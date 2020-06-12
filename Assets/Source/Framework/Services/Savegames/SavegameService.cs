@@ -1,11 +1,11 @@
 ﻿using System;
-using UGF.Services.Savegames.Config;
-using UGF.Services.Savegames.Models;
-using UGF.Util.DataStorageStrategies;
-using UGF.Util.UniRx;
+using Source.Framework.Services.Savegames.Config;
+using Source.Framework.Services.Savegames.Models;
+using Source.Framework.Util.DataStorageStrategies;
+using Source.Framework.Util.UniRx;
 using UniRx;
 
-namespace UGF.Services.Savegames
+namespace Source.Framework.Services.Savegames
 {
     public class SavegameService : AbstractDisposable, ISavegameService, ISavegamePersistenceService
     {

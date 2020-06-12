@@ -1,9 +1,9 @@
-﻿using UGF.Services.SceneManagement.LoadingScreen;
-using UGF.Util.UniRx;
+﻿using Source.Framework.Services.SceneManagement.LoadingScreen;
+using Source.Framework.Util.UniRx;
 using UniRx;
 using UnityEngine.SceneManagement;
 
-namespace UGF.Services.SceneManagement
+namespace Source.Framework.Services.SceneManagement
 {
     public class SceneManagementService : AbstractDisposable, ISceneManagementService
     {

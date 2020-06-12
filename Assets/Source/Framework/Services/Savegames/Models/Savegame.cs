@@ -1,4 +1,4 @@
-﻿namespace UGF.Services.Savegames.Models
+﻿namespace Source.Framework.Services.Savegames.Models
 {
     public class SavegameData : AbstractSavegameData
     {

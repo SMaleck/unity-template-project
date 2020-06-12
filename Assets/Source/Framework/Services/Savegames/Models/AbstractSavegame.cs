@@ -1,8 +1,8 @@
 ﻿using System;
-using UGF.Util.UniRx;
+using Source.Framework.Util.UniRx;
 using UniRx;
 
-namespace UGF.Services.Savegames.Models
+namespace Source.Framework.Services.Savegames.Models
 {
     [Serializable]
     public class AbstractSavegameData

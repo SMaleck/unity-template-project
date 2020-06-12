@@ -1,8 +1,8 @@
-﻿using DG.Tweening;
-using System;
+﻿using System;
+using DG.Tweening;
 using UniRx;
 
-namespace UGF.Util.UniRx
+namespace Source.Framework.Util.UniRx
 {
     public enum TweenDisposalBehaviour
     {

@@ -1,9 +1,9 @@
-﻿using UGF.Services.SceneManagement;
-using UGF.Util.UniRx;
+﻿using Source.Framework.Services.SceneManagement;
+using Source.Framework.Util.UniRx;
 using UniRx;
 using Zenject;
 
-namespace UGF.Services.Savegames
+namespace Source.Framework.Services.Savegames
 {
     public class SavegamePersistenceScheduler : AbstractDisposable, IInitializable
     {

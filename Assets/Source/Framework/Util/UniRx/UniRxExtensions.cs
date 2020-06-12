@@ -2,7 +2,7 @@
 using System.Linq;
 using UniRx;
 
-namespace UGF.Util.UniRx
+namespace Source.Framework.Util.UniRx
 {
     public static class UniRxExtensions
     {

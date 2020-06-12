@@ -1,7 +1,7 @@
 ﻿using Source.Features.HelloWorld;
+using Source.Framework.Initialization;
+using Source.Framework.Views.Mediation;
 using Source.Installation.Config;
-using UGF.Initialization;
-using UGF.Views.Mediation;
 using Zenject;
 
 namespace Source.Initialization

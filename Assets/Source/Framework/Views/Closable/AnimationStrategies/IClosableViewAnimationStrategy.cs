@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UGF.Views.Closable.AnimationStrategies
+namespace Source.Framework.Views.Closable.AnimationStrategies
 {
     public interface IIClosableViewAnimationStrategy
     {

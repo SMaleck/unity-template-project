@@ -1,10 +1,10 @@
-﻿using UGF.Initialization;
-using UGF.Services.SceneManagement;
-using UGF.Util;
+﻿using Source.Framework.Initialization;
+using Source.Framework.Services.SceneManagement;
+using Source.Framework.Util;
 using UniRx;
 using Zenject;
 
-namespace UGF.Installation
+namespace Source.Framework.Installation
 {
     public abstract class AbstractSceneInstaller : MonoInstaller
     {

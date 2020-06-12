@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UGF.Util
+namespace Source.Framework.Util
 {
     public static class NumberExtensions
     {

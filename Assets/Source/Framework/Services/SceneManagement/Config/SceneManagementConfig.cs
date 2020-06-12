@@ -1,7 +1,7 @@
-﻿using UGF.Services.SceneManagement.LoadingScreen;
+﻿using Source.Framework.Services.SceneManagement.LoadingScreen;
 using UnityEngine;
 
-namespace UGF.Services.SceneManagement.Config
+namespace Source.Framework.Services.SceneManagement.Config
 {
     [CreateAssetMenu(fileName = nameof(SceneManagementConfig), menuName = Constants.MenuRoot + nameof(SceneManagementConfig))]
     public class SceneManagementConfig : ScriptableObject

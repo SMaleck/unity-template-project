@@ -1,13 +1,13 @@
 ﻿using System;
-using UGF.Util.Mono;
-using UGF.Views.Closable.AnimationStrategies;
-using UGF.Views.Mediation;
+using Source.Framework.Util.Mono;
+using Source.Framework.Views.Closable.AnimationStrategies;
+using Source.Framework.Views.Mediation;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace UGF.Views.Closable
+namespace Source.Framework.Views.Closable
 {
     public class ClosableView : AbstractDisposableMonoBehaviour, IClosableView, IInitializable
     {

@@ -1,6 +1,6 @@
 ﻿using Source.Features.HelloWorld;
+using Source.Framework.Initialization;
 using Source.Installation.Config;
-using UGF.Initialization;
 using Zenject;
 
 namespace Source.Initialization

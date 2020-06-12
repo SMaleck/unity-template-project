@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UGF.Services.Audio
+namespace Source.Framework.Services.Audio
 {
     public interface IAudioService
     {

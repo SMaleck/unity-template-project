@@ -1,4 +1,4 @@
-﻿namespace UGF.Services.Audio
+﻿namespace Source.Framework.Services.Audio
 {
     public enum AudioChannel
     {

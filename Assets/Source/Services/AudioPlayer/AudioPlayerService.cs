@@ -1,5 +1,5 @@
-﻿using Source.Services.AudioPlayer.Config;
-using UGF.Services.Audio;
+﻿using Source.Framework.Services.Audio;
+using Source.Services.AudioPlayer.Config;
 
 namespace Source.Services.AudioPlayer
 {

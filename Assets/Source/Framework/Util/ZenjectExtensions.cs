@@ -1,6 +1,6 @@
 ﻿using Zenject;
 
-namespace UGF.Util
+namespace Source.Framework.Util
 {
     public static class ZenjectExtensions
     {

@@ -1,8 +1,8 @@
 ﻿using System;
-using UnityEngine;
 using DG.Tweening;
+using UnityEngine;
 
-namespace UGF.Views.Closable.AnimationStrategies
+namespace Source.Framework.Views.Closable.AnimationStrategies
 {
     public class FadeAnimationStrategy : IIClosableViewAnimationStrategy
     {

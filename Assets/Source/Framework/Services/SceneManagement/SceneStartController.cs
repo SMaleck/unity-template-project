@@ -1,6 +1,6 @@
 ﻿using Zenject;
 
-namespace UGF.Services.SceneManagement
+namespace Source.Framework.Services.SceneManagement
 {
     public class SceneStartController : IInitializable
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UGF.Services.Savegames.Config
+namespace Source.Framework.Services.Savegames.Config
 {
     [CreateAssetMenu(fileName = nameof(SavegamesConfig), menuName = Constants.MenuRoot + nameof(SavegamesConfig))]
     public class SavegamesConfig : ScriptableObject

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UGF.Util.UI
+namespace Source.Framework.Util.UI
 {
     public class ImageSpinner : MonoBehaviour
     {

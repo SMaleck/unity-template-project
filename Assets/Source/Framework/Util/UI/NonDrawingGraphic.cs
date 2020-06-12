@@ -1,6 +1,6 @@
 ﻿using UnityEngine.UI;
 
-namespace UGF.Util.UI
+namespace Source.Framework.Util.UI
 {
     //from http://answers.unity3d.com/questions/1091618/ui-panel-without-image-component-as-raycast-target.html
 

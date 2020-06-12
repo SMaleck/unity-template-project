@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using UGF.Services.Audio.Config;
-using UGF.Util;
+using Source.Framework.Services.Audio.Config;
+using Source.Framework.Util;
 using UnityEngine;
 
-namespace UGF.Services.Audio
+namespace Source.Framework.Services.Audio
 {
     public class AudioService : IAudioService
     {

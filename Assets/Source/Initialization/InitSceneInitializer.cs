@@ -1,5 +1,5 @@
-﻿using Source.Services.SceneTransition;
-using UGF.Initialization;
+﻿using Source.Framework.Initialization;
+using Source.Services.SceneTransition;
 using Zenject;
 
 namespace Source.Initialization

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using UGF.Util.UniRx;
+using Source.Framework.Util.UniRx;
 using UniRx;
 
-namespace UGF.Views.Mediation
+namespace Source.Framework.Views.Mediation
 {
     public class ClosableViewMediator : AbstractDisposable, IClosableViewMediator, IClosableViewRegistrar
     {

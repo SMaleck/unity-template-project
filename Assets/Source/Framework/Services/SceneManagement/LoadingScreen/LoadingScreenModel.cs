@@ -1,7 +1,7 @@
-﻿using UGF.Util.UniRx;
+﻿using Source.Framework.Util.UniRx;
 using UniRx;
 
-namespace UGF.Services.SceneManagement.LoadingScreen
+namespace Source.Framework.Services.SceneManagement.LoadingScreen
 {
     public class LoadingScreenModel : AbstractDisposable
     {

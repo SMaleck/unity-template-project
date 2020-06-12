@@ -1,4 +1,4 @@
-﻿namespace UGF.Util.DataStorageStrategies
+﻿namespace Source.Framework.Util.DataStorageStrategies
 {
     public interface IDataStorageStrategy
     {

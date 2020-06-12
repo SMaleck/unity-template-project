@@ -1,5 +1,5 @@
-﻿using Source.Services.AudioPlayer;
-using UGF.Views;
+﻿using Source.Framework.Views;
+using Source.Services.AudioPlayer;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;

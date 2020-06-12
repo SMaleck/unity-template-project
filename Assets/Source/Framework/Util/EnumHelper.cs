@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace UGF.Util
+namespace Source.Framework.Util
 {
     public static class EnumHelper<T>
     {

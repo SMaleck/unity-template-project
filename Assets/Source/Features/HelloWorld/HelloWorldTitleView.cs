@@ -1,7 +1,7 @@
-﻿using Source.Services.SceneTransition;
+﻿using Source.Framework.Services.Localization;
+using Source.Framework.Views;
+using Source.Services.SceneTransition;
 using TMPro;
-using UGF.Services.Localization;
-using UGF.Views;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;

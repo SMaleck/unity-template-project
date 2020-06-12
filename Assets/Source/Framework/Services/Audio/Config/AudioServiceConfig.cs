@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace UGF.Services.Audio.Config
+namespace Source.Framework.Services.Audio.Config
 {
     [CreateAssetMenu(fileName = nameof(AudioServiceConfig), menuName = Constants.MenuRoot + nameof(AudioServiceConfig))]
     public class AudioServiceConfig : ScriptableObject

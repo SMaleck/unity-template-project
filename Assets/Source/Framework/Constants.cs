@@ -1,4 +1,4 @@
-﻿namespace UGF
+﻿namespace Source.Framework
 {
     public static class Constants
     {

@@ -1,9 +1,9 @@
 ﻿using System;
-using UGF.Util.UniRx;
+using Source.Framework.Util.UniRx;
 using UniRx;
 using Zenject;
 
-namespace UGF.Views.Mediation
+namespace Source.Framework.Views.Mediation
 {
     public class ClosableViewController : AbstractDisposable, IClosableViewController
     {

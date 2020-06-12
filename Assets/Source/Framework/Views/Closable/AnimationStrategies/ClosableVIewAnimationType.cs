@@ -1,4 +1,4 @@
-﻿namespace UGF.Views.Closable.AnimationStrategies
+﻿namespace Source.Framework.Views.Closable.AnimationStrategies
 {
     public enum ClosableVIewAnimationType
     {

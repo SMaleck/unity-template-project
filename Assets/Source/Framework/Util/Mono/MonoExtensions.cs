@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UGF.Util.Mono
+namespace Source.Framework.Util.Mono
 {
     public static class MonoExtensions
     {

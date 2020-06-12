@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UGF.Services.Localization
+namespace Source.Framework.Services.Localization
 {
     public static class TextRepo
     {

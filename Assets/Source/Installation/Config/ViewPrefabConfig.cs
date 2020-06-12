@@ -1,5 +1,5 @@
 ﻿using Source.Features.HelloWorld;
-using UGF;
+using Source.Framework;
 using UnityEngine;
 
 namespace Source.Installation.Config

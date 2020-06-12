@@ -1,7 +1,7 @@
-﻿using UGF.Util.UniRx;
+﻿using Source.Framework.Util.UniRx;
 using UniRx;
 
-namespace UGF.Services.SceneManagement
+namespace Source.Framework.Services.SceneManagement
 {
     public class SceneManagementModel : AbstractDisposable
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UGF.Views.Closable.AnimationStrategies
+namespace Source.Framework.Views.Closable.AnimationStrategies
 {
     // ToDo Strategies should ideally be components, that get setup by a ClosableView
     public static class AnimationStrategyFactory

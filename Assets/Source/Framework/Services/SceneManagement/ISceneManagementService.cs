@@ -1,6 +1,6 @@
 ﻿using UniRx;
 
-namespace UGF.Services.SceneManagement
+namespace Source.Framework.Services.SceneManagement
 {
     public interface ISceneManagementService
     {
