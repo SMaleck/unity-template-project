@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Source.Utility;
 using UnityEngine;
 
 namespace Source.Services.AudioPlayer.Config
 {
-    [CreateAssetMenu(fileName = nameof(AudioClipsConfig), menuName = Constants.UMenuRoot + nameof(AudioClipsConfig))]
+    [CreateAssetMenu(fileName = nameof(AudioClipsConfig), menuName = Constants.MenuRoot + nameof(AudioClipsConfig))]
     public class AudioClipsConfig : ScriptableObject
     {
         [Serializable]

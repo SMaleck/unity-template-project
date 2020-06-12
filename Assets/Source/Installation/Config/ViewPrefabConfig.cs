@@ -1,9 +1,10 @@
 ﻿using Source.Features.HelloWorld;
+using Source.Utility;
 using UnityEngine;
 
 namespace Source.Installation.Config
 {
-    [CreateAssetMenu(fileName = nameof(ViewPrefabConfig), menuName = Constants.UMenuRoot + nameof(ViewPrefabConfig))]
+    [CreateAssetMenu(fileName = nameof(ViewPrefabConfig), menuName = Constants.MenuRoot + nameof(ViewPrefabConfig))]
     public class ViewPrefabConfig : ScriptableObject
     {
         [SerializeField] private HelloWorldTitleView _helloWorldTitleViewPrefab;
