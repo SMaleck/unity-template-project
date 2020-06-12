@@ -6,7 +6,7 @@ using Zenject;
 
 namespace UGF.Installation
 {
-    [CreateAssetMenu(fileName = nameof(UgfDataInstaller), menuName = UgfConstants.UMenuInstallers + nameof(UgfDataInstaller))]
+    [CreateAssetMenu(fileName = nameof(UgfDataInstaller), menuName = Constants.InstallersMenu + nameof(UgfDataInstaller))]
     public class UgfDataInstaller : ScriptableObjectInstaller<UgfDataInstaller>
     {
         [SerializeField] private SceneManagementConfig _sceneManagementConfig;

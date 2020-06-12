@@ -10,7 +10,7 @@ namespace UGF.Services.Localization
 
         static TextRepo()
         {
-            var storedLanguage = PlayerPrefs.GetInt(UgfConstants.PREFS_KEY_LANGUAGE);
+            var storedLanguage = PlayerPrefs.GetInt(Constants.PREFS_KEY_LANGUAGE);
 
             var isStoredLanguageValid = Enum.IsDefined(typeof(Language), storedLanguage);
             if (isStoredLanguageValid)
@@ -25,7 +25,7 @@ namespace UGF.Services.Localization
 
         public static void SetLanguage(Language language)
         {
-            PlayerPrefs.SetInt(UgfConstants.PREFS_KEY_LANGUAGE, (int)language);
+            PlayerPrefs.SetInt(Constants.PREFS_KEY_LANGUAGE, (int)language);
             CurrentLanguage = language;
         }
 

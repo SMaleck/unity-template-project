@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace UGF.Services.Audio.Config
 {
-    [CreateAssetMenu(fileName = nameof(AudioServiceConfig), menuName = UgfConstants.UMenuRoot + nameof(AudioServiceConfig))]
+    [CreateAssetMenu(fileName = nameof(AudioServiceConfig), menuName = Constants.MenuRoot + nameof(AudioServiceConfig))]
     public class AudioServiceConfig : ScriptableObject
     {
         [Serializable]

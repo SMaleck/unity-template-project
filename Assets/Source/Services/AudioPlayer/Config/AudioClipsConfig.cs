@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Source.Utility;
+using UGF;
 using UnityEngine;
 
 namespace Source.Services.AudioPlayer.Config
