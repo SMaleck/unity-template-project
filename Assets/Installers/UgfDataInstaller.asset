@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ac5c4da0bb2754408ecd3f7e6cb2506, type: 3}
+  m_Script: {fileID: 11500000, guid: fad96b25fe3953549973340e718e9a43, type: 3}
   m_Name: UgfDataInstaller
   m_EditorClassIdentifier: 
   _sceneManagementConfig: {fileID: 11400000, guid: f178f359eab7a494e9d0a67b563faf6f,

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 272c7e47b480254409c016ac11f1fc0c, type: 3}
+  m_Script: {fileID: 11500000, guid: 92134a56f687e5a4a98e2cea01194377, type: 3}
   m_Name: SceneManagementConfig
   m_EditorClassIdentifier: 
   _loadingScreenViewPrefab: {fileID: 2207762887896390276, guid: 814050c80c08aae49acb0ee1546247cd,
