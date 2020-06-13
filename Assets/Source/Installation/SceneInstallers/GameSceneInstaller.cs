@@ -1,4 +1,5 @@
 ﻿using Source.Features.HelloWorld;
+using Source.Features.HelloWorld.Installation;
 using Source.Framework.Installation;
 using Source.Framework.Util;
 using Source.Framework.Views.Mediation;
@@ -15,8 +16,7 @@ namespace Source.Installation.SceneInstallers
             Container.BindInterfacesAndSelfTo<ClosableViewMediator>().AsSingle().NonLazy();
             Container.BindFactory<IClosableView, ClosableViewController, ClosableViewController.Factory>();
 
-            Container.BindPrefabFactory<HelloWorldHudView, HelloWorldHudView.Factory>();
-            Container.BindPrefabFactory<HelloWorldGameView, HelloWorldGameView.Factory>();
+            HelloWorldInstaller.Install(Container);
         }
     }
 }

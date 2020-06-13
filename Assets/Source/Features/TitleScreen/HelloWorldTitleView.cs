@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Source.Features.HelloWorld
+namespace Source.Features.TitleScreen
 {
     public class HelloWorldTitleView : AbstractView, ILocalizable
     {
