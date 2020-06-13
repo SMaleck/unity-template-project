@@ -1,7 +1,5 @@
-﻿using Source.Features.HelloWorld;
-using Source.Features.HelloWorld.Installation;
+﻿using Source.Features.HelloWorld.Installation;
 using Source.Framework.Installation;
-using Source.Framework.Util;
 using Source.Framework.Views.Mediation;
 using Source.Initialization;
 
