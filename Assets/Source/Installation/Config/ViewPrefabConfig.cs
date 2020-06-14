@@ -8,8 +8,8 @@ namespace Source.Installation.Config
     [CreateAssetMenu(fileName = nameof(ViewPrefabConfig), menuName = Constants.MenuRoot + nameof(ViewPrefabConfig))]
     public class ViewPrefabConfig : ScriptableObject
     {
-        [SerializeField] private HelloWorldTitleView _helloWorldTitleViewPrefab;
-        public HelloWorldTitleView HelloWorldTitleViewPrefab => _helloWorldTitleViewPrefab;
+        [SerializeField] private TitleScreenView _titleScreenViewPrefab;
+        public TitleScreenView TitleScreenViewPrefab => _titleScreenViewPrefab;
 
         [SerializeField] private HelloWorldHudView _helloWorldHudViewPrefab;
         public HelloWorldHudView HelloWorldHudViewPrefab => _helloWorldHudViewPrefab;

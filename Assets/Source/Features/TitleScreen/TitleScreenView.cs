@@ -9,9 +9,9 @@ using Zenject;
 
 namespace Source.Features.TitleScreen
 {
-    public class HelloWorldTitleView : AbstractView, ILocalizable
+    public class TitleScreenView : AbstractView, ILocalizable
     {
-        public class Factory : PlaceholderFactory<UnityEngine.Object, HelloWorldTitleView> { }
+        public class Factory : PlaceholderFactory<UnityEngine.Object, TitleScreenView> { }
 
         [SerializeField] private TextMeshProUGUI _helloWorldText;
         [SerializeField] private Button _startButton;

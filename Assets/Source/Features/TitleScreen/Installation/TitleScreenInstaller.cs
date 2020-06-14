@@ -1,4 +1,5 @@
-﻿using Zenject;
+﻿using Source.Framework.Util;
+using Zenject;
 
 namespace Source.Features.TitleScreen.Installation
 {
@@ -6,7 +7,7 @@ namespace Source.Features.TitleScreen.Installation
     {
         public override void InstallBindings()
         {
-            
+            Container.BindPrefabFactory<TitleScreenView, TitleScreenView.Factory>();
         }
     }
 }

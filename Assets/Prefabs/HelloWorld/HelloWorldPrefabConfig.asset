@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ccb09d3a019bec458b10af37b4e2f80, type: 3}
-  m_Name: HelloWorldPrefabInstaller
+  m_Script: {fileID: 11500000, guid: 2b022214909d5a34fbd33d37f5d9587c, type: 3}
+  m_Name: HelloWorldPrefabConfig
   m_EditorClassIdentifier: 
-  _helloWorldView: {fileID: 2727333133983928158, guid: 048f467a88875b048af3ac6645c725fe,
+  _helloWorldHudViewPrefab: {fileID: 2727333133983928158, guid: 048f467a88875b048af3ac6645c725fe,
     type: 3}
-  _helloWorldGameView: {fileID: 4780979707585765184, guid: 5e2dc308c2b44ef4886e393abe560a02,
+  _helloWorldGameViewPrefab: {fileID: 4780979707585765184, guid: 5e2dc308c2b44ef4886e393abe560a02,
     type: 3}

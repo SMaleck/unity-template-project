@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Source.Framework.Util;
 using Zenject;
 
 namespace Source.Features.HelloWorld.Installation
@@ -11,7 +7,8 @@ namespace Source.Features.HelloWorld.Installation
     {
         public override void InstallBindings()
         {
-            
+            Container.BindPrefabFactory<HelloWorldHudView, HelloWorldHudView.Factory>();
+            Container.BindPrefabFactory<HelloWorldGameView, HelloWorldGameView.Factory>();
         }
     }
 }
