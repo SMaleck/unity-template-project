@@ -1,16 +1,20 @@
-﻿using Source.Framework.Initialization;
-using Source.Framework.Util;
+﻿using Source.Framework.Util;
+using Source.Framework.Views;
+using Source.Initialization;
 using Source.Services.SceneManagement;
 using UniRx;
 using Zenject;
 
-namespace Source.Framework.Installation
+namespace Source.Installation.SceneInstallers
 {
     public abstract class AbstractSceneInstaller : MonoInstaller
     {
         public override void InstallBindings()
         {
             Container.BindInterfacesAndSelfTo<CompositeDisposable>()
+                .AsSingleNonLazy();
+
+            Container.BindInterfacesAndSelfTo<ClosableViewFactory>()
                 .AsSingleNonLazy();
 
             InstallSceneBindings();

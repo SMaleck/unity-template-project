@@ -7,11 +7,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Source.Features.HelloWorld
+namespace Source.Features.Hud
 {
-    public class HelloWorldHudView : AbstractView, ILocalizable
+    public class HudView : AbstractView, ILocalizable
     {
-        public class Factory : PlaceholderFactory<UnityEngine.Object, HelloWorldHudView> { }
+        public class Factory : PlaceholderFactory<UnityEngine.Object, HudView> { }
 
         [SerializeField] private TextMeshProUGUI _helloWorldText;
         [SerializeField] private Button _openButton;

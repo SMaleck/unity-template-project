@@ -1,6 +1,6 @@
 ﻿using Zenject;
 
-namespace Source.Framework.Initialization
+namespace Source.Initialization
 {
     public interface ISceneInitializer : IInitializable
     {

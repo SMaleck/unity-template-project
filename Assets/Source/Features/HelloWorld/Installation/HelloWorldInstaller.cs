@@ -7,7 +7,6 @@ namespace Source.Features.HelloWorld.Installation
     {
         public override void InstallBindings()
         {
-            Container.BindPrefabFactory<HelloWorldHudView, HelloWorldHudView.Factory>();
             Container.BindPrefabFactory<HelloWorldGameView, HelloWorldGameView.Factory>();
         }
     }

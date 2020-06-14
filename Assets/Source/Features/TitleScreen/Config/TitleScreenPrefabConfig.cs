@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Source.Features.TitleScreen.Config
 {
-    [CreateAssetMenu(fileName = nameof(TitleScreenPrefabConfig), menuName = Constants.InstallersMenu + nameof(TitleScreenPrefabConfig))]
+    [CreateAssetMenu(fileName = nameof(TitleScreenPrefabConfig), menuName = Constants.ConfigMenu + nameof(TitleScreenPrefabConfig))]
     public class TitleScreenPrefabConfig : ScriptableObject
     {
         [SerializeField] private TitleScreenView _titleScreenViewPrefab;

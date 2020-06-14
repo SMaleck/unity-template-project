@@ -1,5 +1,4 @@
 ﻿using Source.Features.TitleScreen.Installation;
-using Source.Framework.Installation;
 using Source.Framework.Views.Mediation;
 using Source.Initialization;
 

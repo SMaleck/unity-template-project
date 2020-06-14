@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Source.Framework.Initialization;
 using Source.Services.SceneManagement.Config;
 using Source.Services.SceneManagement.LoadingScreen;
 using Zenject;

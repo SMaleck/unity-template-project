@@ -1,5 +1,5 @@
 ﻿using Source.Features.HelloWorld.Installation;
-using Source.Framework.Installation;
+using Source.Features.Hud.Installation;
 using Source.Framework.Views.Mediation;
 using Source.Initialization;
 
@@ -15,6 +15,7 @@ namespace Source.Installation.SceneInstallers
             Container.BindFactory<IClosableView, ClosableViewController, ClosableViewController.Factory>();
 
             HelloWorldInstaller.Install(Container);
+            HudInstaller.Install(Container);
         }
     }
 }

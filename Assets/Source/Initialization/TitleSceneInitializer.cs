@@ -1,6 +1,5 @@
 ﻿using Source.Features.TitleScreen;
 using Source.Features.TitleScreen.Config;
-using Source.Framework.Initialization;
 using Zenject;
 
 namespace Source.Initialization
@@ -13,7 +12,7 @@ namespace Source.Initialization
         public override void Initialize()
         {
             var helloWorldTitleView = _helloWorldTitleViewFactory.Create(_titleScreenPrefabConfig.TitleScreenViewPrefab);
-            SetupView(helloWorldTitleView);
+            ClosableViewFactory.SetupView(helloWorldTitleView);
         }
     }
 }
