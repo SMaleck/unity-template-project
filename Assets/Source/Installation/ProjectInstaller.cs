@@ -6,6 +6,7 @@ using Source.Framework.Services.SceneManagement;
 using Source.Framework.Services.SceneManagement.LoadingScreen;
 using Source.Framework.Util;
 using Source.Framework.Util.DataStorageStrategies;
+using Source.Initialization;
 using Source.Services.AudioPlayer;
 using Source.Services.SceneTransition;
 using UnityEngine;
@@ -22,7 +23,7 @@ namespace Source.Installation
             Application.targetFrameRate = 60;
 
             Container.BindExecutionOrder<ISceneInitializer>(998);
-            Container.BindInterfacesAndSelfTo<UgfProjectInitializer>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<ProjectInitializer>().AsSingle().NonLazy();
 
             Container.BindInterfacesAndSelfTo<JsonDataStorageStrategy>().AsSingle();
             Container.BindInterfacesAndSelfTo<SavegameService>().AsSingle();

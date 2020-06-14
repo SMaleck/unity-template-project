@@ -1,11 +1,12 @@
 ﻿using System.Linq;
+using Source.Framework.Initialization;
 using Source.Framework.Services.SceneManagement.Config;
 using Source.Framework.Services.SceneManagement.LoadingScreen;
 using Zenject;
 
-namespace Source.Framework.Initialization
+namespace Source.Initialization
 {
-    public class UgfProjectInitializer : ISceneInitializer
+    public class ProjectInitializer : ISceneInitializer
     {
         [Inject] private DiContainer _container;
 

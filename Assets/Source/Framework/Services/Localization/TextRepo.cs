@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Source.Framework.Services.LocalPlayerPrefs;
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Source.Framework.Services.Localization
 {
@@ -10,7 +10,7 @@ namespace Source.Framework.Services.Localization
 
         static TextRepo()
         {
-            var storedLanguage = PlayerPrefs.GetInt(Constants.PREFS_KEY_LANGUAGE);
+            var storedLanguage = PlayerPrefsService.Language;
 
             var isStoredLanguageValid = Enum.IsDefined(typeof(Language), storedLanguage);
             if (isStoredLanguageValid)
@@ -25,7 +25,7 @@ namespace Source.Framework.Services.Localization
 
         public static void SetLanguage(Language language)
         {
-            PlayerPrefs.SetInt(Constants.PREFS_KEY_LANGUAGE, (int)language);
+            PlayerPrefsService.Language = (int)language;
             CurrentLanguage = language;
         }
 
