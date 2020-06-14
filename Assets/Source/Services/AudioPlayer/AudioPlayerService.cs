@@ -1,4 +1,4 @@
-﻿using Source.Framework.Services.Audio;
+﻿using Source.Services.Audio;
 using Source.Services.AudioPlayer.Config;
 
 namespace Source.Services.AudioPlayer

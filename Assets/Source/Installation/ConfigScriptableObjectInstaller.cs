@@ -1,8 +1,8 @@
 ﻿using Source.Framework;
-using Source.Framework.Services.Audio.Config;
-using Source.Framework.Services.Savegames.Config;
-using Source.Framework.Services.SceneManagement.Config;
+using Source.Services.Audio.Config;
 using Source.Services.AudioPlayer.Config;
+using Source.Services.Savegames.Config;
+using Source.Services.SceneManagement.Config;
 using UnityEngine;
 using Zenject;
 

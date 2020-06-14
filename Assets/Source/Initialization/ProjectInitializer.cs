@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Source.Framework.Initialization;
-using Source.Framework.Services.SceneManagement.Config;
-using Source.Framework.Services.SceneManagement.LoadingScreen;
+using Source.Services.SceneManagement.Config;
+using Source.Services.SceneManagement.LoadingScreen;
 using Zenject;
 
 namespace Source.Initialization
