@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using UnityEngine;
 using Logger = Source.Framework.Logger;
 
-namespace Source.Services.LocalPlayerPrefs
+namespace Source.ServicesStatic.LocalPlayerPrefs
 {
     public static class PlayerPrefsKeys
     {

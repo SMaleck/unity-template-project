@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Source.Services.Localization.Data
+namespace Source.ServicesStatic.Localization.Data
 {
     public class TextDataSource : ITextData
     {

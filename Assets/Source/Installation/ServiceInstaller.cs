@@ -1,5 +1,5 @@
-﻿using Source.Services.Localization;
-using Source.Services.Localization.Data;
+﻿using Source.ServicesStatic.Localization;
+using Source.ServicesStatic.Localization.Data;
 using Zenject;
 
 namespace Source.Installation

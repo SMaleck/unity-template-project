@@ -1,6 +1,6 @@
 ﻿using Source.Framework.Views;
-using Source.Services.Localization;
 using Source.Services.SceneTransition;
+using Source.ServicesStatic.Localization;
 using TMPro;
 using UniRx;
 using UnityEngine;

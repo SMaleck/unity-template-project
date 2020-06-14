@@ -1,6 +1,6 @@
 ﻿using Source.Framework.Views;
 using Source.Framework.Views.Mediation;
-using Source.Services.Localization;
+using Source.ServicesStatic.Localization;
 using TMPro;
 using UniRx;
 using UnityEngine;

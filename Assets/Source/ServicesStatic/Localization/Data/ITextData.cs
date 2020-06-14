@@ -1,4 +1,4 @@
-﻿namespace Source.Services.Localization.Data
+﻿namespace Source.ServicesStatic.Localization.Data
 {
     public interface ITextData
     {

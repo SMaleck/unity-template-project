@@ -1,8 +1,8 @@
 ﻿using System;
-using Source.Services.Localization.Data;
-using Source.Services.LocalPlayerPrefs;
+using Source.ServicesStatic.Localization.Data;
+using Source.ServicesStatic.LocalPlayerPrefs;
 
-namespace Source.Services.Localization
+namespace Source.ServicesStatic.Localization
 {
     public static class TextService
     {

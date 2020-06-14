@@ -1,4 +1,4 @@
-﻿namespace Source.Services.Localization
+﻿namespace Source.ServicesStatic.Localization
 {
     public interface ILocalizable
     {

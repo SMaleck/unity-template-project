@@ -1,5 +1,5 @@
 ﻿using Source.Framework;
-using Source.Services.LocalPlayerPrefs;
+using Source.ServicesStatic.LocalPlayerPrefs;
 using UnityEditor;
 
 namespace Assets.Editor.Persistence
