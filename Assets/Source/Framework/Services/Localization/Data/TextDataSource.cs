@@ -1,35 +1,18 @@
-﻿using Source.Framework.Services.LocalPlayerPrefs;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace Source.Framework.Services.Localization
+namespace Source.Framework.Services.Localization.Data
 {
-    public static class TextRepo
+    public class TextDataSource : ITextData
     {
-        public static Language CurrentLanguage { get; private set; }
+        public Language CurrentLanguage { get; private set; }
 
-        static TextRepo()
+        public void SetLanguage(Language language)
         {
-            var storedLanguage = PlayerPrefsService.Language;
-
-            var isStoredLanguageValid = Enum.IsDefined(typeof(Language), storedLanguage);
-            if (isStoredLanguageValid)
-            {
-                CurrentLanguage = (Language)storedLanguage;
-            }
-            else
-            {
-                SetLanguage(Language.English);
-            }
-        }
-
-        public static void SetLanguage(Language language)
-        {
-            PlayerPrefsService.Language = (int)language;
             CurrentLanguage = language;
         }
 
-        public static string GetText(TextKey textKey)
+        public string GetText(TextKey textKey)
         {
             switch (CurrentLanguage)
             {
@@ -44,7 +27,7 @@ namespace Source.Framework.Services.Localization
             }
         }
 
-        public static string GetLanguageText(Language languageKey)
+        public string GetLanguageText(Language languageKey)
         {
             return _textsLANGUAGE[languageKey];
         }

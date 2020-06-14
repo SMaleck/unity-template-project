@@ -42,6 +42,8 @@ namespace Source.Installation
 
             Container.BindInterfacesAndSelfTo<AudioPlayerService>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<SceneTransitionService>().AsSingle().NonLazy();
+
+            ServiceInstaller.Install(Container);
         }
     }
 }

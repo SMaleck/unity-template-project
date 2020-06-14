@@ -1,6 +1,6 @@
 ﻿using Source.Framework;
+using Source.Framework.Services.LocalPlayerPrefs;
 using UnityEditor;
-using UnityEngine;
 
 namespace Assets.Editor.Persistence
 {
@@ -9,7 +9,13 @@ namespace Assets.Editor.Persistence
         [MenuItem(Constants.MenuRoot + "PlayerPrefs - Clear")]
         public static void ClearPlayerPrefs()
         {
-            PlayerPrefs.DeleteAll();
+            PlayerPrefsService.Clear();
+        }
+
+        [MenuItem(Constants.MenuRoot + "PlayerPrefs - Log")]
+        public static void LogPlayerPrefs()
+        {
+            PlayerPrefsService.LogAll();
         }
     }
 }
