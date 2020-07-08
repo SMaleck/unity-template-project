@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Source.Framework.Util;
+﻿using Source.Framework.Util;
 using Source.Services.Audio.Config;
+using Source.Services.Random;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Source.Services.Audio
@@ -12,16 +13,25 @@ namespace Source.Services.Audio
 
         private readonly AudioServiceConfig _audioServiceConfig;
         private readonly AudioSourceItem.Pool _audioSourceItemPool;
+        private readonly IAudioClipRepository<MusicAudioClipId> _musicRepository;
+        private readonly IAudioClipRepository<EffectAudioClipId> _effectsRepository;
+        private readonly IRandomNumberService _randomNumberService;
 
         private readonly Dictionary<AudioChannel, List<AudioSourceItem>> _audioChannels;
         private readonly Dictionary<AudioChannel, float> _channelVolumes;
 
         public AudioService(
             AudioServiceConfig audioServiceConfig,
-            AudioSourceItem.Pool audioSourceItemPool)
+            AudioSourceItem.Pool audioSourceItemPool,
+            IAudioClipRepository<MusicAudioClipId> musicRepository,
+            IAudioClipRepository<EffectAudioClipId> effectsRepository,
+            IRandomNumberService randomNumberService)
         {
             _audioServiceConfig = audioServiceConfig;
             _audioSourceItemPool = audioSourceItemPool;
+            _musicRepository = musicRepository;
+            _effectsRepository = effectsRepository;
+            _randomNumberService = randomNumberService;
 
             _audioChannels = EnumHelper<AudioChannel>.Iterator
                 .ToDictionary(
@@ -69,20 +79,24 @@ namespace Source.Services.Audio
 
         #region PLAY INTERFACE
 
-        public void PlayMusic(AudioClip audioClip, bool loop = true)
+        public void PlayMusic(MusicAudioClipId musicAudioClipId)
         {
-            PlayClip(AudioChannel.Music, audioClip, DefaultPitch, loop);
+            var audioClip = _musicRepository.GetAudioClip(musicAudioClipId);
+            PlayClip(AudioChannel.Music, audioClip, DefaultPitch, true);
         }
 
-        public void PlayEffect(AudioClip audioClip, bool loop = false)
+        public void PlayEffect(EffectAudioClipId effectAudioClipId)
         {
-            PlayClip(AudioChannel.Effects, audioClip, DefaultPitch, loop);
+            var audioClip = _effectsRepository.GetAudioClip(effectAudioClipId);
+            PlayClip(AudioChannel.Effects, audioClip, DefaultPitch, false);
         }
 
-        public void PlayEffectRandomized(AudioClip audioClip, bool loop = false)
+        public void PlayEffectRandomized(EffectAudioClipId effectAudioClipId)
         {
-            float pitch = UnityEngine.Random.Range(_audioServiceConfig.MinPitch, _audioServiceConfig.MaxPitch);
-            PlayClip(AudioChannel.Effects, audioClip, pitch, loop);
+            var audioClip = _effectsRepository.GetAudioClip(effectAudioClipId);
+            float pitch = _randomNumberService.Range(_audioServiceConfig.MinPitch, _audioServiceConfig.MaxPitch);
+
+            PlayClip(AudioChannel.Effects, audioClip, pitch, false);
         }
 
         #endregion

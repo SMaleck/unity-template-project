@@ -1,6 +1,5 @@
 ﻿using Source.Framework;
 using Source.Services.Audio.Config;
-using Source.Services.AudioPlayer.Config;
 using Source.Services.Savegames.Config;
 using Source.Services.SceneManagement.Config;
 using UnityEngine;
@@ -18,10 +17,10 @@ namespace Source.Installation
 
         public override void InstallBindings()
         {
-            Container.BindInstance(_sceneManagementConfig);
-            Container.BindInstance(_savegamesConfig);
-            Container.BindInstance(_audioServiceConfig);
-            Container.BindInstance(_audioClipsConfig);
+            Container.BindInterfacesAndSelfTo<SceneManagementConfig>().FromInstance(_sceneManagementConfig);
+            Container.BindInterfacesAndSelfTo<SavegamesConfig>().FromInstance(_savegamesConfig);
+            Container.BindInterfacesAndSelfTo<AudioServiceConfig>().FromInstance(_audioServiceConfig);
+            Container.BindInterfacesTo<AudioClipsConfig>().FromInstance(_audioClipsConfig);
         }
     }
 }

@@ -4,9 +4,10 @@ namespace Source.Services.Audio
 {
     public interface IAudioService
     {
-        void PlayMusic(AudioClip audioClip, bool loop = true);
-        void PlayEffect(AudioClip audioClip, bool loop = false);
-        void PlayEffectRandomized(AudioClip audioClip, bool loop = false);
+        void PlayMusic(MusicAudioClipId musicAudioClipId);
+        void PlayEffect(EffectAudioClipId effectAudioClipId);
+        void PlayEffectRandomized(EffectAudioClipId effectAudioClipId);
+
         void ResetAllPausedItems();
         void PauseAll();
         void PauseMusic();

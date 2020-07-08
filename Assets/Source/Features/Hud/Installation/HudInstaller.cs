@@ -1,14 +1,21 @@
-﻿using Source.Features.HelloWorld;
-using Source.Framework.Util;
+﻿using Source.Features.Hud.Config;
+using Source.Framework;
+using UnityEngine;
 using Zenject;
 
 namespace Source.Features.Hud.Installation
 {
-    public class HudInstaller : Installer<HudInstaller>
+    [CreateAssetMenu(fileName = nameof(HudInstaller), menuName = Constants.InstallersMenu + nameof(HudInstaller))]
+    public class HudInstaller : ScriptableObjectInstaller<HudInstaller>
     {
+        [SerializeField] private HudPrefabConfig _hudPrefabConfig;
+
         public override void InstallBindings()
         {
-            Container.BindPrefabFactory<HudView, HudView.Factory>();
+            Container.BindInterfacesAndSelfTo<HudController>().AsSingle().NonLazy();
+
+            Container.BindInstance(_hudPrefabConfig);
+            Container.Bind<HudView>().FromInstance(_hudPrefabConfig.HudViewPrefab);
         }
     }
 }

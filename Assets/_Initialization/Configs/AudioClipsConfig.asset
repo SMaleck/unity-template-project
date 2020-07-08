@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: AudioClipsConfig
   m_EditorClassIdentifier: 
   _musicAudioClipItems:
-  - _musicAudioClipType: 0
+  - _clipId: 0
     _audioClip: {fileID: 8300000, guid: de2f2de6c56ed0941b723c0d29c9cddc, type: 3}
   _effectAudioClipItems:
-  - _effectAudioClipType: 0
+  - _clipId: 0
     _audioClip: {fileID: 8300000, guid: de2f2de6c56ed0941b723c0d29c9cddc, type: 3}

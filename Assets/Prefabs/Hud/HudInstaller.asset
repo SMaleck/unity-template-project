@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d3a77122ef343849bc038e1dcc03e0c, type: 3}
-  m_Name: HudSoInstaller
+  m_Name: HudInstaller
   m_EditorClassIdentifier: 
   _hudPrefabConfig: {fileID: 11400000, guid: 369dc578c0b81744c8da8ec1c0430b4b, type: 2}

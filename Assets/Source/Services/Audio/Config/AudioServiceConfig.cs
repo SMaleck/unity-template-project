@@ -22,12 +22,14 @@ namespace Source.Services.Audio.Config
         [SerializeField] private AudioSource _audioSourcePrefab;
         public AudioSource AudioSourcePrefab => _audioSourcePrefab;
 
+        [Header("Pitch Randomization")]
         [SerializeField] private float _minPitch;
         public float MinPitch => _minPitch;
 
         [SerializeField] private float _maxPitch;
         public float MaxPitch => _maxPitch;
 
+        [Header("Channel Configs")]
         [SerializeField] private List<AudioChannelConfig> _audioChannelConfigs;
 
         public float GetDefaultVolume(AudioChannel audioChannel)

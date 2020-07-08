@@ -4,9 +4,11 @@ namespace Source.Features.Hud
 {
     public class HudController : AbstractDisposable
     {
-        public HudController()
-        {
+        private readonly HudView _hudView;
 
+        public HudController(HudView hudView)
+        {
+            _hudView = hudView;
         }
     }
 }

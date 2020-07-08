@@ -1,5 +1,5 @@
 ﻿using Source.Framework.Views;
-using Source.Services.AudioPlayer;
+using Source.Services.Audio;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,26 +16,26 @@ namespace Source.Features.HelloWorld
         [SerializeField] private Button _playSoundEffectRandomizedButton;
         [SerializeField] private Button _toggleMusicButton;
 
-        private IAudioPlayerService _audioPlayerService;
+        private IAudioService _audioService;
 
         [Inject]
-        private void Inject(IAudioPlayerService audioPlayerService)
+        private void Inject(IAudioService audioService)
         {
-            _audioPlayerService = audioPlayerService;
+            _audioService = audioService;
         }
 
         public override void OnInitialize()
         {
             _playSoundEffectButton.OnClickAsObservable()
-                .Subscribe(_ => _audioPlayerService.PlayEffect(EffectAudioClipType.Default))
+                .Subscribe(_ => _audioService.PlayEffect(EffectAudioClipId.Default))
                 .AddTo(Disposer);
 
             _playSoundEffectRandomizedButton.OnClickAsObservable()
-                .Subscribe(_ => _audioPlayerService.PlayEffectRandomized(EffectAudioClipType.Default))
+                .Subscribe(_ => _audioService.PlayEffectRandomized(EffectAudioClipId.Default))
                 .AddTo(Disposer);
 
             _toggleMusicButton.OnClickAsObservable()
-                .Subscribe(_ => _audioPlayerService.PlayMusic(MusicAudioClipType.Default))
+                .Subscribe(_ => _audioService.PlayMusic(MusicAudioClipId.Default))
                 .AddTo(Disposer);
         }
     }
