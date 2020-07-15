@@ -1,4 +1,5 @@
-﻿using Source.Framework.Util.UniRx;
+﻿using System;
+using Source.Framework.Util.UniRx;
 using Source.Services.SceneManagement.LoadingScreen;
 using UniRx;
 using UnityEngine.SceneManagement;
@@ -34,14 +35,29 @@ namespace Source.Services.SceneManagement
             _loadingScreenModel.SetIsLoadingScreenVisible(true);
             _onSceneLoadStarted.OnNext(Unit.Default);
 
-            _loadingScreenVisibilityDisposer.Disposable = _loadingScreenModel.OnOpenLoadingScreenCompleted
-                .Subscribe(_ => LoadScene(sceneName));
+            //_loadingScreenVisibilityDisposer.Disposable = _loadingScreenModel.OnOpenLoadingScreenCompleted
+            //    .Subscribe(_ => LoadScene(sceneName));
+            LoadScene(sceneName);
         }
 
         private void LoadScene(string sceneName)
         {
             _loadingScreenVisibilityDisposer.Disposable?.Dispose();
-            SceneManager.LoadSceneAsync(sceneName);
+            SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        }
+
+        private static IObservable<Unit> LoadScene(Scenes sceneIndex)
+        {
+            return SceneManager.LoadSceneAsync((int)sceneIndex, LoadSceneMode.Additive)
+                .AsAsyncOperationObservable()
+                .AsUnitObservable();
+        }
+
+        private static IObservable<Unit> UnloadScene(Scenes sceneIndex)
+        {
+            return SceneManager.UnloadSceneAsync((int)sceneIndex)
+                .AsAsyncOperationObservable()
+                .AsUnitObservable();
         }
 
         public void OnSceneInitializationCompleted()
@@ -49,9 +65,24 @@ namespace Source.Services.SceneManagement
             _loadingScreenModel.SetIsLoadingScreenVisible(false);
         }
 
-        public void ToScene(string sceneName)
+        public void Startup()
         {
-            StartSceneLoad(sceneName);
+            LoadScene(Scenes.SavegameScene)
+                .ContinueWith(_ => UnloadScene(Scenes.InitScene))
+                .Subscribe();
+        }
+
+        public void ToTitle()
+        {
+            LoadScene(Scenes.TitleScene)
+                .Subscribe();
+        }
+
+        public void ToGame()
+        {
+            LoadScene(Scenes.GameScene)
+                .ContinueWith(_ => UnloadScene(Scenes.TitleScene))
+                .Subscribe();
         }
     }
 }

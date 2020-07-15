@@ -1,5 +1,5 @@
 ﻿using Source.Framework.Views;
-using Source.Services.SceneTransition;
+using Source.Services.SceneManagement;
 using Source.ServicesStatic.Localization;
 using TMPro;
 using UniRx;
@@ -16,18 +16,18 @@ namespace Source.Features.TitleScreen
         [SerializeField] private TextMeshProUGUI _helloWorldText;
         [SerializeField] private Button _startButton;
 
-        private ISceneTransitionService _sceneTransitionService;
+        private ISceneManagementService _sceneManagementService;
 
         [Inject]
-        private void Inject(ISceneTransitionService sceneTransitionService)
+        private void Inject(ISceneManagementService sceneManagementService)
         {
-            _sceneTransitionService = sceneTransitionService;
+            _sceneManagementService = sceneManagementService;
         }
 
         public override void OnInitialize()
         {
             _startButton.OnClickAsObservable()
-                .Subscribe(_ => _sceneTransitionService.ToGame())
+                .Subscribe(_ => _sceneManagementService.ToGame())
                 .AddTo(Disposer);
         }
 

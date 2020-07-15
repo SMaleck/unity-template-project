@@ -280,7 +280,8 @@ MonoBehaviour:
       m_Calls: []
   _parentNewObjectsUnderSceneContext: 0
   _contractNames: []
-  _parentContractNames: []
+  _parentContractNames:
+  - SavegameScene
 --- !u!1 &1544914114
 GameObject:
   m_ObjectHideFlags: 0

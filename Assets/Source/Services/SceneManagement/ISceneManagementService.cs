@@ -6,6 +6,9 @@ namespace Source.Services.SceneManagement
     {
         IOptimizedObservable<Unit> OnSceneLoadStarted { get; }
 
-        void ToScene(string sceneName);
+        void Startup();
+
+        void ToTitle();
+        void ToGame();
     }
 }
