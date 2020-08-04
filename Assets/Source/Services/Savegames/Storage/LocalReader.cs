@@ -1,15 +1,19 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using UnityEngine;
-using Logger = Source.Framework.Logging.Logger;
 
-namespace Source.Framework.Util.DataStorageStrategies
+namespace Source.Services.Savegames.Read
 {
-    public class JsonDataStorageStrategy : IDataStorageStrategy
+    public class LocalReader
     {
         private readonly string _basePath;
 
-        public JsonDataStorageStrategy()
+        public LocalReader()
         {
             _basePath = Application.persistentDataPath;
         }

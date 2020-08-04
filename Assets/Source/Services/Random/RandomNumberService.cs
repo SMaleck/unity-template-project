@@ -19,9 +19,9 @@
         /// <param name="minInclusive"></param>
         /// <param name="maxExclusive"></param>
         /// <returns></returns>
-        public float Range(float minInclusive, float maxInclusive)
+        public float Range(float minInclusive, float maxExclusive)
         {
-            return UnityEngine.Random.Range(minInclusive, maxInclusive);
+            return UnityEngine.Random.Range(minInclusive, maxExclusive);
         }
 
         /// <summary>
@@ -30,9 +30,9 @@
         /// <param name="minInclusive"></param>
         /// <param name="maxExclusive"></param>
         /// <returns></returns>
-        public double Range(double minInclusive, double maxInclusive)
+        public double Range(double minInclusive, double maxExclusive)
         {
-            return UnityEngine.Random.Range((float)minInclusive, (float)maxInclusive);
+            return UnityEngine.Random.Range((float)minInclusive, (float)maxExclusive);
         }
     }
 }

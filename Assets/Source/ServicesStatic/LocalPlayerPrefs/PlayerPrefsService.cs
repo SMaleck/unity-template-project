@@ -2,7 +2,7 @@
 using System.Reflection;
 using Newtonsoft.Json;
 using UnityEngine;
-using Logger = Source.Framework.Logger;
+using Logger = Source.Framework.Logging.Logger;
 
 namespace Source.ServicesStatic.LocalPlayerPrefs
 {
