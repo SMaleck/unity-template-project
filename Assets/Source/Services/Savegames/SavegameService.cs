@@ -1,10 +1,9 @@
-﻿using System;
-using Source.Framework;
-using Source.Framework.Logging;
-using Source.Framework.Util.DataStorageStrategies;
+﻿using Source.Framework.Logging;
 using Source.Framework.Util.UniRx;
 using Source.Services.Savegames.Config;
 using Source.Services.Savegames.Models;
+using Source.Services.Savegames.Storage;
+using System;
 using UniRx;
 
 namespace Source.Services.Savegames
@@ -12,7 +11,8 @@ namespace Source.Services.Savegames
     public class SavegameService : AbstractDisposable, ISavegameService, ISavegamePersistenceService
     {
         private readonly SavegamesConfig _savegamesConfig;
-        private readonly IDataStorageStrategy _dataStorageStrategy;
+        private readonly ISavegameReader _savegameReader;
+        private readonly ISavegameWriter _savegameWriter;
 
         private readonly SerialDisposable _savegameDisposer;
         private readonly SerialDisposable _saveDisposer;
@@ -24,14 +24,15 @@ namespace Source.Services.Savegames
         Savegame ISavegameService.Savegame => GetSavegame();
 
         private ISavegamePersistenceService SavegamePersistenceService => this;
-        private string FileName => _savegamesConfig.SavegameFilename;
 
         public SavegameService(
             SavegamesConfig savegamesConfig,
-            IDataStorageStrategy dataStorageStrategy)
+            ISavegameReader savegameReader,
+            ISavegameWriter savegameWriter)
         {
             _savegamesConfig = savegamesConfig;
-            _dataStorageStrategy = dataStorageStrategy;
+            _savegameReader = savegameReader;
+            _savegameWriter = savegameWriter;
 
             _savegameDisposer = new SerialDisposable().AddTo(Disposer);
             _saveDisposer = new SerialDisposable().AddTo(Disposer);
@@ -50,7 +51,7 @@ namespace Source.Services.Savegames
 
         void ISavegamePersistenceService.Load()
         {
-            _savegameData = _dataStorageStrategy.Load<SavegameData>(FileName);
+            _savegameData = _savegameReader.Read();
             _savegameData = _savegameData ?? SavegameDataFactory.CreateSavegameData();
 
             SetupSavegame();
@@ -67,7 +68,7 @@ namespace Source.Services.Savegames
         void ISavegamePersistenceService.Save()
         {
             _saveDisposer.Disposable?.Dispose();
-            _dataStorageStrategy.Save(FileName, _savegameData);
+            _savegameWriter.Write(_savegameData);
         }
 
         void ISavegameService.Reset()
