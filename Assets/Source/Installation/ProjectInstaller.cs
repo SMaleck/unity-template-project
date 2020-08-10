@@ -1,4 +1,5 @@
-﻿using Source.Framework.Util;
+﻿using Source.Framework.Logging;
+using Source.Framework.Util;
 using Source.Initialization;
 using Source.Services.SceneManagement;
 using Source.Services.SceneManagement.LoadingScreen;
@@ -15,6 +16,8 @@ namespace Source.Installation
 
             Container.BindExecutionOrder<ISceneInitializer>(998);
             Container.BindInterfacesAndSelfTo<ProjectInitializer>().AsSingle().NonLazy();
+
+            Container.BindInterfacesTo<InstanceLogger>().AsSingle();
 
             Container.BindInterfacesAndSelfTo<SceneManagementService>().AsSingle();
             Container.BindInterfacesAndSelfTo<SceneManagementModel>().AsSingle();

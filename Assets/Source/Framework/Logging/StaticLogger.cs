@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 
 namespace Source.Framework.Logging
 {
-    public static class Logger
+    public static class StaticLogger
     {
         private static string BuildMessage(object payload = null, string sourceFilePath = "")
         {

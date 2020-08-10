@@ -10,6 +10,7 @@ namespace Source.Services.Savegames
 {
     public class SavegameService : AbstractDisposable, ISavegameService
     {
+        private readonly ILogger _logger;
         private readonly ISavegameConfig _savegameConfig;
         private readonly ISavegameReader _savegameReader;
         private readonly ISavegameWriter _savegameWriter;
@@ -20,10 +21,12 @@ namespace Source.Services.Savegames
         private SavegameData _savegameData;
 
         public SavegameService(
+            ILogger logger,
             ISavegameConfig savegameConfig,
             ISavegameReader savegameReader,
             ISavegameWriter savegameWriter)
         {
+            _logger = logger;
             _savegameConfig = savegameConfig;
             _savegameReader = savegameReader;
             _savegameWriter = savegameWriter;
@@ -42,7 +45,7 @@ namespace Source.Services.Savegames
 
         public void EnqueueSaveRequest()
         {
-            Logger.Log($"Savegame dirty, saving in {_requestSaveTimeout.TotalSeconds}s");
+            _logger.Log($"Savegame dirty, saving in {_requestSaveTimeout.TotalSeconds}s");
 
             _saveDisposer.Disposable = Observable.Timer(_requestSaveTimeout)
                 .Subscribe(_ => Save());

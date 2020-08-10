@@ -8,17 +8,21 @@ namespace Source.Services.Savegames.Storage
 {
     public class SavegameLocalStorage : ISavegameReader, ISavegameWriter
     {
+        private readonly ILogger _logger;
         private readonly string _fullFilePath;
 
-        public SavegameLocalStorage(ISavegameConfig savegameConfig)
+        public SavegameLocalStorage(
+            ILogger logger,
+            ISavegameConfig savegameConfig)
         {
+            _logger = logger;
             var basePath = UnityEngine.Application.persistentDataPath;
             _fullFilePath = Path.Combine(basePath, savegameConfig.Filename);
         }
 
         public SavegameData Read()
         {
-            Logger.Log($"Loading savegame from {_fullFilePath}");
+            _logger.Log($"Loading savegame from {_fullFilePath}");
             var savegameData = JsonStorage.Read<SavegameData>(_fullFilePath);
 
             return savegameData;
@@ -26,7 +30,7 @@ namespace Source.Services.Savegames.Storage
 
         public void Write(SavegameData savegameData)
         {
-            Logger.Log($"Saving savegame to {_fullFilePath}");
+            _logger.Log($"Saving savegame to {_fullFilePath}");
             JsonStorage.Write(_fullFilePath, savegameData);
         }
     }

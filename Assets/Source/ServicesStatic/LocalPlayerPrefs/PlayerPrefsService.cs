@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
+using Source.Framework.Logging;
 using UnityEngine;
-using Logger = Source.Framework.Logging.Logger;
 
 namespace Source.ServicesStatic.LocalPlayerPrefs
 {
@@ -33,7 +33,7 @@ namespace Source.ServicesStatic.LocalPlayerPrefs
 
             var playerPrefsJson = JsonConvert.SerializeObject(allPrefs, Formatting.Indented);
 
-            Logger.Log($"Player Prefs:\n{playerPrefsJson}");
+            StaticLogger.Log($"Player Prefs:\n{playerPrefsJson}");
         }
 
         private static object FindValueByKey(string key)
