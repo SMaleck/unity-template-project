@@ -1,8 +1,8 @@
-﻿using System.IO;
-using Source.Framework.Logging;
+﻿using Source.Framework.Logging;
 using Source.Framework.Util.Json;
 using Source.Services.Savegames.Config;
 using Source.Services.Savegames.Models;
+using System.IO;
 
 namespace Source.Services.Savegames.Storage
 {
@@ -10,10 +10,10 @@ namespace Source.Services.Savegames.Storage
     {
         private readonly string _fullFilePath;
 
-        public SavegameLocalStorage(SavegamesConfig savegamesConfig)
+        public SavegameLocalStorage(ISavegameConfig savegameConfig)
         {
             var basePath = UnityEngine.Application.persistentDataPath;
-            _fullFilePath = Path.Combine(basePath, savegamesConfig.SavegameFilename);
+            _fullFilePath = Path.Combine(basePath, savegameConfig.Filename);
         }
 
         public SavegameData Read()

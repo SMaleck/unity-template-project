@@ -7,27 +7,27 @@ namespace Source.Services.Savegames
 {
     public class SavegamePersistenceScheduler : AbstractDisposable, IInitializable
     {
-        private readonly ISavegamePersistenceService _savegamePersistenceService;
+        private readonly ISavegameService _savegameService;
         private readonly ISceneManagementService _sceneManagementService;
 
         public SavegamePersistenceScheduler(
-            ISavegamePersistenceService savegamePersistenceService,
+            ISavegameService savegameService,
             ISceneManagementService sceneManagementService)
         {
-            _savegamePersistenceService = savegamePersistenceService;
+            _savegameService = savegameService;
             _sceneManagementService = sceneManagementService;
         }
 
         public void Initialize()
         {
-            _savegamePersistenceService.Load();
+            _savegameService.Load();
 
             _sceneManagementService.OnSceneLoadStarted
-                .Subscribe(_ => _savegamePersistenceService.EnqueueSaveRequest())
+                .Subscribe(_ => _savegameService.EnqueueSaveRequest())
                 .AddTo(Disposer);
 
             Observable.OnceApplicationQuit()
-                .Subscribe(_ => _savegamePersistenceService.Save())
+                .Subscribe(_ => _savegameService.Save())
                 .AddTo(Disposer);
         }
     }

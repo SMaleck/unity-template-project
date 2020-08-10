@@ -4,7 +4,11 @@ namespace Source.Services.Savegames
 {
     public interface ISavegameService
     {
-        Savegame Savegame { get; }
+        SavegameData Load();
+
+        void EnqueueSaveRequest();
+        void Save();
+        
         void Reset();
     }
 }

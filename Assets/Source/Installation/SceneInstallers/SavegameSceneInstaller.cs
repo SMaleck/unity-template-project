@@ -12,7 +12,9 @@ namespace Source.Installation.SceneInstallers
 
         public override void InstallBindings()
         {
-            var savegame = _savegameService.Savegame;
+            var savegameData = _savegameService.Load();
+            var savegame = new Savegame(savegameData);
+
             Container.BindInterfacesAndSelfTo<Savegame>().FromInstance(savegame);
 
             _sceneManagementService.ToTitle();

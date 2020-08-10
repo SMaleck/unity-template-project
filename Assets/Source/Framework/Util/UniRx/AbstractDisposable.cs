@@ -6,7 +6,7 @@ namespace Source.Framework.Util.UniRx
     public abstract class AbstractDisposable : IDisposable
     {
         protected CompositeDisposable Disposer = new CompositeDisposable();
-
+        
         public void Dispose(CompositeDisposable disposer)
         {
             if (disposer == null)
