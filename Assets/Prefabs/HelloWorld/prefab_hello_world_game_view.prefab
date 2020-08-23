@@ -763,7 +763,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4780979707585765187}
   - component: {fileID: 4780979707585765184}
-  - component: {fileID: 4315570159767895971}
   m_Layer: 0
   m_Name: prefab_hello_world_game_view
   m_TagString: Untagged
@@ -798,26 +797,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342f2cb36bc6c664283b9750bebf2a39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _target: {fileID: 0}
+  _closeButton: {fileID: 6027390409147225671}
   _playSoundEffectButton: {fileID: 316651577933965857}
   _playSoundEffectRandomizedButton: {fileID: 4569985620307845223}
   _toggleMusicButton: {fileID: 6338900055094300344}
---- !u!114 &4315570159767895971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4780979707585765185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58aed7b2479b432459749a19f30f7433, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _closableParent: {fileID: 4780979707929596402}
-  _canvasGroup: {fileID: 0}
-  _closeButton: {fileID: 4780979708058163882}
-  _startClosed: 1
-  _animationType: 1
 --- !u!1 &4780979707929596402
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,7 +890,7 @@ GameObject:
   - component: {fileID: 4780979708058163883}
   - component: {fileID: 4780979708058163884}
   - component: {fileID: 4780979708058163885}
-  - component: {fileID: 4780979708058163882}
+  - component: {fileID: 6027390409147225671}
   m_Layer: 5
   m_Name: bttn_close
   m_TagString: Untagged
@@ -971,7 +955,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4780979708058163882
+--- !u!114 &6027390409147225671
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -980,7 +964,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4780979708058163880}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f856671fd6503145a6a0420f74ac246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -1007,13 +991,14 @@ MonoBehaviour:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
-    m_SelectedTrigger: Highlighted
+    m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 4780979708058163885}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+  _inactiveButtonSprite: {fileID: 0}
 --- !u!1 &4780979708684445785
 GameObject:
   m_ObjectHideFlags: 0

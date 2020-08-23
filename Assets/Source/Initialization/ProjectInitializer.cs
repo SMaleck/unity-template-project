@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Source.Initialization
 {
-    public class ProjectInitializer : ISceneInitializer
+    public class ProjectInitializer : IInitializable
     {
         [Inject] private DiContainer _container;
 

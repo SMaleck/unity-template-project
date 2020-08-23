@@ -1,6 +1,4 @@
-﻿using Source.Features.HelloWorld.Config;
-using Source.Framework;
-using Source.Framework.Util;
+﻿using Source.Framework;
 using UnityEngine;
 using Zenject;
 
@@ -9,13 +7,14 @@ namespace Source.Features.HelloWorld.Installation
     [CreateAssetMenu(fileName = nameof(HelloWorldInstaller), menuName = Constants.InstallersMenu + nameof(HelloWorldInstaller))]
     public class HelloWorldInstaller : ScriptableObjectInstaller<HelloWorldInstaller>
     {
-        [SerializeField] private HelloWorldPrefabConfig _helloWorldPrefabConfig;
+        [SerializeField] private HelloWorldGameView _helloWorldGameViewPrefab;
 
         public override void InstallBindings()
         {
-            Container.BindInstance(_helloWorldPrefabConfig);
+            Container.Bind<HelloWorldGameView>().FromComponentInNewPrefab(_helloWorldGameViewPrefab)
+                .AsSingle();
 
-            Container.BindPrefabFactory<HelloWorldGameView, HelloWorldGameView.Factory>();
+            Container.BindInterfacesTo<HelloWorldController>().AsSingle().NonLazy();
         }
     }
 }

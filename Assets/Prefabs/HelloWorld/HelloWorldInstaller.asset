@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 803d10da8f573ce4d84f73a33ab2f10d, type: 3}
   m_Name: HelloWorldInstaller
   m_EditorClassIdentifier: 
-  _helloWorldPrefabConfig: {fileID: 11400000, guid: 501475758095c6e4cb53c04ac9f1b810,
-    type: 2}
+  _helloWorldGameViewPrefab: {fileID: 4780979707585765184, guid: 5e2dc308c2b44ef4886e393abe560a02,
+    type: 3}

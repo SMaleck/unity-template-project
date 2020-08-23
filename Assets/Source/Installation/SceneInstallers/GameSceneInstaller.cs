@@ -1,5 +1,4 @@
-﻿using Source.Framework.Views.Mediation;
-using Source.Initialization;
+﻿using Source.Framework.ViewSystem.Installation;
 
 namespace Source.Installation.SceneInstallers
 {
@@ -7,10 +6,7 @@ namespace Source.Installation.SceneInstallers
     {
         protected override void InstallSceneBindings()
         {
-            Container.BindInterfacesAndSelfTo<GameSceneInitializer>().AsSingle().NonLazy();
-
-            Container.BindInterfacesAndSelfTo<ClosableViewMediator>().AsSingle().NonLazy();
-            Container.BindFactory<IClosableView, ClosableViewController, ClosableViewController.Factory>();
+            ViewSystemInstaller.Install(Container);
         }
     }
 }

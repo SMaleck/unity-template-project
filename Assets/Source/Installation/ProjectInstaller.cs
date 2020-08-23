@@ -14,7 +14,7 @@ namespace Source.Installation
         {
             Application.targetFrameRate = 60;
 
-            Container.BindExecutionOrder<ISceneInitializer>(998);
+            Container.BindExecutionOrder<ProjectInitializer>(998);
             Container.BindInterfacesAndSelfTo<ProjectInitializer>().AsSingle().NonLazy();
 
             Container.BindInterfacesTo<InstanceLogger>().AsSingle();

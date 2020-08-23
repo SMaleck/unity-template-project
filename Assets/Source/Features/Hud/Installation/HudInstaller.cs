@@ -1,5 +1,4 @@
-﻿using Source.Features.Hud.Config;
-using Source.Framework;
+﻿using Source.Framework;
 using UnityEngine;
 using Zenject;
 
@@ -8,14 +7,14 @@ namespace Source.Features.Hud.Installation
     [CreateAssetMenu(fileName = nameof(HudInstaller), menuName = Constants.InstallersMenu + nameof(HudInstaller))]
     public class HudInstaller : ScriptableObjectInstaller<HudInstaller>
     {
-        [SerializeField] private HudPrefabConfig _hudPrefabConfig;
+        [SerializeField] private HudView _hudViewPrefab;
 
         public override void InstallBindings()
         {
-            Container.BindInterfacesAndSelfTo<HudController>().AsSingle().NonLazy();
+            Container.Bind<HudView>().FromComponentInNewPrefab(_hudViewPrefab)
+                .AsSingle();
 
-            Container.BindInstance(_hudPrefabConfig);
-            Container.Bind<HudView>().FromInstance(_hudPrefabConfig.HudViewPrefab);
+            Container.BindInterfacesTo<HudController>().AsSingle().NonLazy();
         }
     }
 }
