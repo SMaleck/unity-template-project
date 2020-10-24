@@ -8,9 +8,18 @@ namespace Source.Framework.ViewSystem
     {
         private readonly T _view;
 
+        private readonly IReactiveProperty<bool> _isOpen;
+        public IReadOnlyReactiveProperty<bool> IsOpen => _isOpen;
+
         protected ClosableViewController(T view)
         {
             _view = view;
+
+            _isOpen = new ReactiveProperty<bool>().AddTo(Disposer);
+
+            _isOpen
+                .Subscribe(_view.SetIsVisible)
+                .AddTo(Disposer);
         }
 
         [Inject]
@@ -33,13 +42,13 @@ namespace Source.Framework.ViewSystem
 
         public void Open()
         {
-            _view.SetIsVisible(true);
+            _isOpen.Value = true;
             OnOpen();
         }
 
         public void Close()
         {
-            _view.SetIsVisible(false);
+            _isOpen.Value = false;
             OnClose();
         }
 

@@ -23,11 +23,10 @@ namespace Source.Initialization
 
         protected void SetupLoadingScreenView(LoadingScreenView view)
         {
-            var listOfInits = view.GetComponents<IInitializable>()
+            view.GetComponents<IInitializable>()
                 .Where(viewItem => viewItem.GetType() != typeof(LoadingScreenView))
-                .ToList();
-
-            listOfInits.ForEach(component => component.Initialize());
+                .ToList()
+                .ForEach(component => component.Initialize());
 
             view.GetComponentsInChildren<IInitializable>()
                 .ToList()
