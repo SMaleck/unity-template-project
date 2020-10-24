@@ -1,8 +1,4 @@
-﻿using Source.Features.HelloWorld;
-using Source.Initialization;
-using UGF.Installation;
-using UGF.Util;
-using UGF.Views.Mediation;
+﻿using Source.Framework.ViewSystem.Installation;
 
 namespace Source.Installation.SceneInstallers
 {
@@ -10,13 +6,7 @@ namespace Source.Installation.SceneInstallers
     {
         protected override void InstallSceneBindings()
         {
-            Container.BindInterfacesAndSelfTo<GameSceneInitializer>().AsSingle().NonLazy();
-
-            Container.BindInterfacesAndSelfTo<ClosableViewMediator>().AsSingle().NonLazy();
-            Container.BindFactory<IClosableView, ClosableViewController, ClosableViewController.Factory>();
-
-            Container.BindPrefabFactory<HelloWorldHudView, HelloWorldHudView.Factory>();
-            Container.BindPrefabFactory<HelloWorldGameView, HelloWorldGameView.Factory>();
+            ViewSystemInstaller.Install(Container);
         }
     }
 }
