@@ -1,14 +1,14 @@
-﻿using Source.Services.Savegames.Models;
+﻿using Source.Packages.SavegameSystem.Models;
 
-namespace Source.Services.Savegames
+namespace Source.Packages.SavegameSystem
 {
     public interface ISavegameService
     {
-        SavegameData Load();
+        ISavegameData Load();
 
         void EnqueueSaveRequest();
         void Save();
-        
+
         void Reset();
     }
 }

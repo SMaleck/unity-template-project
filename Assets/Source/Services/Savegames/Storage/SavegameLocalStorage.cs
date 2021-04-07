@@ -1,8 +1,10 @@
-﻿using Source.Framework.Logging;
+﻿using System.IO;
+using Source.Framework.Logging;
 using Source.Framework.Util.Json;
-using Source.Services.Savegames.Config;
+using Source.Packages.SavegameSystem.Config;
+using Source.Packages.SavegameSystem.Models;
+using Source.Packages.SavegameSystem.Storage;
 using Source.Services.Savegames.Models;
-using System.IO;
 
 namespace Source.Services.Savegames.Storage
 {
@@ -20,7 +22,7 @@ namespace Source.Services.Savegames.Storage
             _fullFilePath = Path.Combine(basePath, savegameConfig.Filename);
         }
 
-        public SavegameData Read()
+        public ISavegameData Read()
         {
             _logger.Log($"Loading savegame from {_fullFilePath}");
             var savegameData = JsonStorage.Read<SavegameData>(_fullFilePath);
@@ -28,7 +30,7 @@ namespace Source.Services.Savegames.Storage
             return savegameData;
         }
 
-        public void Write(SavegameData savegameData)
+        public void Write(ISavegameData savegameData)
         {
             _logger.Log($"Saving savegame to {_fullFilePath}");
             JsonStorage.Write(_fullFilePath, savegameData);

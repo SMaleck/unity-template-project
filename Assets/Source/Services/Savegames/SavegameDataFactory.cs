@@ -1,10 +1,12 @@
-﻿using Source.Services.Savegames.Models;
+﻿using Source.Packages.SavegameSystem;
+using Source.Packages.SavegameSystem.Models;
+using Source.Services.Savegames.Models;
 
 namespace Source.Services.Savegames
 {
-    public static class SavegameDataFactory
+    public class SavegameFactory : ISavegameFactory
     {
-        public static SavegameData CreateSavegameData()
+        public ISavegameData Create()
         {
             return new SavegameData()
             {
