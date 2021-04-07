@@ -1,13 +1,9 @@
 {
-    "name": "Game",
+    "name": "SavegameSystem",
     "rootNamespace": "",
     "references": [
-        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
-        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
-        "GUID:6055be8ebefd69e48b49212b09b47b2f",
-        "GUID:532b86ab0019d9d4bb8c44eecb2d227c",
         "GUID:9e00450249feb444db31b9fd993f1da5",
-        "GUID:3eb82e724b653da40935828868943f21",
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
         "GUID:c70bfe8b4629b3a48bdc2cd850009ae7"
     ],
     "includePlatforms": [],

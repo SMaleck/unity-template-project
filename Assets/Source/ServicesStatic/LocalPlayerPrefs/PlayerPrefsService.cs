@@ -1,7 +1,7 @@
-﻿using System.Linq;
+﻿using Newtonsoft.Json;
+using Packages.Logging;
+using System.Linq;
 using System.Reflection;
-using Newtonsoft.Json;
-using Source.Framework.Logging;
 using UnityEngine;
 
 namespace Source.ServicesStatic.LocalPlayerPrefs
@@ -23,7 +23,7 @@ namespace Source.ServicesStatic.LocalPlayerPrefs
         {
             PlayerPrefs.DeleteAll();
         }
-        
+
         public static void LogAll()
         {
             var allPrefs = typeof(PlayerPrefsKeys).GetFields(BindingFlags.Static | BindingFlags.Public)
@@ -42,19 +42,19 @@ namespace Source.ServicesStatic.LocalPlayerPrefs
             {
                 return null;
             }
-            
+
             var stringValue = PlayerPrefs.GetString(key);
             if (!string.IsNullOrEmpty(stringValue))
             {
                 return stringValue;
             }
-            
+
             var floatValue = PlayerPrefs.GetFloat(key, float.NaN);
             if (!float.IsNaN(floatValue))
             {
                 return floatValue;
             }
-            
+
             return PlayerPrefs.GetInt(key);
         }
     }
