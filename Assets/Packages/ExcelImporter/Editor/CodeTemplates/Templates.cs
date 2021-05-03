@@ -6,7 +6,7 @@ namespace ExcelImporter.Editor.CodeTemplates
 {
     public static class Templates
     {
-        private static readonly string Root = $"{PathUtils.LocalPath}{PathUtils.Sep}Templates{PathUtils.Sep}";
+        private static readonly string Root = $"{PathUtils.LocalPath}{PathUtils.Sep}CodeTemplates{PathUtils.Sep}";
 
         public static string CodeGenNoticeTemplate = $"{Root}GeneratedCodeNotice.cs.txt";
         public static string WorkbookImporterTemplate = $"{Root}WorkbookImporterTemplate.cs.txt";
@@ -31,6 +31,9 @@ namespace ExcelImporter.Editor.CodeTemplates
             {
                 template = template.Replace(kvp.Key, kvp.Value);
             }
+
+            var directory = Path.GetDirectoryName(writeFilePath);
+            Directory.CreateDirectory(directory);
 
             File.WriteAllText(writeFilePath, template);
         }
