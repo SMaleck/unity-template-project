@@ -35,7 +35,7 @@ namespace ExcelImporter.Editor.Templates.CompilingTemplates
                 var sheet = workbook.Sheets[sheetKey];
                 var importFilename = GetImportFilePath(workbook, sheet.Name, ImportBasePath, PrefixAssetName);
 
-                SheetImporter.ImportData(workbook, sheet.Name, importFilename);
+                SheetImporter.ImportData<SheetImport, SheetImport.Row>(workbook, sheet.Name, importFilename);
             }
 
             EditorUtils.Progress("Saving Assets", 1f);
