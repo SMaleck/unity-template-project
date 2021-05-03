@@ -1,11 +1,8 @@
-﻿using ExcelImporter.Editor.Processing;
+﻿using ExcelImporter.Editor.CodeGenerators;
+using ExcelImporter.Editor.ExcelProcessing;
 using ExcelImporter.Editor.Utility;
-using NPOI.SS.UserModel;
-using NPOI.XSSF.UserModel;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using ExcelImporter.Editor.CodeGenerators;
 
 namespace ExcelImporter.Editor
 {
@@ -27,7 +24,7 @@ namespace ExcelImporter.Editor
                 var excelWorkbook = ExcelWorkbookFactory.Create(excelPath);
 
                 EditorUtils.Progress("Generating Code", 0.5f);
-                ImporterCodeGenerator.Generate(excelWorkbook);
+                CodeGenerator.Generate(excelWorkbook);
 
                 EditorUtils.ProgressClear();
                 UnityEngine.Debug.Log($"Successfully processed {excelPath}");

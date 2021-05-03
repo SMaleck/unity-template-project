@@ -1,10 +1,10 @@
-﻿using ExcelImporter.Editor.Utility;
+﻿using System;
+using System.IO;
+using ExcelImporter.Editor.Utility;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
-using System;
-using System.IO;
 
-namespace ExcelImporter.Editor.Processing
+namespace ExcelImporter.Editor.ExcelProcessing
 {
     public static class ExcelWorkbookFactory
     {

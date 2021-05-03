@@ -1,19 +1,20 @@
-﻿using ExcelImporter.Editor.Processing;
+﻿using ExcelImporter.Runtime.Imports;
 using NPOI.SS.UserModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using ExcelImporter.Editor.ExcelProcessing;
 using UnityEditor;
 using UnityEngine;
 
-namespace ExcelImporter.Editor.Templates.CompilingTemplates
+namespace ExcelImporter.Editor.Importers
 {
     public class SheetImporter
     {
         private const int StartRow = 2;
 
-        public static void ImportData<TSheet, TRow>(ExcelWorkbook workbook, string sheetName, string importFilePath) 
-            where TSheet : AbstractSheetImport<TRow>
+        public static void ImportData<TSheet, TRow>(ExcelWorkbook workbook, string sheetName, string importFilePath)
+            where TSheet : AbstractImport<TRow>
             where TRow : new()
         {
             var excelSheet = workbook.Sheets[sheetName];

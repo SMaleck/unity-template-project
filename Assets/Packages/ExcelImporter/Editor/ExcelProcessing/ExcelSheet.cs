@@ -1,19 +1,19 @@
-﻿using NPOI.SS.UserModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using NPOI.SS.UserModel;
 
-namespace ExcelImporter.Editor.Processing
+namespace ExcelImporter.Editor.ExcelProcessing
 {
     public class ExcelSheet
     {
-        public string Name { get; }
-        public ExcelColumn[] Columns { get; }
-        public int Rows { get; }
         public ISheet Sheet { get; }
+        public ExcelColumn[] Columns { get; }
+
+        public string Name => Sheet.SheetName;
 
         public ExcelSheet(ISheet sheet)
         {
-            Name = sheet.SheetName;
+            Sheet = sheet;
             Columns = GetColumns(sheet);
         }
 

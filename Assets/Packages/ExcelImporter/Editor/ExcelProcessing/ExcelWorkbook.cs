@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using NPOI.SS.UserModel;
 
-namespace ExcelImporter.Editor.Processing
+namespace ExcelImporter.Editor.ExcelProcessing
 {
     public class ExcelWorkbook
     {

@@ -1,0 +1,17 @@
+﻿<CODEGEN_NOTICE>
+
+using System;
+
+namespace <NAMESPACE>
+{
+    public class <CLASS_NAME> : AbstractSheetImport<<CLASS_NAME>.Row>
+    {
+        [Serializable]
+        public class Row
+        {
+            <FIELDS>
+        }
+
+        public <CLASS_NAME>() : base() { }
+    }
+}

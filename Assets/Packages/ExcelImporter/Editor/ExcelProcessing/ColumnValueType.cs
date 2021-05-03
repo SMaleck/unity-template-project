@@ -1,4 +1,4 @@
-﻿namespace ExcelImporter.Editor.Processing
+﻿namespace ExcelImporter.Editor.ExcelProcessing
 {
     public enum ColumnValueType
     {
