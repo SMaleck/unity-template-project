@@ -9,7 +9,7 @@ namespace <NAMESPACE>
         [Serializable]
         public class Row
         {
-            <FIELDS>
+<FIELDS>
         }
 
         public <CLASS_NAME>() : base() { }

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using NPOI.SS.UserModel;
+using System;
 using System.Collections.Generic;
-using NPOI.SS.UserModel;
 
 namespace ExcelImporter.Editor.ExcelProcessing
 {
@@ -30,6 +30,11 @@ namespace ExcelImporter.Editor.ExcelProcessing
             {
                 var headerCell = headerRow.Cells[i];
                 var valueTypeCell = valueTypeRow.Cells[i];
+
+                if (IsIgnored(headerCell))
+                {
+                    continue;
+                }
 
                 var column = new ExcelColumn(
                     headerCell.StringCellValue,
@@ -61,6 +66,11 @@ namespace ExcelImporter.Editor.ExcelProcessing
         {
             var value = cell.StringCellValue;
             return (ColumnValueType)Enum.Parse(typeof(ColumnValueType), value, true);
+        }
+
+        private static bool IsIgnored(ICell cell)
+        {
+            return cell.StringCellValue.StartsWith(Settings.IgnoredColumnPrefix);
         }
     }
 }
