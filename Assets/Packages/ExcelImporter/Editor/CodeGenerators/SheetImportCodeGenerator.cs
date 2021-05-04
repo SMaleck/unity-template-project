@@ -17,7 +17,7 @@ namespace ExcelImporter.Editor.CodeGenerators
 
             var className = GetSanitizedClassName(sheet.Name);
 
-            data.Add(TemplateKeys.NAMESPACE, Settings.ClassNamespace);
+            data.Add(TemplateKeys.NAMESPACE, Settings.SheetNamespace);
             data.Add(TemplateKeys.CLASS_NAME, className);
             data.Add(TemplateKeys.FIELDS, GenerateFields(sheet));
 
@@ -35,7 +35,7 @@ namespace ExcelImporter.Editor.CodeGenerators
 
         private static string GetFilePath(string name)
         {
-            return Path.Combine(Settings.ClassPath, $"{name}.cs");
+            return Path.Combine(Settings.SheetCodePath, $"{name}.cs");
         }
 
         private static string GenerateFields(ExcelSheet sheet)

@@ -10,12 +10,13 @@ namespace ExcelImporter.Editor
         [SerializeField] private string _importerNamespace;
         [SerializeField] private string _importerCodePath;
 
-        [SerializeField] private string _sheetClassNamespace;
-        [SerializeField] private string _sheetClassPath;
+        [SerializeField] private string _sheetNamespace;
+        [SerializeField] private string _sheetCodePath;
         
-        [SerializeField] private string _scriptableObjectImportPath;
+        [SerializeField] private string _importAssetPath;
         [SerializeField] private string _ignoredSheetPrefix;
         [SerializeField] private string _ignoredColumnPrefix;
+        [SerializeField] private string _menuPath;
 
         private static Settings _instance;
         private static Settings Instance
@@ -37,38 +38,38 @@ namespace ExcelImporter.Editor
 
         public Settings()
         {
-            _importerNamespace = "Game.Data";
-            _importerCodePath = "Assets/Data/ExcelImports/Importers";
+            _importerNamespace = "Game.Data.Imports";
+            _importerCodePath = "Assets/Data/Generated/Importers";
 
-            _sheetClassNamespace = "Game.Data";
-            _sheetClassPath = "Assets/Data/ExcelImports/Sheets";
+            _sheetNamespace = "Game.Data.Imports";
+            _sheetCodePath = "Assets/Data/Generated/Sheets";
 
-            _scriptableObjectImportPath = "Assets/Data/ExcelImports/ImportedAssets";
+            _importAssetPath = "Assets/Data/Imports/";
             _ignoredSheetPrefix = "_";
             _ignoredColumnPrefix = "_";
         }
-        
-        public static string ClassNamespace
+
+        public static string SheetNamespace
         {
-            get => Instance._sheetClassNamespace;
+            get => Instance._sheetNamespace;
             set
             {
-                Instance._sheetClassNamespace = value;
-                SetDirty(Instance._sheetClassNamespace != value);
+                Instance._sheetNamespace = value;
+                SetDirty(Instance._sheetNamespace != value);
             }
         }
 
-        public static string ClassPath
+        public static string SheetCodePath
         {
-            get => Instance._sheetClassPath;
+            get => Instance._sheetCodePath;
             set
             {
-                Instance._sheetClassPath = value;
-                SetDirty(Instance._sheetClassPath != value);
+                Instance._sheetCodePath = value;
+                SetDirty(Instance._sheetCodePath != value);
             }
         }
 
-        public static string ExporterNamespace
+        public static string ImporterNamespace
         {
             get => Instance._importerNamespace;
             set
@@ -78,7 +79,7 @@ namespace ExcelImporter.Editor
             }
         }
 
-        public static string ExporterPath
+        public static string ImporterCodePath
         {
             get => Instance._importerCodePath;
             set
@@ -88,13 +89,13 @@ namespace ExcelImporter.Editor
             }
         }
 
-        public static string AssetPath
+        public static string ImportAssetPath
         {
-            get => Instance._scriptableObjectImportPath;
+            get => Instance._importAssetPath;
             set
             {
-                Instance._scriptableObjectImportPath = value;
-                SetDirty(Instance._scriptableObjectImportPath != value);
+                Instance._importAssetPath = value;
+                SetDirty(Instance._importAssetPath != value);
             }
         }
 

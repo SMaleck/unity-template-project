@@ -21,7 +21,7 @@ namespace <NAMESPACE>
             EditorUtils.Progress("Loading Workbook", 0f);
             var workbook = ExcelWorkbookFactory.Create(ExcelFilePath);
 
-            <SHEET_IMPORT_STATEMENTS>
+<SHEET_IMPORT_STATEMENTS>
 
             EditorUtils.Progress("Saving Assets", 1f);
             AssetDatabase.SaveAssets();

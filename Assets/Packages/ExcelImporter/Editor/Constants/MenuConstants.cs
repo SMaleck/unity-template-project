@@ -4,5 +4,6 @@
     {
         public const string MenuRoot = "Tools/Excel Importer";
         public const string ContextRoot = "Assets/Excel Importer";
+        public const string ImporterBase = MenuRoot + "/Import";
     }
 }

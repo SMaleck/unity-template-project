@@ -11,6 +11,7 @@ namespace ExcelImporter.Editor.CodeTemplates
         public static string CodeGenNoticeTemplate = $"{Root}GeneratedCodeNotice.cs.txt";
         public static string WorkbookImporterTemplate = $"{Root}WorkbookImporterTemplate.cs.txt";
         public static string SheetImportTemplate = $"{Root}SheetImportTemplate.cs.txt";
+        public static string ImportStatementTemplate = $"{Root}ImportStatementTemplate.cs.txt";
 
         public static string Read(string readTemplatePath)
         {
