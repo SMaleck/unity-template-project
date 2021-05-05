@@ -6,7 +6,7 @@
  * -----------------------------------------------------*/
 
 using ExcelImporter.Editor.ExcelProcessing;
-using ExcelImporter.Editor.Importers;
+using ExcelImporter.Editor.Importing;
 using System;
 using System.IO;
 using UnityEditor;
