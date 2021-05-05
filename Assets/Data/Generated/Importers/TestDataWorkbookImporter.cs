@@ -7,6 +7,7 @@
 
 using ExcelImporter.Editor.ExcelProcessing;
 using ExcelImporter.Editor.Importers;
+using System;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -22,18 +23,27 @@ namespace Game.Data.Imports
         [MenuItem("Tools/Excel Importer/Import TestDataWorkbookImporter", priority = 300)]
         public static void Import()
         {
-            EditorUtility.DisplayProgressBar("Excel Importer", "Loading Workbook", 0f);
-            var workbook = ExcelWorkbookFactory.Create(ExcelFilePath);
+            try
+            {
+                EditorUtility.DisplayProgressBar("Excel Importer", "Loading Workbook", 0f);
+                var workbook = ExcelWorkbookFactory.Create(ExcelFilePath);
 
-            EditorUtility.DisplayProgressBar("Excel Importer", "Importing Sheet: TestThings", 1);
-            HandleSheet<TestThingsImport, TestThingsImport.Row>(workbook, "TestThings");
+                EditorUtility.DisplayProgressBar("Excel Importer", "Importing Sheet: TestThings", 1);
+                HandleSheet<TestThingsImport, TestThingsImport.Row>(workbook, "TestThings");
 
 
 
-            EditorUtility.DisplayProgressBar("Excel Importer", "Saving Assets", 1f);
-            AssetDatabase.SaveAssets();
+                EditorUtility.DisplayProgressBar("Excel Importer", "Saving Assets", 1f);
+                AssetDatabase.SaveAssets();
 
-            UnityEngine.Debug.Log($"Imported {workbook.Sheets.Count} sheets from {workbook.FilePath}");
+                UnityEngine.Debug.Log($"Imported {workbook.Sheets.Count} sheets from {workbook.FilePath}");
+            }
+            catch (Exception e)
+            {
+                EditorUtility.DisplayDialog(nameof(TestDataWorkbookImporter), "Import Failed! See console log for details", "Ok");
+                UnityEngine.Debug.LogError(e);
+            }
+
             EditorUtility.ClearProgressBar();
         }
 
