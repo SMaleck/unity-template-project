@@ -1,9 +1,7 @@
 {
     "name": "ExcelImporter.Editor",
     "rootNamespace": "",
-    "references": [
-        "GUID:7793a7169b6281042aaffd46b6067560"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
