@@ -9,13 +9,11 @@ namespace ExcelImporter.Editor.CodeGenerators
 {
     public static class SheetImportCodeGenerator
     {
-        private static readonly char[] TrimChars = { ' ', '-', '+', ':', ',', ';' };
-
         public static void Generate(ExcelSheet sheet)
         {
             var data = new Dictionary<string, string>();
 
-            var className = GetSanitizedClassName(sheet.Name);
+            var className = CodeGenerator.GetSheetClassName(sheet.Name);
 
             data.Add(TemplateKeys.NAMESPACE, Settings.SheetNamespace);
             data.Add(TemplateKeys.CLASS_NAME, className);
@@ -25,12 +23,6 @@ namespace ExcelImporter.Editor.CodeGenerators
                 Templates.SheetImportTemplate,
                 GetFilePath(className),
                 data);
-        }
-
-        private static string GetSanitizedClassName(string name)
-        {
-            var baseName = name.Trim(TrimChars);
-            return $"{baseName}Import";
         }
 
         private static string GetFilePath(string name)

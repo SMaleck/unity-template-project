@@ -12,5 +12,6 @@
         public const string SHEET_IMPORT_STATEMENTS = "<SHEET_IMPORT_STATEMENTS>";
         public const string SHEET_NAME = "<SHEET_NAME>";
         public const string MENU_PATH = "<MENU_PATH>";
+        public const string PROGRESS = "<PROGRESS>";
     }
 }

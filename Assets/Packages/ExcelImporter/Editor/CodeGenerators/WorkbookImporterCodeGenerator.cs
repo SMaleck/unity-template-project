@@ -2,22 +2,20 @@
 using ExcelImporter.Editor.Constants;
 using ExcelImporter.Editor.ExcelProcessing;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text;
 
 namespace ExcelImporter.Editor.CodeGenerators
 {
     // ToDo XLS PREFIX_ASSETNAME
-    // ToDo XLS Progress in import statements
     public class WorkbookImporterCodeGenerator
     {
-        private static readonly char[] TrimChars = { ' ', '-', '+', ':', ',', ';' };
-
         public static void Generate(ExcelWorkbook workbook)
         {
             var data = new Dictionary<string, string>();
 
-            var className = GetSanitizedClassName(workbook.Name);
+            var className = CodeGenerator.GetWorkbookClassName(workbook.Name);
 
             data.Add(TemplateKeys.NAMESPACE, Settings.ImporterNamespace);
             data.Add(TemplateKeys.CLASS_NAME, className);
@@ -31,13 +29,6 @@ namespace ExcelImporter.Editor.CodeGenerators
                 Templates.WorkbookImporterTemplate,
                 GetFilePath(className),
                 data);
-        }
-
-        // ToDo XLS Move to central place
-        private static string GetSanitizedClassName(string name)
-        {
-            var baseName = name.Trim(TrimChars);
-            return $"{baseName}Import";
         }
 
         private static string GetMenuPath(string name)
@@ -55,10 +46,18 @@ namespace ExcelImporter.Editor.CodeGenerators
             var template = Templates.Read(Templates.ImportStatementTemplate);
             var sb = new StringBuilder();
 
+            var currentProgress = 0f;
+            var progressChunk = 1.0f / workbook.Sheets.Count;
+
             foreach (var sheet in workbook.Sheets.Values)
             {
-                var sheetClassName = GetSanitizedClassName(sheet.Name);
-                var statement = template.Replace(TemplateKeys.SHEET_NAME, sheetClassName);
+                currentProgress += progressChunk;
+
+                var sheetClassName = CodeGenerator.GetSheetClassName(sheet.Name);
+
+                var statement = template
+                    .Replace(TemplateKeys.SHEET_NAME, sheetClassName)
+                    .Replace(TemplateKeys.PROGRESS, currentProgress.ToString(CultureInfo.InvariantCulture));
 
                 sb.AppendLine(statement);
                 sb.AppendLine();

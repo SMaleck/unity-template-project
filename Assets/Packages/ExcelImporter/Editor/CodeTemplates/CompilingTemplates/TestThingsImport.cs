@@ -6,10 +6,11 @@
  * -----------------------------------------------------*/
 
 using System;
+using UnityEngine;
 
-namespace Game.Data
+namespace Game.Data.Imports
 {
-    public class Sheet1Import : AbstractSheetImport<Sheet1Import.Row>
+    public class TestThingsImport : ScriptableObject
     {
         [Serializable]
         public class Row
@@ -23,6 +24,6 @@ namespace Game.Data
 
         }
 
-        public Sheet1Import() : base() { }
+        public TestThingsImport() : base() { }
     }
 }

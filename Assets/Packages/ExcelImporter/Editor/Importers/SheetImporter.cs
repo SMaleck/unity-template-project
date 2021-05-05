@@ -1,9 +1,8 @@
-﻿using ExcelImporter.Runtime.Imports;
+﻿using ExcelImporter.Editor.ExcelProcessing;
+using ExcelImporter.Editor.Utility;
 using NPOI.SS.UserModel;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using ExcelImporter.Editor.ExcelProcessing;
 using UnityEditor;
 using UnityEngine;
 
@@ -14,7 +13,7 @@ namespace ExcelImporter.Editor.Importers
         private const int StartRow = 2;
 
         public static void ImportData<TSheet, TRow>(ExcelWorkbook workbook, string sheetName, string importFilePath)
-            where TSheet : AbstractImport<TRow>
+            where TSheet : ScriptableObject
             where TRow : new()
         {
             var excelSheet = workbook.Sheets[sheetName];
@@ -44,7 +43,11 @@ namespace ExcelImporter.Editor.Importers
                 UnityEngine.Debug.LogError(e);
             }
 
-            asset.Rows = importedRows;
+            // Set imported row data on the asset using reflection, so we don't need to have
+            // a base class ensuring "Rows" is accessible at compile time
+            typeof(TSheet)
+                .GetField("Rows")
+                .SetValue(asset, importedRows);
 
             EditorUtility.SetDirty(asset);
             AssetDatabase.SaveAssets();
@@ -54,23 +57,12 @@ namespace ExcelImporter.Editor.Importers
 
         private static TAsset CreateAsset<TAsset>(string filePath) where TAsset : ScriptableObject
         {
-            Directory.CreateDirectory(Path.GetDirectoryName(filePath));
-
-            if (!TryLoadAsset<TAsset>(filePath, out var asset))
+            if (!EditorUtils.LoadOrCreateAsset<TAsset>(filePath, out var asset))
             {
-                asset = ScriptableObject.CreateInstance<TAsset>();
                 asset.hideFlags = HideFlags.HideInInspector;
-
-                AssetDatabase.CreateAsset((ScriptableObject)asset, filePath);
             }
 
             return asset;
-        }
-
-        private static bool TryLoadAsset<TAsset>(string filePath, out TAsset asset) where TAsset : ScriptableObject
-        {
-            asset = (TAsset)AssetDatabase.LoadAssetAtPath(filePath, typeof(TAsset));
-            return asset != null;
         }
 
         private static void PopulateCellValue<TRow>(ExcelSheet sheet, int col, int row, TRow target)

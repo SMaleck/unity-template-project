@@ -2,14 +2,13 @@
 
 using ExcelImporter.Editor.ExcelProcessing;
 using ExcelImporter.Editor.Importers;
-using ExcelImporter.Editor.Utility;
-using ExcelImporter.Runtime.Imports;
 using System.IO;
 using UnityEditor;
+using UnityEngine;
 
 namespace <NAMESPACE>
 {
-    public class <CLASS_NAME>WorkbookImporter
+    public class <CLASS_NAME>
     {
         private const string ExcelFilePath = "<EXCEL_FILEPATH>";
         private const string ImportBasePath = "<IMPORT_BASEPATH>";
@@ -18,20 +17,20 @@ namespace <NAMESPACE>
         [MenuItem("<MENU_PATH>", priority = 100)]
         public static void Import()
         {
-            EditorUtils.Progress("Loading Workbook", 0f);
+            EditorUtility.DisplayProgressBar("Excel Importer", "Loading Workbook", 0f);
             var workbook = ExcelWorkbookFactory.Create(ExcelFilePath);
 
 <SHEET_IMPORT_STATEMENTS>
 
-            EditorUtils.Progress("Saving Assets", 1f);
+            EditorUtility.DisplayProgressBar("Excel Importer", "Saving Assets", 1f);
             AssetDatabase.SaveAssets();
 
             UnityEngine.Debug.Log($"Imported {workbook.Sheets.Count} sheets from {workbook.FilePath}");
-            EditorUtils.ProgressClear();
+            EditorUtility.ClearProgressBar();
         }
 
         private static void HandleSheet<TSheet, TRow>(ExcelWorkbook workbook, string sheetName)
-            where TSheet : AbstractImport<TRow>
+            where TSheet : ScriptableObject
             where TRow : new()
         {
             var importFilename = GetImportFilePath(workbook, sheetName, ImportBasePath, PrefixAssetName);
@@ -41,7 +40,7 @@ namespace <NAMESPACE>
         private static string GetImportFilePath(ExcelWorkbook workbook, string sheetName, string importBasePath, bool prefixAssetName)
         {
             var prefix = prefixAssetName ? $"{workbook.Name}." : string.Empty;
-            var filename = $"{prefix}{sheetName}";
+            var filename = $"{prefix}{sheetName}.asset";
 
             return Path.Combine(importBasePath, filename);
         }

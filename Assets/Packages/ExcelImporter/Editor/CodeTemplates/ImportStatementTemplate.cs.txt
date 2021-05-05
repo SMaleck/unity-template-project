@@ -1,2 +1,2 @@
-﻿            EditorUtils.Progress($"Importing Sheet: <SHEET_NAME>", 0.2f);
+﻿            EditorUtility.DisplayProgressBar("Excel Importer", "Importing Sheet: <SHEET_NAME>", <PROGRESS>);
             HandleSheet<<SHEET_NAME>, <SHEET_NAME>.Row>(workbook, "<SHEET_NAME>");

@@ -7,37 +7,38 @@
 
 using ExcelImporter.Editor.ExcelProcessing;
 using ExcelImporter.Editor.Importers;
-using ExcelImporter.Editor.Utility;
-using ExcelImporter.Runtime.Imports;
 using System.IO;
 using UnityEditor;
+using UnityEngine;
 
-namespace ExcelImporter.Editor.CodeTemplates.CompilingTemplates
+namespace Game.Data.Imports
 {
-    public class WorkbookImporter
+    public class TestDataWorkbookImporter
     {
-        private const string ExcelFilePath = "<EXCEL_FILEPATH>";
-        private const string ImportBasePath = "<IMPORT_BASEPATH>";
+        private const string ExcelFilePath = "Assets/Packages/ExcelImporter/TestData.xlsx";
+        private const string ImportBasePath = "Assets/Data/Imports/";
         private const bool PrefixAssetName = true;
 
-        [MenuItem("Tools/Excel Importer/Import WorkBookName", priority = 100)]
+        [MenuItem("Tools/Excel Importer/Import TestDataWorkbookImporter", priority = 100)]
         public static void Import()
         {
-            EditorUtils.Progress("Loading Workbook", 0f);
+            EditorUtility.DisplayProgressBar("Excel Importer", "Loading Workbook", 0f);
             var workbook = ExcelWorkbookFactory.Create(ExcelFilePath);
 
-            //EditorUtils.Progress($"Importing Sheet: {sheetName}", 0.1f);
-            //HandleSheet<SheetImport, SheetImport.Row>(workbook, sheetName);
+            EditorUtility.DisplayProgressBar("Excel Importer", "Importing Sheet: TestThingsImport", 1);
+            HandleSheet<TestThingsImport, TestThingsImport.Row>(workbook, "TestThingsImport");
 
-            EditorUtils.Progress("Saving Assets", 1f);
+
+
+            EditorUtility.DisplayProgressBar("Excel Importer", "Saving Assets", 1f);
             AssetDatabase.SaveAssets();
 
             UnityEngine.Debug.Log($"Imported {workbook.Sheets.Count} sheets from {workbook.FilePath}");
-            EditorUtils.ProgressClear();
+            EditorUtility.ClearProgressBar();
         }
 
         private static void HandleSheet<TSheet, TRow>(ExcelWorkbook workbook, string sheetName)
-            where TSheet : AbstractImport<TRow>
+            where TSheet : ScriptableObject
             where TRow : new()
         {
             var importFilename = GetImportFilePath(workbook, sheetName, ImportBasePath, PrefixAssetName);
@@ -47,7 +48,7 @@ namespace ExcelImporter.Editor.CodeTemplates.CompilingTemplates
         private static string GetImportFilePath(ExcelWorkbook workbook, string sheetName, string importBasePath, bool prefixAssetName)
         {
             var prefix = prefixAssetName ? $"{workbook.Name}." : string.Empty;
-            var filename = $"{prefix}{sheetName}";
+            var filename = $"{prefix}{sheetName}.asset";
 
             return Path.Combine(importBasePath, filename);
         }

@@ -1,10 +1,11 @@
 ﻿<CODEGEN_NOTICE>
 
 using System;
+using UnityEngine;
 
 namespace <NAMESPACE>
 {
-    public class <CLASS_NAME> : AbstractSheetImport<<CLASS_NAME>.Row>
+    public class <CLASS_NAME> : ScriptableObject
     {
         [Serializable]
         public class Row
