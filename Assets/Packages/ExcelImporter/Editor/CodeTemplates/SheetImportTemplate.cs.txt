@@ -1,6 +1,7 @@
 ﻿<CODEGEN_NOTICE>
 
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace <NAMESPACE>
@@ -13,6 +14,6 @@ namespace <NAMESPACE>
 <FIELDS>
         }
 
-        public <CLASS_NAME>() : base() { }
+        public List<Row> Rows = new List<Row>();
     }
 }

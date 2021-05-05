@@ -2,11 +2,12 @@
 {
     public enum ColumnValueType
     {
-        Bool = 1,
-        String = 2,
-        Int = 3,
-        Long = 4,
-        Float = 5,
-        Double = 6
+        String = 10,
+        StringTrimmed = 11,
+        Int = 20,
+        Long = 21,
+        Float = 22,
+        Double = 23,
+        Bool = 30
     }
 }

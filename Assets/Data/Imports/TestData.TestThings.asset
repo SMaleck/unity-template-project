@@ -12,3 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65616d3bee396214ead46d06051abf0a, type: 3}
   m_Name: TestData.TestThings
   m_EditorClassIdentifier: 
+  Rows:
+  - Id: 0
+    Name: item
+    IsActive: 1
+    Value: 0.5
+    Cost: 0.123
+    LongValue: 123

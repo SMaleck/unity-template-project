@@ -3,6 +3,7 @@ using ExcelImporter.Editor.Utility;
 using NPOI.SS.UserModel;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEditor;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ namespace ExcelImporter.Editor.Importers
 {
     public class SheetImporter
     {
-        private const int StartRow = 3;
+        private const int StartRow = 2;
 
         public static void ImportData<TSheet, TRow>(ExcelWorkbook workbook, string sheetName, string importFilePath)
             where TSheet : ScriptableObject
@@ -26,9 +27,9 @@ namespace ExcelImporter.Editor.Importers
                 var importedRows = new List<TRow>();
 
                 var colCount = excelSheet.Columns.Length;
-                var rowCount = excelSheet.Sheet.LastRowNum;
+                var lastRowIndex = excelSheet.Sheet.LastRowNum;
 
-                for (var row = StartRow; row <= rowCount; row++)
+                for (var row = StartRow; row <= lastRowIndex; row++)
                 {
                     var importRow = new TRow();
                     for (var col = 0; col < colCount; col++)
@@ -121,13 +122,13 @@ namespace ExcelImporter.Editor.Importers
 
             switch (cellType)
             {
-                case ColumnValueType.Bool:
-                    cellValue = cell.BooleanCellValue;
-                    break;
-
-                case ColumnValueType.String:
+               case ColumnValueType.String:
                     cellValue = cell.StringCellValue;
                     break;
+
+               case ColumnValueType.StringTrimmed:
+                   cellValue = cell.StringCellValue.Trim();
+                   break;
 
                 case ColumnValueType.Int:
                     cellValue = (int)cell.NumericCellValue;
@@ -138,11 +139,15 @@ namespace ExcelImporter.Editor.Importers
                     break;
 
                 case ColumnValueType.Float:
-                    cellValue = (float)cell.NumericCellValue;
+                    cellValue = (float)ParseNumericValue(cell);
                     break;
 
                 case ColumnValueType.Double:
-                    cellValue = (double)cell.NumericCellValue;
+                    cellValue = ParseNumericValue(cell);
+                    break;
+
+                case ColumnValueType.Bool:
+                    cellValue = cell.BooleanCellValue;
                     break;
 
                 default:
@@ -155,6 +160,28 @@ namespace ExcelImporter.Editor.Importers
             }
 
             return cellValue;
+        }
+
+        private static double ParseNumericValue(ICell cell)
+        {
+            switch (cell.CellType)
+            {
+                case CellType.Numeric:
+                    return cell.NumericCellValue;
+
+                case CellType.String:
+                    return Double.Parse(
+                        cell.StringCellValue,
+                        NumberStyles.AllowDecimalPoint);
+
+                case CellType.Unknown:
+                case CellType.Formula:
+                case CellType.Blank:
+                case CellType.Boolean:
+                case CellType.Error:
+                default:
+                    throw new ArgumentOutOfRangeException($"Cannot handle CellType {cell.CellType}");
+            }
         }
     }
 }
