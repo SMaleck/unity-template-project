@@ -79,10 +79,8 @@ namespace ExcelImporter.Editor.Importers
 
         private static TAsset CreateAsset<TAsset>(string filePath) where TAsset : ScriptableObject
         {
-            if (!EditorUtils.LoadOrCreateAsset<TAsset>(filePath, out var asset))
-            {
-                asset.hideFlags = HideFlags.HideInInspector;
-            }
+            EditorUtils.LoadOrCreateAsset<TAsset>(filePath, out var asset);
+            asset.hideFlags = HideFlags.NotEditable;
 
             return asset;
         }
