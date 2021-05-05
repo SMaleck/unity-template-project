@@ -9,6 +9,7 @@
         public const string EXCEL_FILEPATH = "<EXCEL_FILEPATH>";
         public const string IMPORT_BASEPATH = "<IMPORT_BASEPATH>";
         public const string PREFIX_ASSETNAME = "<PREFIX_ASSETNAME>";
+        public const string FIND_ADDITIONAL_WORKBOOKS = "<FIND_ADDITIONAL_WORKBOOKS>";
         public const string SHEET_IMPORT_STATEMENTS = "<SHEET_IMPORT_STATEMENTS>";
         public const string SHEET_NAME = "<SHEET_NAME>";
         public const string SHEET_CLASS_NAME = "<SHEET_CLASS_NAME>";

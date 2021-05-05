@@ -6,8 +6,8 @@ namespace ExcelImporter.Editor
     {
         public static string SettingsPath = PathUtils.LocalPath + "/ExcelImporterSettings.asset";
 
-        private static SettingsScriptableObject _instance;
-        private static SettingsScriptableObject Instance => _instance ?? (_instance = LoadSettings());
+        private static ExcelImporterSettings _instance;
+        private static ExcelImporterSettings Instance => _instance ?? (_instance = LoadSettings());
 
         public static string SheetNamespace => Instance.SheetNamespace;
         public static string SheetCodePath => Instance.SheetCodePath;
@@ -17,9 +17,9 @@ namespace ExcelImporter.Editor
         public static string IgnoredSheetPrefix => Instance.IgnoredSheetPrefix;
         public static string IgnoredColumnPrefix => Instance.IgnoredColumnPrefix;
 
-        private static SettingsScriptableObject LoadSettings()
+        private static ExcelImporterSettings LoadSettings()
         {
-            if (!EditorUtils.LoadOrCreateAsset<SettingsScriptableObject>(SettingsPath, out var asset))
+            if (!EditorUtils.LoadOrCreateAsset<ExcelImporterSettings>(SettingsPath, out var asset))
             {
                 asset.ResetDefaults();
             }

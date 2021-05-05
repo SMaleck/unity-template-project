@@ -1,7 +1,8 @@
 using ExcelImporter.Editor.Constants;
+using ExcelImporter.Editor.Utility;
 using UnityEditor;
 
-namespace ExcelImporter.Editor
+namespace ExcelImporter.Editor.EditorMenus
 {
     public class ExcelImporterMenus
     {
@@ -26,7 +27,8 @@ namespace ExcelImporter.Editor
         [MenuItem(MenuConstants.MenuRoot + "/Import All", priority = MenuConstants.Priority2)]
         public static void ImportAll()
         {
-
+            var importers = ImportUtils.FindImporterTypes();
+            ImportUtils.RunImporters(importers);
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using ExcelImporter.Editor.CodeTemplates;
 using ExcelImporter.Editor.ExcelProcessing;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -13,7 +12,7 @@ namespace ExcelImporter.Editor.CodeGenerators
         {
             var data = new Dictionary<string, string>();
 
-            var className = CodeGenerator.GetSheetClassName(sheet.Name);
+            var className = sheet.Name.ToSheetClassName();
 
             data.Add(TemplateKeys.NAMESPACE, Settings.SheetNamespace);
             data.Add(TemplateKeys.CLASS_NAME, className);
@@ -36,38 +35,11 @@ namespace ExcelImporter.Editor.CodeGenerators
 
             foreach (var col in sheet.Columns)
             {
-                var type = GetTypeString(col.Type);
+                var type = col.Type.ToReplaceSafe();
                 sb.AppendLine($"            public {type} {col.Name};");
             }
 
             return sb.ToString();
-        }
-
-        private static string GetTypeString(ColumnValueType valueType)
-        {
-            switch (valueType)
-            {
-                case ColumnValueType.Bool:
-                    return "bool";
-
-                case ColumnValueType.String:
-                    return "string";
-
-                case ColumnValueType.Int:
-                    return "int";
-
-                case ColumnValueType.Long:
-                    return "long";
-
-                case ColumnValueType.Float:
-                    return "float";
-
-                case ColumnValueType.Double:
-                    return "double";
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(valueType), valueType, null);
-            }
         }
     }
 }

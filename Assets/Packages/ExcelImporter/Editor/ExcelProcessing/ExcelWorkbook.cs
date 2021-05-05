@@ -10,12 +10,14 @@ namespace ExcelImporter.Editor.ExcelProcessing
         public string FilePath { get; }
         public string Name { get; }
         public Dictionary<string, ExcelSheet> Sheets { get; }
+        public WorkbookSettings WorkbookSettings;
 
         public ExcelWorkbook(string filePath, IWorkbook workbook)
         {
             FilePath = filePath;
             Name = Path.GetFileNameWithoutExtension(filePath);
             Sheets = GetSheets(workbook);
+            WorkbookSettings = new WorkbookSettings();
         }
 
         private Dictionary<string, ExcelSheet> GetSheets(IWorkbook workbook)

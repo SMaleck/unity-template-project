@@ -3,7 +3,7 @@
 namespace ExcelImporter.Editor
 {
     [CreateAssetMenu]
-    public class SettingsScriptableObject : ScriptableObject
+    public class ExcelImporterSettings : ScriptableObject
     {
         [Header("WorkBook Importers Settings")]
         [Tooltip("Needs access to " + nameof(SheetNamespace) + ", but does not need to go into builds.")]

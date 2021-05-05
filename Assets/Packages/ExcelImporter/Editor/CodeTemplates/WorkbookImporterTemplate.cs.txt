@@ -14,6 +14,7 @@ namespace <NAMESPACE>
         private const string ExcelFilePath = "<EXCEL_FILEPATH>";
         private const string ImportBasePath = "<IMPORT_BASEPATH>";
         private const bool PrefixAssetName = <PREFIX_ASSETNAME>;
+        private const bool FindAdditionalWorkbooks = <FIND_ADDITIONAL_WORKBOOKS>;
 
         [MenuItem("<MENU_PATH>", priority = <MENU_PRIORITY>)]
         public static void Import()

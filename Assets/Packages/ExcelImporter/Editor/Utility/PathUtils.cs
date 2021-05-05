@@ -16,9 +16,9 @@ namespace ExcelImporter.Editor.Utility
         private static string GetLocalPath()
         {
             var assetPath = AssetDatabase
-                .FindAssets($"{nameof(Settings)} t:Script")
+                .FindAssets($"{nameof(ExcelImporterSettings)} t:Script")
                 .Select(AssetDatabase.GUIDToAssetPath)
-                .First();
+                .First(e => e.EndsWith($"{nameof(ExcelImporterSettings)}.cs"));
 
             return Path.GetDirectoryName(assetPath);
         }
