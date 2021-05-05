@@ -5,12 +5,17 @@ namespace ExcelImporter.Editor
     [CreateAssetMenu]
     public class SettingsScriptableObject : ScriptableObject
     {
+        [Header("WorkBook Importers Settings")]
+        [Tooltip("Needs access to " + nameof(SheetNamespace) + ", but does not need to go into builds.")]
         [SerializeField] private string _importerNamespace;
         [SerializeField] private string _importerCodePath;
 
+        [Header("Sheet Import Settings")]
+        [Tooltip("These will be used for the ScriptableObjects and need to be accessible by your game code")]
         [SerializeField] private string _sheetNamespace;
         [SerializeField] private string _sheetCodePath;
 
+        [Header("Misc Settings")]
         [SerializeField] private string _importAssetPath;
         [SerializeField] private string _ignoredSheetPrefix;
         [SerializeField] private string _ignoredColumnPrefix;
