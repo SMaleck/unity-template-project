@@ -14,13 +14,14 @@ using UnityEngine;
 
 namespace Game.Data.Imports
 {
-    public class TestDataWorkbookImporter
+    public class TestDataWorkbookImporter_TEMPLATE
     {
         private const string ExcelFilePath = "Assets/Packages/ExcelImporter/TestData.xlsx";
         private const string ImportBasePath = "Assets/Data/Imports/";
         private const bool PrefixAssetName = true;
+        private const bool FindAdditionalWorkbooks = true;
 
-        //[MenuItem("Tools/Excel Importer/Import TestDataWorkbookImporter", priority = 300)]
+        [MenuItem("Tools/Excel Importer/Import TestDataWorkbookImporter", priority = 300)]
         public static void Import()
         {
             try
@@ -28,8 +29,8 @@ namespace Game.Data.Imports
                 EditorUtility.DisplayProgressBar("Excel Importer", "Loading Workbook", 0f);
                 var workbook = ExcelWorkbookFactory.Create(ExcelFilePath);
 
-                EditorUtility.DisplayProgressBar("Excel Importer", "Importing Sheet: TestThings", 1);
-                HandleSheet<TestThingsImport, TestThingsImport.Row>(workbook, "TestThings");
+                EditorUtility.DisplayProgressBar("Excel Importer", "Importing Sheet: TestThings", 1f);
+                HandleSheet<TestThingsImport_TEMPLATE, TestThingsImport_TEMPLATE.Row>(workbook, "TestThings");
 
 
 
@@ -40,7 +41,7 @@ namespace Game.Data.Imports
             }
             catch (Exception e)
             {
-                EditorUtility.DisplayDialog(nameof(TestDataWorkbookImporter), "Import Failed! See console log for details", "Ok");
+                EditorUtility.DisplayDialog(nameof(TestDataWorkbookImporter_TEMPLATE), "Import Failed! See console log for details", "Ok");
                 UnityEngine.Debug.LogError(e);
             }
 

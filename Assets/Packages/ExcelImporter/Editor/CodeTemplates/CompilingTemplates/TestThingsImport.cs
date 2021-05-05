@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Game.Data.Imports
 {
-    public class TestThingsImport : ScriptableObject
+    public class TestThingsImport_TEMPLATE : ScriptableObject
     {
         [Serializable]
         public class Row
@@ -24,6 +24,6 @@ namespace Game.Data.Imports
 
         }
 
-        public TestThingsImport() : base() { }
+        public TestThingsImport_TEMPLATE() : base() { }
     }
 }

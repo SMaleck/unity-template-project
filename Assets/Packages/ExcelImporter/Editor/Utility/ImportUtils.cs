@@ -41,6 +41,7 @@ namespace ExcelImporter.Editor.Utility
                 .Where(type => type.IsClass &&
                                type.Namespace == Settings.ImporterNamespace &&
                                type.Name.EndsWith(CodeGeneratorExtensions.WorkbookImporterSuffix))
+                .Distinct()
                 .ToArray();
         }
 
