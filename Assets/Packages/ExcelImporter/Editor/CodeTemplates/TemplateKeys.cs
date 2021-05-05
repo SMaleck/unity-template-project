@@ -11,7 +11,9 @@
         public const string PREFIX_ASSETNAME = "<PREFIX_ASSETNAME>";
         public const string SHEET_IMPORT_STATEMENTS = "<SHEET_IMPORT_STATEMENTS>";
         public const string SHEET_NAME = "<SHEET_NAME>";
+        public const string SHEET_CLASS_NAME = "<SHEET_CLASS_NAME>";
         public const string MENU_PATH = "<MENU_PATH>";
+        public const string MENU_PRIORITY = "<MENU_PRIORITY>";
         public const string PROGRESS = "<PROGRESS>";
     }
 }

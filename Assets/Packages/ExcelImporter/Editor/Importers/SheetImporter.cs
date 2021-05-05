@@ -10,22 +10,24 @@ namespace ExcelImporter.Editor.Importers
 {
     public class SheetImporter
     {
-        private const int StartRow = 2;
+        private const int StartRow = 3;
 
         public static void ImportData<TSheet, TRow>(ExcelWorkbook workbook, string sheetName, string importFilePath)
             where TSheet : ScriptableObject
             where TRow : new()
         {
-            var excelSheet = workbook.Sheets[sheetName];
-            var asset = CreateAsset<TSheet>(importFilePath);
-
-            var importedRows = new List<TRow>();
-
-            var colCount = excelSheet.Columns.Length;
-            var rowCount = excelSheet.Sheet.LastRowNum;
-
             try
             {
+                AssertWorkbookIsValid(workbook, sheetName, importFilePath);
+
+                var excelSheet = workbook.Sheets[sheetName];
+                var asset = CreateAsset<TSheet>(importFilePath);
+
+                var importedRows = new List<TRow>();
+
+                var colCount = excelSheet.Columns.Length;
+                var rowCount = excelSheet.Sheet.LastRowNum;
+
                 for (var row = StartRow; row <= rowCount; row++)
                 {
                     var importRow = new TRow();
@@ -36,23 +38,42 @@ namespace ExcelImporter.Editor.Importers
 
                     importedRows.Add(importRow);
                 }
+
+                // Set imported row data on the asset using reflection, so we don't need to have
+                // a base class ensuring "Rows" is accessible at compile time
+                typeof(TSheet)
+                    .GetField("Rows")
+                    .SetValue(asset, importedRows);
+
+                EditorUtility.SetDirty(asset);
+                AssetDatabase.SaveAssets();
+
+                UnityEngine.Debug.Log($"Imported {importedRows.Count} rows from {sheetName}");
             }
             catch (Exception e)
             {
-                UnityEngine.Debug.LogError($"Failed to Import {sheetName} from {workbook.FilePath}");
-                UnityEngine.Debug.LogError(e);
+                EditorUtils.Error(e, $"Failed to Import {sheetName} from {workbook?.FilePath}");
             }
+        }
 
-            // Set imported row data on the asset using reflection, so we don't need to have
-            // a base class ensuring "Rows" is accessible at compile time
-            typeof(TSheet)
-                .GetField("Rows")
-                .SetValue(asset, importedRows);
-
-            EditorUtility.SetDirty(asset);
-            AssetDatabase.SaveAssets();
-
-            UnityEngine.Debug.Log($"Imported {importedRows.Count} rows from {sheetName}");
+        private static void AssertWorkbookIsValid(ExcelWorkbook workbook, string sheetName, string importFilePath)
+        {
+            if (workbook == null)
+            {
+                throw new ArgumentException($"{nameof(workbook)} cannot be NULL");
+            }
+            if (string.IsNullOrWhiteSpace(sheetName))
+            {
+                throw new ArgumentException($"{nameof(sheetName)} cannot be NULL or EMPTY");
+            }
+            if (string.IsNullOrWhiteSpace(importFilePath))
+            {
+                throw new ArgumentException($"{nameof(importFilePath)} cannot be NULL or EMPTY");
+            }
+            if (!workbook.Sheets.ContainsKey(sheetName))
+            {
+                throw new ArgumentException($"Workbook does not contain sheet {sheetName}");
+            }
         }
 
         private static TAsset CreateAsset<TAsset>(string filePath) where TAsset : ScriptableObject

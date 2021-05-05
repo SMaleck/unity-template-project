@@ -1,11 +1,10 @@
-using System.Collections.Generic;
 using ExcelImporter.Editor.Constants;
 using ExcelImporter.Editor.Utility;
 using UnityEditor;
 
 namespace ExcelImporter.Editor
 {
-    public class ExcelContextMenus
+    public class ExcelImporterContextMenus
     {
         [MenuItem(MenuConstants.ContextRoot + "/Generate Importers")]
         public static void GenerateImporters()

@@ -20,6 +20,7 @@ namespace ExcelImporter.Editor.CodeGenerators
             data.Add(TemplateKeys.NAMESPACE, Settings.ImporterNamespace);
             data.Add(TemplateKeys.CLASS_NAME, className);
             data.Add(TemplateKeys.MENU_PATH, GetMenuPath(className));
+            data.Add(TemplateKeys.MENU_PRIORITY, MenuConstants.Priority3.ToString());
             data.Add(TemplateKeys.EXCEL_FILEPATH, workbook.FilePath);
             data.Add(TemplateKeys.IMPORT_BASEPATH, Settings.ImportAssetPath);
             data.Add(TemplateKeys.PREFIX_ASSETNAME, "true");
@@ -56,7 +57,8 @@ namespace ExcelImporter.Editor.CodeGenerators
                 var sheetClassName = CodeGenerator.GetSheetClassName(sheet.Name);
 
                 var statement = template
-                    .Replace(TemplateKeys.SHEET_NAME, sheetClassName)
+                    .Replace(TemplateKeys.SHEET_NAME, sheet.Name)
+                    .Replace(TemplateKeys.SHEET_CLASS_NAME, sheetClassName)
                     .Replace(TemplateKeys.PROGRESS, currentProgress.ToString(CultureInfo.InvariantCulture));
 
                 sb.AppendLine(statement);

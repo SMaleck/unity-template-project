@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 328f7e2036d3e3f488c55e05cdf3201a, type: 3}
   m_Name: ExcelImporterSettings
   m_EditorClassIdentifier: 
-  _importerNamespace: 
-  _importerCodePath: 
-  _sheetNamespace: 
-  _sheetCodePath: 
-  _importAssetPath: 
-  _ignoredSheetPrefix: 
-  _ignoredColumnPrefix: 
+  _importerNamespace: Game.Data.Imports
+  _importerCodePath: Assets/Data/Generated/Importers
+  _sheetNamespace: Game.Data.Imports
+  _sheetCodePath: Assets/Data/Generated/Sheets
+  _importAssetPath: Assets/Data/Imports/
+  _ignoredSheetPrefix: _
+  _ignoredColumnPrefix: _
