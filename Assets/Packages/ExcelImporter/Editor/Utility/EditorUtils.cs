@@ -31,11 +31,6 @@ namespace ExcelImporter.Editor.Utility
             Error(fullMessage);
         }
 
-        public static void ErrorFileDoesNotExist(string filePath)
-        {
-            Error($"File does not exist: {filePath}");
-        }
-
         public static void ErrorNoExcelSelected()
         {
             Error("You did not select any Excel files.");

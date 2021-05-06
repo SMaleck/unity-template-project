@@ -39,7 +39,7 @@ namespace ExcelImporter.Editor.Importing
                 }
 
                 // Set imported row data on the asset using reflection, so we don't need to have
-                // a base class ensuring "Rows" is accessible at compile time
+                // a base class to ensure "Rows" is accessible at compile time
                 typeof(TSheet)
                     .GetField("Rows")
                     .SetValue(asset, importedRows);

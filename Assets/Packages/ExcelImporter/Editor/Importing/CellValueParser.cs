@@ -68,7 +68,8 @@ namespace ExcelImporter.Editor.Importing
                 case CellType.String:
                     return Double.Parse(
                         cell.StringCellValue,
-                        NumberStyles.AllowDecimalPoint);
+                        NumberStyles.AllowDecimalPoint,
+                        CultureInfo.InvariantCulture);
 
                 case CellType.Unknown:
                 case CellType.Formula:

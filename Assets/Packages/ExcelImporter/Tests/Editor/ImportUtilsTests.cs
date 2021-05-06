@@ -2,7 +2,7 @@ using System;
 using ExcelImporter.Editor.Utility;
 using NUnit.Framework;
 
-namespace ExcelImporter.Tests
+namespace ExcelImporter.Tests.Editor
 {
     public class ImportUtilsTests
     {
