@@ -7,7 +7,7 @@ using UnityEditor;
 
 namespace ExcelImporter.Editor.Utility
 {
-    internal class ImportUtils
+    public class ImportUtils
     {
         public const string ExcelFileExtension = ".xlsx";
 
@@ -21,11 +21,11 @@ namespace ExcelImporter.Editor.Utility
 
         public static bool TryFilterExcelFiles(IEnumerable<string> filePaths, out string[] excelPaths)
         {
-            excelPaths = Selection.objects.Select(AssetDatabase.GetAssetPath)
+            excelPaths = filePaths
                 .Where(IsExcelFile)
                 .ToArray();
 
-            return filePaths.Any();
+            return excelPaths.Any();
         }
 
         public static bool IsExcelFile(string path)
@@ -64,6 +64,11 @@ namespace ExcelImporter.Editor.Utility
 
         public static string GenerateImporterNameFromFilePath(string filePath)
         {
+            if (!IsExcelFile(filePath))
+            {
+                throw new ArgumentException("Attempted to generate Workbook name for non-excel file");
+            }
+
             var filename = Path.GetFileNameWithoutExtension(filePath);
             return filename.ToWorkbookClassName();
         }
