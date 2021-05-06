@@ -14,7 +14,6 @@ namespace ExcelImporter.Editor.EditorWindows
         private ExcelWorkbook[] _workbooks;
 
         private bool PrefixAssetNames { get; set; }
-        private bool FindAdditionalWorkbooks { get; set; }
 
         public static void OpenFor(IEnumerable<string> filePaths)
         {
@@ -39,6 +38,8 @@ namespace ExcelImporter.Editor.EditorWindows
             _workbooks = workbooks;
             this.titleContent = new GUIContent($"Generate {_workbooks.Length} Importers");
 
+            PrefixAssetNames = Settings.PrefixAssetNamesByDefault;
+
             Show();
         }
 
@@ -51,11 +52,6 @@ namespace ExcelImporter.Editor.EditorWindows
             GUILayout.Space(25);
             GUILayout.Label("Checking this, will prefix all import assets with the workbook name", EditorStyles.boldLabel);
             PrefixAssetNames = EditorGUILayout.Toggle("Prefix Asset Names", PrefixAssetNames);
-
-            GUILayout.Space(25);
-            GUILayout.Label("Checking this will include additional workbooks in the import.", EditorStyles.boldLabel);
-            GUILayout.Label("Check the settings for the suffix-separator", EditorStyles.boldLabel);
-            FindAdditionalWorkbooks = EditorGUILayout.Toggle("Find Additional Workbooks", FindAdditionalWorkbooks);
 
             GUILayout.Space(50);
             if (GUILayout.Button("Generate Importer"))
@@ -71,7 +67,6 @@ namespace ExcelImporter.Editor.EditorWindows
             foreach (var workbook in _workbooks)
             {
                 workbook.WorkbookSettings.PrefixAssetNames = PrefixAssetNames;
-                workbook.WorkbookSettings.FindAdditionalWorkbooks = FindAdditionalWorkbooks;
             }
         }
     }

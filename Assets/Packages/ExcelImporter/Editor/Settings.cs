@@ -16,6 +16,7 @@ namespace ExcelImporter.Editor
         public static string ImportAssetPath => Instance.ImportAssetPath;
         public static string IgnoredSheetPrefix => Instance.IgnoredSheetPrefix;
         public static string IgnoredColumnPrefix => Instance.IgnoredColumnPrefix;
+        public static bool PrefixAssetNamesByDefault => Instance.PrefixAssetNamesByDefault;
 
         private static ExcelImporterSettings LoadSettings()
         {

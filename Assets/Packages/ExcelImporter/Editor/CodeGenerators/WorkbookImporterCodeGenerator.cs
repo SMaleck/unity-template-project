@@ -23,7 +23,6 @@ namespace ExcelImporter.Editor.CodeGenerators
             data.Add(TemplateKeys.EXCEL_FILEPATH, workbook.FilePath);
             data.Add(TemplateKeys.IMPORT_BASEPATH, Settings.ImportAssetPath);
             data.Add(TemplateKeys.PREFIX_ASSETNAME, settings.PrefixAssetNames.ToReplaceSafe());
-            data.Add(TemplateKeys.FIND_ADDITIONAL_WORKBOOKS, settings.FindAdditionalWorkbooks.ToReplaceSafe());
             data.Add(TemplateKeys.SHEET_IMPORT_STATEMENTS, GenerateImportStatements(workbook));
             data.Add(TemplateKeys.SHEET_NAMESPACE, Settings.SheetNamespace);
 
