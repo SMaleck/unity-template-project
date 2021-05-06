@@ -11,7 +11,7 @@ namespace ExcelImporter.Editor.Utility
     {
         public const string ExcelFileExtension = ".xlsx";
 
-        public static bool TryFilterExcelPathsInSelection(out string[] excelPaths)
+        public static bool TryFilterExcelFilesInSelection(out string[] excelPaths)
         {
             var paths = Selection.objects
                 .Select(AssetDatabase.GetAssetPath);
@@ -60,6 +60,12 @@ namespace ExcelImporter.Editor.Utility
             {
                 methodInfo.Invoke(importer, new object[] { });
             }
+        }
+
+        public static string GenerateImporterNameFromFilePath(string filePath)
+        {
+            var filename = Path.GetFileNameWithoutExtension(filePath);
+            return filename.ToWorkbookClassName();
         }
     }
 }
