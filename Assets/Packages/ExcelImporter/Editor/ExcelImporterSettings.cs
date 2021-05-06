@@ -30,11 +30,11 @@ namespace ExcelImporter.Editor
 
         public void ResetDefaults()
         {
-            _importerNamespace = "Game.Data.Imports";
-            _importerCodePath = "Assets/Data/Generated/Importers";
+            _importerNamespace = "Game.Editor.Data.Importers";
+            _importerCodePath = "Assets/Data/Editor/Generated/Importers";
 
-            _sheetNamespace = "Game.Data.Imports";
-            _sheetCodePath = "Assets/Data/Generated/Sheets";
+            _sheetNamespace = "Game.Data.Tables";
+            _sheetCodePath = "Assets/Data/Runtime/Tables";
 
             _importAssetPath = "Assets/Data/Imports/";
             _ignoredSheetPrefix = "_";

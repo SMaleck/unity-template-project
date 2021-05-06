@@ -16,5 +16,6 @@
         public const string MENU_PATH = "<MENU_PATH>";
         public const string MENU_PRIORITY = "<MENU_PRIORITY>";
         public const string PROGRESS = "<PROGRESS>";
+        public const string SHEET_NAMESPACE = "<SHEET_NAMESPACE>";
     }
 }

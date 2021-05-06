@@ -5,7 +5,7 @@ namespace ExcelImporter.Editor.CodeGenerators
     internal static class CodeGeneratorExtensions
     {
         public const string WorkbookImporterSuffix = "WorkbookImporter";
-        public const string SheetImportSuffix = "Import";
+        public const string SheetImportSuffix = "Table";
 
         private static readonly char[] TrimChars = { ' ', '-', '+', ':', ',', ';' };
 

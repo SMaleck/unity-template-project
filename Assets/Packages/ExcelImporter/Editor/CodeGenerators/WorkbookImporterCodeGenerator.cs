@@ -2,7 +2,6 @@
 using ExcelImporter.Editor.Constants;
 using ExcelImporter.Editor.ExcelProcessing;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Text;
 
@@ -26,6 +25,7 @@ namespace ExcelImporter.Editor.CodeGenerators
             data.Add(TemplateKeys.PREFIX_ASSETNAME, settings.PrefixAssetNames.ToReplaceSafe());
             data.Add(TemplateKeys.FIND_ADDITIONAL_WORKBOOKS, settings.FindAdditionalWorkbooks.ToReplaceSafe());
             data.Add(TemplateKeys.SHEET_IMPORT_STATEMENTS, GenerateImportStatements(workbook));
+            data.Add(TemplateKeys.SHEET_NAMESPACE, Settings.SheetNamespace);
 
             Templates.Write(
                 Templates.WorkbookImporterTemplate,
