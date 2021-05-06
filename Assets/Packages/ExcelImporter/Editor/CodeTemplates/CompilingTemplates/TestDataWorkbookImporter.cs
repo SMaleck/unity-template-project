@@ -21,7 +21,7 @@ namespace Game.Data.Imports
         private const bool PrefixAssetName = true;
         private const bool FindAdditionalWorkbooks = true;
 
-        [MenuItem("Tools/Excel Importer/Import TestDataWorkbookImporter", priority = 300)]
+        //[MenuItem("Tools/Excel Importer/Import TestDataWorkbookImporter", priority = 300)]
         public static void Import()
         {
             try
