@@ -1,5 +1,14 @@
 {
   "dependencies": {
+    "com.smaleck.excel-importer": {
+      "version": "git://github.com/SMaleck/unity-excel-importer.git?path=/Packages/com.smaleck.excel-importer",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.test-framework": "^1.1.24"
+      },
+      "hash": "ad6ea12e79e87973dce9d4e4e6e2de48d3832a8c"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
