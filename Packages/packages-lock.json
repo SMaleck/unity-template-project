@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.neuecc.unirx": {
+      "version": "7.1.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
     "com.smaleck.excel-importer": {
       "version": "git://github.com/SMaleck/unity-excel-importer.git?path=/Packages/com.smaleck.excel-importer",
       "depth": 0,
@@ -8,6 +15,15 @@
         "com.unity.test-framework": "^1.1.24"
       },
       "hash": "ad6ea12e79e87973dce9d4e4e6e2de48d3832a8c"
+    },
+    "com.smaleck.utilities-general": {
+      "version": "git://github.com/SMaleck/unity-utilities-general.git?path=/Packages/com.smaleck.utilities-general#v1.0.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.test-framework": "^1.1.24"
+      },
+      "hash": "17a86d33021e0437150e80a23c0f6b3556efdfdc"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",

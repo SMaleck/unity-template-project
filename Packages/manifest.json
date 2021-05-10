@@ -40,6 +40,18 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0",
-    "com.smaleck.excel-importer": "git://github.com/SMaleck/unity-excel-importer.git?path=/Packages/com.smaleck.excel-importer"
-  }
+    "com.neuecc.unirx": "7.1.0",
+    "com.smaleck.excel-importer": "git://github.com/SMaleck/unity-excel-importer.git?path=/Packages/com.smaleck.excel-importer",
+    "com.smaleck.utilities-general": "git://github.com/SMaleck/unity-utilities-general.git?path=/Packages/com.smaleck.utilities-general#v1.0.0"
+  },
+  "scopedRegistries": [
+    {
+      "name": "package.openupm.com",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.neuecc.unirx",
+        "com.openupm"
+      ]
+    }
+  ]
 }
