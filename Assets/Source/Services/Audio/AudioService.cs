@@ -4,6 +4,7 @@ using Source.Services.Random;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UtilitiesGeneral.Utilities;
 
 namespace Source.Services.Audio
 {
@@ -33,12 +34,12 @@ namespace Source.Services.Audio
             _effectsRepository = effectsRepository;
             _randomNumberService = randomNumberService;
 
-            _audioChannels = EnumHelper<AudioChannel>.Iterator
+            _audioChannels = EnumIterator<AudioChannel>.Iterator
                 .ToDictionary(
                     audioChannel => audioChannel,
                     audioChannel => new List<AudioSourceItem>());
 
-            _channelVolumes = EnumHelper<AudioChannel>.Iterator
+            _channelVolumes = EnumIterator<AudioChannel>.Iterator
                 .ToDictionary(
                     audioChannel => audioChannel,
                     _audioServiceConfig.GetDefaultVolume);
