@@ -25,6 +25,15 @@
       },
       "hash": "17a86d33021e0437150e80a23c0f6b3556efdfdc"
     },
+    "com.smaleck.utilities-unirx": {
+      "version": "git://github.com/SMaleck/unity-utilities-unirx.git?path=/Packages/com.smaleck.utilities-unirx#v1.0.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.neuecc.unirx": "7.1.0"
+      },
+      "hash": "1d3f049d5bfb19c7ddd850c1d695bde19a746124"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,

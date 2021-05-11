@@ -1,5 +1,9 @@
 {
   "dependencies": {
+    "com.neuecc.unirx": "7.1.0",
+    "com.smaleck.excel-importer": "git://github.com/SMaleck/unity-excel-importer.git?path=/Packages/com.smaleck.excel-importer",
+    "com.smaleck.utilities-general": "git://github.com/SMaleck/unity-utilities-general.git?path=/Packages/com.smaleck.utilities-general#v1.0.0",
+    "com.smaleck.utilities-unirx": "git://github.com/SMaleck/unity-utilities-unirx.git?path=/Packages/com.smaleck.utilities-unirx#v1.0.0",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.ads": "3.6.1",
@@ -39,10 +43,7 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0",
-    "com.neuecc.unirx": "7.1.0",
-    "com.smaleck.excel-importer": "git://github.com/SMaleck/unity-excel-importer.git?path=/Packages/com.smaleck.excel-importer",
-    "com.smaleck.utilities-general": "git://github.com/SMaleck/unity-utilities-general.git?path=/Packages/com.smaleck.utilities-general#v1.0.0"
+    "com.unity.modules.xr": "1.0.0"
   },
   "scopedRegistries": [
     {
