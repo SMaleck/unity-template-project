@@ -1,7 +1,7 @@
-﻿using Source.Framework.Util.Mono;
+﻿using Source.Utilities.Mono;
 using Zenject;
 
-namespace Source.Framework.Views
+namespace Source.Frameworks.Views
 {
     public abstract class AbstractView : AbstractDisposableMonoBehaviour, IInitializable
     {

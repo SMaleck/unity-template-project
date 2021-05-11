@@ -1,7 +1,7 @@
 ﻿using System;
 using UniRx;
 
-namespace Source.Framework.ViewUtils
+namespace Source.Frameworks.ViewUtils
 {
     public interface IButton
     {

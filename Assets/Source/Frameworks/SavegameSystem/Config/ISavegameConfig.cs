@@ -1,4 +1,4 @@
-﻿namespace Packages.SavegameSystem.Config
+﻿namespace Source.Frameworks.SavegameSystem.Config
 {
     public interface ISavegameConfig
     {

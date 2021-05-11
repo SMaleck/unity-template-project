@@ -1,6 +1,6 @@
 ﻿using Zenject;
 
-namespace Source.Framework.ViewSystem.Installation
+namespace Source.Frameworks.ViewSystem.Installation
 {
     public class ViewSystemInstaller : Installer<ViewSystemInstaller>
     {

@@ -1,8 +1,8 @@
-﻿using Packages.RxUtils;
+﻿using Source.Utilities.Reactive;
 using UniRx;
 using Zenject;
 
-namespace Source.Framework.ViewSystem
+namespace Source.Frameworks.ViewSystem
 {
     public abstract class ClosableViewController<T> : AbstractDisposable, IInitializable, IClosableViewController where T : ClosableView
     {

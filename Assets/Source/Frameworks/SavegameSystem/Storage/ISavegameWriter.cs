@@ -1,6 +1,6 @@
-﻿using Packages.SavegameSystem.Models;
+﻿using Source.Frameworks.SavegameSystem.Models;
 
-namespace Packages.SavegameSystem.Storage
+namespace Source.Frameworks.SavegameSystem.Storage
 {
     public interface ISavegameWriter
     {

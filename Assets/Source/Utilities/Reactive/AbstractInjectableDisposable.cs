@@ -1,7 +1,7 @@
 ﻿using UniRx;
 using Zenject;
 
-namespace Packages.RxUtils
+namespace Source.Utilities.Reactive
 {
     /// <summary>
     /// Use this for disposable objects, created through Zenject factories

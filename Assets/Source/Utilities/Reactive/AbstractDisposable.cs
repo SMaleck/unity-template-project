@@ -1,7 +1,7 @@
 ﻿using System;
 using UniRx;
 
-namespace Packages.RxUtils
+namespace Source.Utilities.Reactive
 {
     public abstract class AbstractDisposable : IDisposable
     {

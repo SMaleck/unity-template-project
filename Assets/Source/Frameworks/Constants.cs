@@ -1,4 +1,4 @@
-﻿namespace Source.Framework
+﻿namespace Source.Frameworks
 {
     public static class Constants
     {

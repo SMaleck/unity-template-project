@@ -1,6 +1,6 @@
 ﻿using UniRx;
 
-namespace Source.Framework.ViewSystem
+namespace Source.Frameworks.ViewSystem
 {
     public interface IClosableViewMediator
     {

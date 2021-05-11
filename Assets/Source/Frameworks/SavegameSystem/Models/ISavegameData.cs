@@ -1,4 +1,4 @@
-﻿namespace Packages.SavegameSystem.Models
+﻿namespace Source.Frameworks.SavegameSystem.Models
 {
     public interface ISavegameData
     {

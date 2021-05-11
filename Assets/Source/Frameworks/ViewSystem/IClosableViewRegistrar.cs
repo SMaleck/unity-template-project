@@ -1,4 +1,4 @@
-﻿namespace Source.Framework.ViewSystem
+﻿namespace Source.Frameworks.ViewSystem
 {
     public interface IClosableViewRegistrar
     {

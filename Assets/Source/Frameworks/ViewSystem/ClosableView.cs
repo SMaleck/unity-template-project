@@ -1,8 +1,8 @@
-﻿using Source.Framework.Util.Mono;
-using Source.Framework.ViewUtils;
+﻿using Source.Frameworks.ViewUtils;
+using Source.Utilities.Mono;
 using UnityEngine;
 
-namespace Source.Framework.ViewSystem
+namespace Source.Frameworks.ViewSystem
 {
     public class ClosableView : AbstractDisposableMonoBehaviour
     {

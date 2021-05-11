@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Source.Framework.Util.Mono
+namespace Source.Utilities.Mono
 {
     public abstract class AbstractDisposableMonoBehaviour : MonoBehaviour
     {

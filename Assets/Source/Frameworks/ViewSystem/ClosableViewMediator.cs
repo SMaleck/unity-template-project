@@ -1,11 +1,11 @@
-﻿using Packages.RxUtils;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Source.Utilities.Reactive;
 using UniRx;
 using UtilitiesGeneral.Logging;
 
-namespace Source.Framework.ViewSystem
+namespace Source.Frameworks.ViewSystem
 {
     public class ClosableViewMediator : AbstractDisposable, IClosableViewRegistrar, IClosableViewMediator
     {

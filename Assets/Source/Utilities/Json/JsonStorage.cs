@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Newtonsoft.Json;
 
-namespace Source.Framework.Util.Json
+namespace Source.Utilities.Json
 {
     public static class JsonStorage
     {

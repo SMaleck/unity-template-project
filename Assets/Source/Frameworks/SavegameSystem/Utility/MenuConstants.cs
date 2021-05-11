@@ -1,4 +1,4 @@
-﻿namespace Packages.SavegameSystem.Utility
+﻿namespace Source.Frameworks.SavegameSystem.Utility
 {
     public static class MenuConstants
     {

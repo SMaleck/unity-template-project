@@ -1,6 +1,6 @@
-﻿using Packages.SavegameSystem.Models;
+﻿using Source.Frameworks.SavegameSystem.Models;
 
-namespace Packages.SavegameSystem
+namespace Source.Frameworks.SavegameSystem
 {
     public interface ISavegameFactory
     {

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Source.Framework.Util.UI
+namespace Source.Utilities.UI
 {
     public class LinkButton : Button
     {

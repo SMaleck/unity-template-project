@@ -2,7 +2,7 @@
 using DG.Tweening;
 using UniRx;
 
-namespace Packages.RxUtils
+namespace Source.Utilities.Reactive
 {
     public enum TweenDisposalBehaviour
     {

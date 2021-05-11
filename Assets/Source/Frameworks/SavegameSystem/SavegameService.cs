@@ -1,12 +1,12 @@
-﻿using Packages.RxUtils;
-using Packages.SavegameSystem.Config;
-using Packages.SavegameSystem.Models;
-using Packages.SavegameSystem.Storage;
-using System;
+﻿using System;
+using Source.Frameworks.SavegameSystem.Config;
+using Source.Frameworks.SavegameSystem.Models;
+using Source.Frameworks.SavegameSystem.Storage;
+using Source.Utilities.Reactive;
 using UniRx;
 using UtilitiesGeneral.Logging;
 
-namespace Packages.SavegameSystem
+namespace Source.Frameworks.SavegameSystem
 {
     public class SavegameService : AbstractDisposable, ISavegameService
     {

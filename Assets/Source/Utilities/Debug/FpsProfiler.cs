@@ -1,14 +1,13 @@
-﻿using Packages.RxUtils;
-using Source.Services.Environment;
-using Source.Utilities.Debug;
-using System;
+﻿using System;
 using System.Linq;
+using Source.Services.Environment;
+using Source.Utilities.Reactive;
 using UniRx;
 using UnityEngine;
 using UtilitiesUniRx.Extensions;
 using Zenject;
 
-namespace Source.Frameworks.Utilities.Debug
+namespace Source.Utilities.Debug
 {
     public class FpsProfiler : AbstractInjectableDisposable, IInitializable, IFpsProfiler
     {

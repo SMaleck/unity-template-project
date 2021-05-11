@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Source.Framework.ViewUtils
+namespace Source.Frameworks.ViewUtils
 {
     [DisallowMultipleComponent]
     public class RxButton : Button, IButton
