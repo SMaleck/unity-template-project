@@ -8,31 +8,31 @@
       "url": "https://package.openupm.com"
     },
     "com.smaleck.excel-importer": {
-      "version": "git://github.com/SMaleck/unity-excel-importer.git?path=/Packages/com.smaleck.excel-importer",
+      "version": "git://github.com/SMaleck/unity-excel-importer.git#v1.0.0",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.test-framework": "^1.1.24"
       },
-      "hash": "ad6ea12e79e87973dce9d4e4e6e2de48d3832a8c"
+      "hash": "824114d6745e25bbfc038520bab341512626d320"
     },
     "com.smaleck.utilities-general": {
-      "version": "git://github.com/SMaleck/unity-utilities-general.git?path=/Packages/com.smaleck.utilities-general#v1.0.0",
+      "version": "git://github.com/SMaleck/unity-utilities-general.git#v1.0.0",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.test-framework": "^1.1.24"
       },
-      "hash": "17a86d33021e0437150e80a23c0f6b3556efdfdc"
+      "hash": "4b0ec72a2b096cfff54c0cf7ac972f19d3b02a2e"
     },
     "com.smaleck.utilities-unirx": {
-      "version": "git://github.com/SMaleck/unity-utilities-unirx.git?path=/Packages/com.smaleck.utilities-unirx#v1.0.0",
+      "version": "git://github.com/SMaleck/unity-utilities-unirx.git#v1.0.0",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.neuecc.unirx": "7.1.0"
       },
-      "hash": "1d3f049d5bfb19c7ddd850c1d695bde19a746124"
+      "hash": "1c0e5574f0dfa4aa6782f0d3264b5b31f1aadc31"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
