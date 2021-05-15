@@ -1,4 +1,5 @@
-﻿using Source.Frameworks.ViewSystem.Installation;
+﻿using Source.Features.SavegameFeature;
+using Source.Frameworks.ViewSystem.Installation;
 
 namespace Source.Installation.SceneInstallers
 {
@@ -7,6 +8,9 @@ namespace Source.Installation.SceneInstallers
         protected override void InstallSceneBindings()
         {
             ViewSystemInstaller.Install(Container);
+            
+            Container.BindInterfacesAndSelfTo<SavegameFeatureModel>()
+                .AsSingle().NonLazy();
         }
     }
 }
