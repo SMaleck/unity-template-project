@@ -1,5 +1,5 @@
-﻿using Source.Frameworks.SavegameSystem;
-using Source.Services.Savegames.Models;
+﻿using Source.Services.SavegameSystem;
+using Source.Services.SavegameSystem.Serialization;
 using Source.Services.SceneManagement;
 using Zenject;
 
@@ -12,8 +12,7 @@ namespace Source.Installation.SceneInstallers
 
         public override void InstallBindings()
         {
-            var savegameData = _savegameService.Load();
-            var savegame = new Savegame(savegameData as SavegameData);
+            var savegame = _savegameService.Load();
 
             Container.BindInterfacesAndSelfTo<Savegame>().FromInstance(savegame);
 

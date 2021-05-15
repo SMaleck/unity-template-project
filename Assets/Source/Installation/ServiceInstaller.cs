@@ -1,9 +1,8 @@
-﻿using Source.Frameworks.SavegameSystem;
-using Source.Services.Audio;
+﻿using Source.Services.Audio;
 using Source.Services.Audio.Config;
 using Source.Services.Random;
-using Source.Services.Savegames;
-using Source.Services.Savegames.Storage;
+using Source.Services.SavegameSystem.Installation;
+using Source.Services.Time;
 using Source.ServicesStatic.Localization;
 using Source.ServicesStatic.Localization.Data;
 using Zenject;
@@ -16,18 +15,17 @@ namespace Source.Installation
 
         public override void InstallBindings()
         {
-            Container.BindInterfacesTo<SavegameLocalStorage>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<SavegameService>().AsSingle();
-            Container.BindInterfacesAndSelfTo<SavegamePersistenceScheduler>().AsSingle();
-
+            Container.BindInterfacesTo<TimeService>().AsSingle().NonLazy();
             Container.BindInterfacesTo<RandomNumberService>().AsSingle().NonLazy();
-            
+
             Container.BindInterfacesTo<AudioService>().AsSingle().NonLazy();
             Container.BindMemoryPool<AudioSourceItem, AudioSourceItem.Pool>()
                 .FromComponentInNewPrefab(_audioServiceConfig.AudioSourcePrefab)
                 .UnderTransformGroup("Audio");
 
             TextService.Initialize(new TextDataSource());
+
+            SavegameSystemInstaller.Install(Container);
         }
     }
 }
