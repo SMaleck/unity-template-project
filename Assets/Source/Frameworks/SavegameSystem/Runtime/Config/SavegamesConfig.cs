@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace Source.Frameworks.SavegameSystem.Config
 {
-    [CreateAssetMenu(fileName = nameof(SavegamesConfig), menuName = MenuConstants.Root + nameof(SavegamesConfig))]
     public class SavegamesConfig : ScriptableObject, ISavegameConfig
     {
         [SerializeField] private string _savegameFilename = "player.sav";
