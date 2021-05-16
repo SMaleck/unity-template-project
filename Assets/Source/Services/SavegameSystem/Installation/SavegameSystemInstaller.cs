@@ -1,4 +1,5 @@
-﻿using Source.Frameworks.SavegameSystem.Storage;
+﻿using Source.Frameworks.Logging;
+using Source.Frameworks.SavegameSystem.Storage;
 using Source.Frameworks.SavegameSystem.Storage.Dal;
 using Source.Frameworks.SavegameSystem.Storage.Middlewares.PreWrite;
 using Source.Frameworks.SavegameSystem.Storage.Middlewares.Read;
@@ -16,6 +17,7 @@ namespace Source.Services.SavegameSystem.Installation
             // ------------------------------- PACKAGE Bindings
             Container.BindInterfacesTo<SavegameStorage>().AsSingle();
             Container.BindInterfacesTo<DefaultLocalSavegameDal>().AsSingle();
+            Container.BindInterfacesTo<DefaultSavegameLogger>().AsSingle();
 
             // --------------- PACKAGE Processors
             Container.BindInterfacesTo<MigrationProcessor>().AsSingle().NonLazy();

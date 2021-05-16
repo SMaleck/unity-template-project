@@ -4,6 +4,6 @@ namespace Source.Frameworks.SavegameSystem.Storage.Middlewares.PostRead
 {
     public interface ISavegamePostReadMiddleware : ISavegameStorageMiddleware
     {
-        ISavegame Process(ISavegame savegame);
+        ISavegame<T> Process<T>(ISavegame<T> savegame);
     }
 }

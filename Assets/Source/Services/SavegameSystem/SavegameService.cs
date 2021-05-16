@@ -1,28 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Source.Frameworks.SavegameSystem.Serializable;
+﻿using Source.Frameworks.SavegameSystem.Serializable;
+using Source.Frameworks.SavegameSystem.Storage;
+using Source.Services.SavegameSystem.Creation;
 using Source.Services.SavegameSystem.Serialization;
+using UtilitiesGeneral.Logging;
 
 namespace Source.Services.SavegameSystem
 {
     public class SavegameService : ISavegameService
     {
-        public SavegameService()
-        {
+        private readonly ILogger _logger;
+        private readonly ISavegameFactory _savegameFactory;
+        private readonly ISavegameStorage _savegameStorage;
 
+        private ISavegame<SavegameContent> _savegame;
+
+        public SavegameService(
+            ILogger logger,
+            ISavegameFactory savegameFactory,
+            ISavegameStorage savegameStorage)
+        {
+            _logger = logger;
+            _savegameFactory = savegameFactory;
+            _savegameStorage = savegameStorage;
         }
 
         public ISavegame<SavegameContent> Load()
         {
-            return null;
+            if (!_savegameStorage.TryLoad(out _savegame))
+            {
+                _logger.Warn("Failed to load Savegame. Creating new one.");
+
+                _savegame = _savegameFactory.Create();
+                Save();
+            }
+
+            return _savegame;
         }
 
         public void Save()
         {
-
+            _savegameStorage.TrySave(_savegame);
         }
     }
 }

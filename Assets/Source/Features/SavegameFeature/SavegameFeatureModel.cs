@@ -1,4 +1,6 @@
-﻿using Source.Services.SavegameSystem.Serialization;
+﻿using Source.Frameworks.SavegameSystem.Serializable;
+using Source.Services.SavegameSystem;
+using Source.Services.SavegameSystem.Serialization;
 using System.Text;
 using UtilitiesGeneral.Logging;
 
@@ -6,7 +8,9 @@ namespace Source.Features.SavegameFeature
 {
     public class SavegameFeatureModel
     {
-        public SavegameFeatureModel(Savegame savegame)
+        public SavegameFeatureModel(
+            Savegame<SavegameContent> savegame,
+            ISavegameService savegameService)
         {
             var sb = new StringBuilder()
                 .AppendLine("CURRENT SAVEGAME:")
@@ -15,6 +19,8 @@ namespace Source.Features.SavegameFeature
                 .AppendLine($"{nameof(savegame.UpdatedAtUtc)}: {savegame.UpdatedAtUtc}");
 
             StaticLogger.Log(sb.ToString());
+
+            savegameService.Save();
         }
     }
 }

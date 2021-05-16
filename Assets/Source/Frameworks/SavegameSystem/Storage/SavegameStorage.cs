@@ -42,7 +42,7 @@ namespace Source.Frameworks.SavegameSystem.Storage
             _writeMiddlewares = writeMiddlewares.OrderBy(e => e.ExecutionOrder).ToArray();
         }
 
-        public bool TryLoad(out ISavegame savegame)
+        public bool TryLoad<T>(out ISavegame<T> savegame)
         {
             savegame = null;
 
@@ -50,7 +50,7 @@ namespace Source.Frameworks.SavegameSystem.Storage
             {
                 var savegameJson = _reader.Read();
                 var migratedSavegame = _migrationProcessor.Process(savegameJson);
-                savegame = _serializationProcessor.Deserialize(migratedSavegame);
+                savegame = _serializationProcessor.Deserialize<T>(migratedSavegame);
 
                 return true;
             }
@@ -63,11 +63,11 @@ namespace Source.Frameworks.SavegameSystem.Storage
             }
         }
 
-        public bool TrySave(ISavegame savegame)
+        public bool TrySave<T>(ISavegame<T> savegame)
         {
             try
             {
-                var savegameJson = _serializationProcessor.Serialize(savegame);
+                var savegameJson = _serializationProcessor.Serialize<T>(savegame);
 
                 _writer.Write(savegameJson);
             }

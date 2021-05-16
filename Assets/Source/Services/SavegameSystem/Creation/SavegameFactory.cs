@@ -1,11 +1,10 @@
-﻿using Source.Frameworks.SavegameSystem.Creation;
-using Source.Frameworks.SavegameSystem.Serializable;
+﻿using Source.Frameworks.SavegameSystem.Serializable;
 using Source.Frameworks.SavegameSystem.Storage;
 using Source.Services.SavegameSystem.Serialization;
 
 namespace Source.Services.SavegameSystem.Creation
 {
-    public class SavegameFactory : ISavegameFactory<SavegameContent>
+    public class SavegameFactory : ISavegameFactory
     {
         private readonly ISavegameTimeProvider _savegameTimeProvider;
         private readonly ISavegameContentFactory _contentFactory;
@@ -20,7 +19,7 @@ namespace Source.Services.SavegameSystem.Creation
 
         public ISavegame<SavegameContent> Create()
         {
-            return new Savegame()
+            return new Savegame<SavegameContent>()
             {
                 CreatedAtUtc = _savegameTimeProvider.UtcNow,
                 UpdatedAtUtc = _savegameTimeProvider.UtcNow,

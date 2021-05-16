@@ -5,18 +5,19 @@ namespace Source.Frameworks.SavegameSystem.Storage.Processors
 {
     public class SerializationProcessor : ISerializationProcessor
     {
+        // ToDo SAVE JSON Settings
         public SerializationProcessor()
         {
         }
 
-        public string Serialize(ISavegame savegame)
+        public string Serialize<T>(ISavegame<T> savegame)
         {
             return JsonConvert.SerializeObject(savegame);
         }
 
-        public ISavegame Deserialize(string savegameJson)
+        public Savegame<T> Deserialize<T>(string savegameJson)
         {
-            return JsonConvert.DeserializeObject<ISavegame>(savegameJson);
+            return JsonConvert.DeserializeObject<Savegame<T>>(savegameJson);
         }
     }
 }

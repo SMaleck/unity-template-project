@@ -4,7 +4,7 @@ namespace Source.Frameworks.SavegameSystem.Storage.Processors
 {
     public interface ISerializationProcessor
     {
-        string Serialize(ISavegame savegame);
-        ISavegame Deserialize(string savegameJson);
+        string Serialize<T>(ISavegame<T> savegame);
+        Savegame<T> Deserialize<T>(string savegameJson);
     }
 }

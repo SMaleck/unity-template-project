@@ -2,9 +2,9 @@
 
 namespace Source.Frameworks.SavegameSystem.Serializable
 {
-    public interface ISavegame<T>
+    public class Savegame<T> : ISavegame<T>
     {
-        public DateTime CreatedAtUtc { get; }
+        public DateTime CreatedAtUtc { get; set; }
         public DateTime UpdatedAtUtc { get; set; }
         public int Version { get; set; }
 

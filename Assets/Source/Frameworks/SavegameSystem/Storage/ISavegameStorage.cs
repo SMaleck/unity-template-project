@@ -4,7 +4,7 @@ namespace Source.Frameworks.SavegameSystem.Storage
 {
     public interface ISavegameStorage
     {
-        bool TryLoad(out ISavegame savegame);
-        bool TrySave(ISavegame savegame);
+        bool TryLoad<T>(out ISavegame<T> savegame);
+        bool TrySave<T>(ISavegame<T> savegame);
     }
 }
