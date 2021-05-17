@@ -3,12 +3,12 @@ using Source.Frameworks.SavegameSystem.Runtime.Serializable;
 
 namespace Source.Frameworks.SavegameSystem.Runtime.Config
 {
-    public class SerializationSettingsProvider : ISerializationSettingsProvider
+    public class SerializationSettings : ISerializationSettings
     {
         public JsonSerializerSettings DefaultSettings { get; }
         public JsonSerializerSettings CompressionSettings { get; }
 
-        public SerializationSettingsProvider(IJsonConvertersProvider convertersProvider)
+        public SerializationSettings(IJsonConvertersProvider convertersProvider)
         {
             DefaultSettings = new JsonSerializerSettings()
             {

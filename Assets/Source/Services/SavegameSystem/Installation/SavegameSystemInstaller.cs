@@ -20,7 +20,7 @@ namespace Source.Services.SavegameSystem.Installation
             Container.BindInterfacesTo<SavegameStorage>().AsSingle();
             Container.BindInterfacesTo<DefaultLocalSavegameDal>().AsSingle();
             Container.BindInterfacesTo<DefaultSavegameLogger>().AsSingle();
-            Container.BindInterfacesTo<SerializationSettingsProvider>().AsSingle();
+            Container.BindInterfacesTo<SerializationSettings>().AsSingle();
             Container.BindInterfacesTo<JsonConvertersProvider>().AsSingle();
 
             // --------------- PACKAGE Processors

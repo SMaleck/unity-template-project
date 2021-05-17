@@ -1,8 +1,8 @@
 ﻿namespace Source.Frameworks.SavegameSystem.Runtime.Config
 {
-    public interface ISavegameConfig
+    public interface ISavegameSettings
     {
         string Filename { get; }
-        double RequestSaveTimeoutSeconds { get; }
+        bool UseCompression { get; }
     }
 }

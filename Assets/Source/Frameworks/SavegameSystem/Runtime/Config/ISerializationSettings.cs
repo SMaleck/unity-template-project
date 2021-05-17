@@ -2,7 +2,7 @@
 
 namespace Source.Frameworks.SavegameSystem.Runtime.Config
 {
-    public interface ISerializationSettingsProvider
+    public interface ISerializationSettings
     {
         JsonSerializerSettings DefaultSettings { get; }
         JsonSerializerSettings CompressionSettings { get; }

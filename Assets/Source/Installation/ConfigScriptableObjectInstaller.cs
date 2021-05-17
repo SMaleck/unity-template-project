@@ -11,14 +11,14 @@ namespace Source.Installation
     public class ConfigScriptableObjectInstaller : ScriptableObjectInstaller<ConfigScriptableObjectInstaller>
     {
         [SerializeField] private SceneManagementConfig _sceneManagementConfig;
-        [SerializeField] private SavegamesConfig _savegamesConfig;
+        [SerializeField] private SavegamesSettings _savegamesSettings;
         [SerializeField] private AudioServiceConfig _audioServiceConfig;
         [SerializeField] private AudioClipsConfig _audioClipsConfig;
 
         public override void InstallBindings()
         {
             Container.BindInterfacesAndSelfTo<SceneManagementConfig>().FromInstance(_sceneManagementConfig);
-            Container.BindInterfacesAndSelfTo<SavegamesConfig>().FromInstance(_savegamesConfig);
+            Container.BindInterfacesAndSelfTo<SavegamesSettings>().FromInstance(_savegamesSettings);
             Container.BindInterfacesAndSelfTo<AudioServiceConfig>().FromInstance(_audioServiceConfig);
             Container.BindInterfacesTo<AudioClipsConfig>().FromInstance(_audioClipsConfig);
         }

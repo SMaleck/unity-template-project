@@ -11,12 +11,12 @@ namespace Source.Frameworks.SavegameSystem.Runtime.Storage.Dal
 
         public DefaultLocalSavegameDal(
             ISavegameLogger logger,
-            ISavegameConfig savegameConfig)
+            ISavegameSettings savegameSettings)
         {
             _logger = logger;
 
             var basePath = UnityEngine.Application.persistentDataPath;
-            _filePath = Path.Combine(basePath, savegameConfig.Filename);
+            _filePath = Path.Combine(basePath, savegameSettings.Filename);
         }
 
         public string Read()

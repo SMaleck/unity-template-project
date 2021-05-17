@@ -6,25 +6,25 @@ namespace Source.Frameworks.SavegameSystem.Runtime.Storage.Processors
 {
     public class SerializationProcessor : ISerializationProcessor
     {
-        private readonly ISerializationSettingsProvider _serializationSettingsProvider;
+        private readonly ISerializationSettings _serializationSettings;
 
-        public SerializationProcessor(ISerializationSettingsProvider serializationSettingsProvider)
+        public SerializationProcessor(ISerializationSettings serializationSettings)
         {
-            _serializationSettingsProvider = serializationSettingsProvider;
+            _serializationSettings = serializationSettings;
         }
 
         public string Serialize<T>(ISavegame<T> savegame)
         {
             return JsonConvert.SerializeObject(
                 savegame,
-                _serializationSettingsProvider.DefaultSettings);
+                _serializationSettings.DefaultSettings);
         }
 
         public Savegame<T> Deserialize<T>(string savegameJson)
         {
             return JsonConvert.DeserializeObject<Savegame<T>>(
                 savegameJson,
-                _serializationSettingsProvider.DefaultSettings);
+                _serializationSettings.DefaultSettings);
         }
     }
 }
