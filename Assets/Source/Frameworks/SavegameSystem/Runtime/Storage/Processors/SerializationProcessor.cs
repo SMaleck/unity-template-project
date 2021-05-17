@@ -17,14 +17,14 @@ namespace Source.Frameworks.SavegameSystem.Runtime.Storage.Processors
         {
             return JsonConvert.SerializeObject(
                 savegame,
-                _serializationSettingsProvider.DefaultJsonSettings);
+                _serializationSettingsProvider.DefaultSettings);
         }
 
         public Savegame<T> Deserialize<T>(string savegameJson)
         {
             return JsonConvert.DeserializeObject<Savegame<T>>(
                 savegameJson,
-                _serializationSettingsProvider.DefaultJsonSettings);
+                _serializationSettingsProvider.DefaultSettings);
         }
     }
 }

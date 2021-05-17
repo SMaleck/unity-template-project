@@ -5,12 +5,12 @@ namespace Source.Frameworks.SavegameSystem.Runtime.Config
 {
     public class SerializationSettingsProvider : ISerializationSettingsProvider
     {
-        public JsonSerializerSettings DefaultJsonSettings { get; }
-        public JsonSerializerSettings CompressionJsonSettings { get; }
+        public JsonSerializerSettings DefaultSettings { get; }
+        public JsonSerializerSettings CompressionSettings { get; }
 
         public SerializationSettingsProvider(IJsonConvertersProvider convertersProvider)
         {
-            DefaultJsonSettings = new JsonSerializerSettings()
+            DefaultSettings = new JsonSerializerSettings()
             {
                 NullValueHandling = NullValueHandling.Include,
                 MissingMemberHandling = MissingMemberHandling.Error,
@@ -18,7 +18,7 @@ namespace Source.Frameworks.SavegameSystem.Runtime.Config
                 Converters = convertersProvider.GetConverters()
             };
 
-            CompressionJsonSettings = new JsonSerializerSettings()
+            CompressionSettings = new JsonSerializerSettings()
             {
                 NullValueHandling = NullValueHandling.Include,
                 MissingMemberHandling = MissingMemberHandling.Ignore,
