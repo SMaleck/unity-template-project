@@ -1,4 +1,4 @@
-﻿using Source.Services.SavegameSystem.Serialization;
+﻿using Source.Services.SavegameSystem.Serializable;
 
 namespace Source.Services.SavegameSystem.Creation
 {

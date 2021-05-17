@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Source.Services.SavegameSystem.Serialization
+namespace Source.Services.SavegameSystem.Serializable
 {
     [Serializable]
     public class SavegameContent
