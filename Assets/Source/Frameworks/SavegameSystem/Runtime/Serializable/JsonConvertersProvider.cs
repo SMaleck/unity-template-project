@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.Collections.Generic;
 
 namespace Source.Frameworks.SavegameSystem.Runtime.Serializable
@@ -10,10 +9,7 @@ namespace Source.Frameworks.SavegameSystem.Runtime.Serializable
 
         public JsonConvertersProvider()
         {
-            _converters = new List<JsonConverter>
-            {
-                new VectorConverter()
-            };
+            _converters = new List<JsonConverter>();
         }
 
         public List<JsonConverter> GetConverters()
