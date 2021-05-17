@@ -1,4 +1,6 @@
 ﻿using Source.Frameworks.Logging;
+using Source.Frameworks.SavegameSystem.Runtime.Config;
+using Source.Frameworks.SavegameSystem.Runtime.Serializable;
 using Source.Frameworks.SavegameSystem.Storage;
 using Source.Frameworks.SavegameSystem.Storage.Dal;
 using Source.Frameworks.SavegameSystem.Storage.Middlewares.PreWrite;
@@ -18,6 +20,8 @@ namespace Source.Services.SavegameSystem.Installation
             Container.BindInterfacesTo<SavegameStorage>().AsSingle();
             Container.BindInterfacesTo<DefaultLocalSavegameDal>().AsSingle();
             Container.BindInterfacesTo<DefaultSavegameLogger>().AsSingle();
+            Container.BindInterfacesTo<SerializationSettingsProvider>().AsSingle();
+            Container.BindInterfacesTo<JsonConvertersProvider>().AsSingle();
 
             // --------------- PACKAGE Processors
             Container.BindInterfacesTo<MigrationProcessor>().AsSingle().NonLazy();
