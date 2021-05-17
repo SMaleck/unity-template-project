@@ -1,8 +1,8 @@
-﻿using Source.Frameworks.Logging;
-using Source.Frameworks.SavegameSystem.Config;
-using System.IO;
+﻿using System.IO;
+using Source.Frameworks.SavegameSystem.Runtime.Config;
+using Source.Frameworks.SavegameSystem.Runtime.Logging;
 
-namespace Source.Frameworks.SavegameSystem.Storage.Dal
+namespace Source.Frameworks.SavegameSystem.Runtime.Storage.Dal
 {
     public class DefaultLocalSavegameDal : ISavegameReader, ISavegameWriter
     {

@@ -1,6 +1,6 @@
-﻿using Source.Frameworks.SavegameSystem.Config;
+﻿using Source.Frameworks.SavegameSystem.Runtime.Config;
 
-namespace Source.Frameworks.SavegameSystem.Storage.Middlewares.Read
+namespace Source.Frameworks.SavegameSystem.Runtime.Storage.Middlewares.Read
 {
     public class DecompressorMiddleware : AbstractStorageMiddleware, ISavegameReadMiddleware
     {

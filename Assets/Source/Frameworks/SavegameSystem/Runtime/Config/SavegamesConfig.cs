@@ -1,7 +1,6 @@
-﻿using Source.Frameworks.SavegameSystem.Utility;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Source.Frameworks.SavegameSystem.Config
+namespace Source.Frameworks.SavegameSystem.Runtime.Config
 {
     public class SavegamesConfig : ScriptableObject, ISavegameConfig
     {

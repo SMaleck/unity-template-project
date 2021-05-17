@@ -1,5 +1,5 @@
 ﻿using Source.Frameworks;
-using Source.Frameworks.SavegameSystem.Config;
+using Source.Frameworks.SavegameSystem.Runtime.Config;
 using Source.Services.Audio.Config;
 using Source.Services.SceneManagement.Config;
 using UnityEngine;

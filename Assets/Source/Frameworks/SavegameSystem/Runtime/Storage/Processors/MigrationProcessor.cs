@@ -1,4 +1,4 @@
-﻿namespace Source.Frameworks.SavegameSystem.Storage.Processors
+﻿namespace Source.Frameworks.SavegameSystem.Runtime.Storage.Processors
 {
     public class MigrationProcessor : IMigrationProcessor
     {

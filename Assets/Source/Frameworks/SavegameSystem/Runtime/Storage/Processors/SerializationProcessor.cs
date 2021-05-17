@@ -1,23 +1,30 @@
 ﻿using Newtonsoft.Json;
-using Source.Frameworks.SavegameSystem.Serializable;
+using Source.Frameworks.SavegameSystem.Runtime.Config;
+using Source.Frameworks.SavegameSystem.Runtime.Serializable;
 
-namespace Source.Frameworks.SavegameSystem.Storage.Processors
+namespace Source.Frameworks.SavegameSystem.Runtime.Storage.Processors
 {
     public class SerializationProcessor : ISerializationProcessor
     {
-        // ToDo SAVE JSON Settings
-        public SerializationProcessor()
+        private readonly ISerializationSettingsProvider _serializationSettingsProvider;
+
+        public SerializationProcessor(ISerializationSettingsProvider serializationSettingsProvider)
         {
+            _serializationSettingsProvider = serializationSettingsProvider;
         }
 
         public string Serialize<T>(ISavegame<T> savegame)
         {
-            return JsonConvert.SerializeObject(savegame);
+            return JsonConvert.SerializeObject(
+                savegame,
+                _serializationSettingsProvider.DefaultJsonSettings);
         }
 
         public Savegame<T> Deserialize<T>(string savegameJson)
         {
-            return JsonConvert.DeserializeObject<Savegame<T>>(savegameJson);
+            return JsonConvert.DeserializeObject<Savegame<T>>(
+                savegameJson,
+                _serializationSettingsProvider.DefaultJsonSettings);
         }
     }
 }

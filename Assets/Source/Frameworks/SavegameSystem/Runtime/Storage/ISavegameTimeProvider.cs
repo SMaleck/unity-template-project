@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Source.Frameworks.SavegameSystem.Storage
+namespace Source.Frameworks.SavegameSystem.Runtime.Storage
 {
     public interface ISavegameTimeProvider
     {

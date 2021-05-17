@@ -3,7 +3,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Text;
 
-namespace Source.Frameworks.SavegameSystem.Utility
+namespace Source.Frameworks.SavegameSystem.Runtime.Utility
 {
     public static class GzipCompressor
     {

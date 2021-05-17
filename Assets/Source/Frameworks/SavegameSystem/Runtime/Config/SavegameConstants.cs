@@ -1,4 +1,4 @@
-﻿namespace Source.Frameworks.SavegameSystem.Config
+﻿namespace Source.Frameworks.SavegameSystem.Runtime.Config
 {
     public static class SavegameConstants
     {

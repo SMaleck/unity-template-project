@@ -1,6 +1,6 @@
-﻿using Source.Frameworks.SavegameSystem.Serializable;
+﻿using Source.Frameworks.SavegameSystem.Runtime.Serializable;
 
-namespace Source.Frameworks.SavegameSystem.Storage.Processors
+namespace Source.Frameworks.SavegameSystem.Runtime.Storage.Processors
 {
     public interface ISerializationProcessor
     {

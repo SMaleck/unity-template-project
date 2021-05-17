@@ -1,7 +1,6 @@
-﻿using Source.Frameworks.SavegameSystem.Serializable;
-using Source.Frameworks.SavegameSystem.Storage.Middlewares.Write;
+﻿using Source.Frameworks.SavegameSystem.Runtime.Serializable;
 
-namespace Source.Frameworks.SavegameSystem.Storage.Middlewares.PreWrite
+namespace Source.Frameworks.SavegameSystem.Runtime.Storage.Middlewares.PreWrite
 {
     public class UpdateTimestampMiddleware : AbstractStorageMiddleware, ISavegamePreWriteMiddleware
     {

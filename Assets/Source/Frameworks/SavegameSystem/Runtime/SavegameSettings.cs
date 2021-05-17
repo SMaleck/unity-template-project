@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace Source.Frameworks.SavegameSystem
+﻿namespace Source.Frameworks.SavegameSystem.Runtime
 {
     public static class SavegameSettings
     {
