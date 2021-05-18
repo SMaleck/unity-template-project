@@ -1,16 +1,12 @@
 {
-    "name": "Game",
+    "name": "SMaleck.SavegameSystem.Editor",
     "rootNamespace": "",
     "references": [
-        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
-        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
-        "GUID:6055be8ebefd69e48b49212b09b47b2f",
-        "GUID:532b86ab0019d9d4bb8c44eecb2d227c",
-        "GUID:26e1eb3fd8c159247866a97d911c50c6",
-        "GUID:ba2020d352030b64aaf7346666c11da8",
         "GUID:6d50ba2e0b4687d4baaa9079a08f030d"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
