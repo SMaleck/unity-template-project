@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Source.Frameworks.SavegameSystem.Runtime.Logging;
+﻿using Source.Frameworks.SavegameSystem.Runtime.Logging;
 using Source.Frameworks.SavegameSystem.Runtime.Serializable;
 using Source.Frameworks.SavegameSystem.Runtime.Storage.Dal;
 using Source.Frameworks.SavegameSystem.Runtime.Storage.Middlewares;
@@ -10,6 +7,9 @@ using Source.Frameworks.SavegameSystem.Runtime.Storage.Middlewares.PreWrite;
 using Source.Frameworks.SavegameSystem.Runtime.Storage.Middlewares.Read;
 using Source.Frameworks.SavegameSystem.Runtime.Storage.Middlewares.Write;
 using Source.Frameworks.SavegameSystem.Runtime.Storage.Processors;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 // ToDo SAVE make all of this async
 namespace Source.Frameworks.SavegameSystem.Runtime.Storage
@@ -44,21 +44,17 @@ namespace Source.Frameworks.SavegameSystem.Runtime.Storage
             _migrationProcessor = migrationProcessor;
             _serializationProcessor = serializationProcessor;
 
-            var groupedMiddlewares = middlewares
-                .GroupBy(e => e.GetType())
-                .ToDictionary(g => g.Key, g => g.ToArray());
-
-            _readMiddlewares = GetMiddleware<ISavegameReadMiddleware>(groupedMiddlewares);
-            _postReadMiddlewares = GetMiddleware<ISavegamePostReadMiddleware>(groupedMiddlewares);
-            _preWriteMiddlewares = GetMiddleware<ISavegamePreWriteMiddleware>(groupedMiddlewares);
-            _writeMiddlewares = GetMiddleware<ISavegameWriteMiddleware>(groupedMiddlewares);
+            _readMiddlewares = FilterMiddleware<ISavegameReadMiddleware>(middlewares);
+            _postReadMiddlewares = FilterMiddleware<ISavegamePostReadMiddleware>(middlewares);
+            _preWriteMiddlewares = FilterMiddleware<ISavegamePreWriteMiddleware>(middlewares);
+            _writeMiddlewares = FilterMiddleware<ISavegameWriteMiddleware>(middlewares);
         }
 
-        private T[] GetMiddleware<T>(Dictionary<Type, ISavegameStorageMiddleware[]> middlewares) 
+        private T[] FilterMiddleware<T>(IReadOnlyList<ISavegameStorageMiddleware> middlewares)
             where T : ISavegameStorageMiddleware
         {
-            return middlewares[typeof(T)]
-                .Cast<T>()
+            return middlewares
+                .OfType<T>()
                 .OrderBy(e => e.ExecutionOrder)
                 .ToArray();
         }
@@ -70,8 +66,12 @@ namespace Source.Frameworks.SavegameSystem.Runtime.Storage
             try
             {
                 var savegameJson = _reader.Read();
+                savegameJson = ExecuteReadMiddlewares(savegameJson);
+
                 var migratedSavegame = _migrationProcessor.Process(savegameJson);
                 savegame = _serializationProcessor.Deserialize<T>(migratedSavegame);
+
+                savegame = ExecutePostReadMiddlewares(savegame);
 
                 return true;
             }
@@ -88,7 +88,9 @@ namespace Source.Frameworks.SavegameSystem.Runtime.Storage
         {
             try
             {
+                savegame = ExecutePreWriteMiddlewares(savegame);
                 var savegameJson = _serializationProcessor.Serialize<T>(savegame);
+                savegameJson = ExecuteWriteMiddlewares(savegameJson);
 
                 _writer.Write(savegameJson);
             }
@@ -101,6 +103,46 @@ namespace Source.Frameworks.SavegameSystem.Runtime.Storage
             }
 
             return true;
+        }
+
+        private string ExecuteReadMiddlewares(string savegame)
+        {
+            foreach (var mw in _readMiddlewares)
+            {
+                savegame = mw.Process(savegame);
+            }
+
+            return savegame;
+        }
+
+        private ISavegame<T> ExecutePostReadMiddlewares<T>(ISavegame<T> savegame)
+        {
+            foreach (var mw in _postReadMiddlewares)
+            {
+                savegame = mw.Process(savegame);
+            }
+
+            return savegame;
+        }
+
+        private ISavegame<T> ExecutePreWriteMiddlewares<T>(ISavegame<T> savegame)
+        {
+            foreach (var mw in _preWriteMiddlewares)
+            {
+                savegame = mw.Process(savegame);
+            }
+
+            return savegame;
+        }
+
+        private string ExecuteWriteMiddlewares(string savegame)
+        {
+            foreach (var mw in _writeMiddlewares)
+            {
+                savegame = mw.Process(savegame);
+            }
+
+            return savegame;
         }
     }
 }

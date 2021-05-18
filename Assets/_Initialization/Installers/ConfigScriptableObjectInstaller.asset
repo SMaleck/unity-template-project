@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneManagementConfig: {fileID: 11400000, guid: f178f359eab7a494e9d0a67b563faf6f,
     type: 2}
-  _savegamesConfig: {fileID: 11400000, guid: bcfca33fc0137dd4093f8e7b5f75d942, type: 2}
+  _savegameSettings: {fileID: 11400000, guid: acd87356c466a6743912cd2cf5723e10, type: 2}
   _audioServiceConfig: {fileID: 11400000, guid: 78347c28e83a6a444aa31b956544c568,
     type: 2}
-  _viewPrefabConfig: {fileID: 11400000, guid: 4b192d77c6fb58f44ad949ee8db46eed, type: 2}
   _audioClipsConfig: {fileID: 11400000, guid: cb908933b822f0a4c8fc7f8e41cbf078, type: 2}
