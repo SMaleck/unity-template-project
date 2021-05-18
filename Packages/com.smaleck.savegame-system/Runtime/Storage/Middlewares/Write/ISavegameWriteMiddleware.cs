@@ -1,4 +1,4 @@
-﻿namespace Source.Frameworks.SavegameSystem.Runtime.Storage.Middlewares.Write
+﻿namespace SavegameSystem.Storage.Middlewares.Write
 {
     public interface ISavegameWriteMiddleware : ISavegameStorageMiddleware
     {

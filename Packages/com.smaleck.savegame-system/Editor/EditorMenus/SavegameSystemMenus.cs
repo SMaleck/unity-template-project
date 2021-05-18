@@ -1,7 +1,7 @@
-﻿using Source.Frameworks.SavegameSystem.Editor.Constants;
+﻿using SavegameSystem.Editor.Constants;
 using UnityEditor;
 
-namespace Source.Frameworks.SavegameSystem.Editor.EditorMenus
+namespace SavegameSystem.Editor.EditorMenus
 {
     public static class SavegameSystemMenus
     {

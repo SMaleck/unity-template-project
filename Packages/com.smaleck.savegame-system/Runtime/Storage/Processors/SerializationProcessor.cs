@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
-using Source.Frameworks.SavegameSystem.Runtime.Config;
-using Source.Frameworks.SavegameSystem.Runtime.Serializable;
+using SavegameSystem.Config;
+using SavegameSystem.Serializable;
 
-namespace Source.Frameworks.SavegameSystem.Runtime.Storage.Processors
+namespace SavegameSystem.Storage.Processors
 {
     public class SerializationProcessor : ISerializationProcessor
     {

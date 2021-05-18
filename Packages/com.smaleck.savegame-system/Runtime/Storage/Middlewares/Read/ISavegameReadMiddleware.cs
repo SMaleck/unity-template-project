@@ -1,4 +1,4 @@
-﻿namespace Source.Frameworks.SavegameSystem.Runtime.Storage.Middlewares.Read
+﻿namespace SavegameSystem.Storage.Middlewares.Read
 {
     public interface ISavegameReadMiddleware : ISavegameStorageMiddleware
     {

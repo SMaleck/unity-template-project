@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
-namespace Source.Frameworks.SavegameSystem.Runtime.Serializable
+namespace SavegameSystem.Serializable
 {
     public class JsonConvertersProvider : IJsonConvertersProvider
     {

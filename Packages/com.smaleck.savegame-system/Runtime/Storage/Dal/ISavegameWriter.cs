@@ -1,4 +1,4 @@
-﻿namespace Source.Frameworks.SavegameSystem.Runtime.Storage.Dal
+﻿namespace SavegameSystem.Storage.Dal
 {
     public interface ISavegameWriter
     {

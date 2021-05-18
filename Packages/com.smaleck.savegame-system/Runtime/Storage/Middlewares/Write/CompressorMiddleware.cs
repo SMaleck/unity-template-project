@@ -1,6 +1,6 @@
-﻿using Source.Frameworks.SavegameSystem.Runtime.Config;
+﻿using SavegameSystem.Config;
 
-namespace Source.Frameworks.SavegameSystem.Runtime.Storage.Middlewares.Write
+namespace SavegameSystem.Storage.Middlewares.Write
 {
     public class CompressorMiddleware : AbstractStorageMiddleware, ISavegameWriteMiddleware
     {

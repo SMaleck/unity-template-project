@@ -1,4 +1,4 @@
-﻿using Source.Frameworks.SavegameSystem.Runtime.Serializable;
+﻿using SavegameSystem.Serializable;
 using Source.Services.SavegameSystem;
 using Source.Services.SavegameSystem.Serializable;
 using Source.Services.SceneManagement;

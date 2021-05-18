@@ -1,6 +1,6 @@
 ﻿using Source.Services.SavegameSystem;
 using System.Text;
-using Source.Frameworks.SavegameSystem.Runtime.Serializable;
+using SavegameSystem.Serializable;
 using Source.Services.SavegameSystem.Serializable;
 using UtilitiesGeneral.Logging;
 

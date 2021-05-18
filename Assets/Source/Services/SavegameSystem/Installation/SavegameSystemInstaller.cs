@@ -1,12 +1,12 @@
-﻿using Source.Frameworks.SavegameSystem.Runtime.Config;
-using Source.Frameworks.SavegameSystem.Runtime.Logging;
-using Source.Frameworks.SavegameSystem.Runtime.Serializable;
-using Source.Frameworks.SavegameSystem.Runtime.Storage;
-using Source.Frameworks.SavegameSystem.Runtime.Storage.Dal;
-using Source.Frameworks.SavegameSystem.Runtime.Storage.Middlewares.PreWrite;
-using Source.Frameworks.SavegameSystem.Runtime.Storage.Middlewares.Read;
-using Source.Frameworks.SavegameSystem.Runtime.Storage.Middlewares.Write;
-using Source.Frameworks.SavegameSystem.Runtime.Storage.Processors;
+﻿using SavegameSystem.Config;
+using SavegameSystem.Logging;
+using SavegameSystem.Serializable;
+using SavegameSystem.Storage;
+using SavegameSystem.Storage.Dal;
+using SavegameSystem.Storage.Middlewares.PreWrite;
+using SavegameSystem.Storage.Middlewares.Read;
+using SavegameSystem.Storage.Middlewares.Write;
+using SavegameSystem.Storage.Processors;
 using Source.Services.SavegameSystem.Creation;
 using Zenject;
 

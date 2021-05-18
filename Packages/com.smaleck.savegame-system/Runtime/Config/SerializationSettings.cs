@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using Source.Frameworks.SavegameSystem.Runtime.Serializable;
+using SavegameSystem.Serializable;
 
-namespace Source.Frameworks.SavegameSystem.Runtime.Config
+namespace SavegameSystem.Config
 {
     public class SerializationSettings : ISerializationSettings
     {

@@ -1,5 +1,5 @@
-﻿using Source.Frameworks.SavegameSystem.Runtime.Serializable;
-using Source.Frameworks.SavegameSystem.Runtime.Storage;
+﻿using SavegameSystem.Serializable;
+using SavegameSystem.Storage;
 using Source.Services.SavegameSystem.Creation;
 using Source.Services.SavegameSystem.Serializable;
 using UtilitiesGeneral.Logging;

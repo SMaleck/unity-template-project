@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Source.Frameworks.SavegameSystem.Runtime.Logging
+namespace SavegameSystem.Logging
 {
     public interface ISavegameLogger
     {

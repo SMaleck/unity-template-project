@@ -1,6 +1,6 @@
-﻿using Source.Frameworks.SavegameSystem.Runtime.Config;
+﻿using SavegameSystem.Config;
 
-namespace Source.Frameworks.SavegameSystem.Runtime.Storage.Middlewares
+namespace SavegameSystem.Storage.Middlewares
 {
     public abstract class AbstractStorageMiddleware : ISavegameStorageMiddleware
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Source.Frameworks.SavegameSystem.Runtime.Serializable
+namespace SavegameSystem.Serializable
 {
     public class Savegame<T> : ISavegame<T>
     {

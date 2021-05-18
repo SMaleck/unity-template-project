@@ -1,4 +1,4 @@
-﻿namespace Source.Frameworks.SavegameSystem.Editor.Constants
+﻿namespace SavegameSystem.Editor.Constants
 {
     public class MenuConstants
     {

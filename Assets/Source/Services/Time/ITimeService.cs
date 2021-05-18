@@ -1,5 +1,5 @@
 ﻿using System;
-using Source.Frameworks.SavegameSystem.Runtime.Storage;
+using SavegameSystem.Storage;
 
 namespace Source.Services.Time
 {

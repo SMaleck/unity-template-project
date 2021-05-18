@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Source.Frameworks.SavegameSystem.Runtime.Config
+namespace SavegameSystem.Config
 {
     public interface ISerializationSettings
     {
