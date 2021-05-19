@@ -1,11 +1,9 @@
-﻿using System;
-
-namespace SavegameSystem.Logging
+﻿namespace SavegameSystem.Logging
 {
     public interface ISavegameLogger
     {
-        void Log(string message);
-        void Error(string message);
-        void Error(Exception e);
+        void Log(object payload);
+        void Warn(object payload);
+        void Error(object payload);
     }
 }

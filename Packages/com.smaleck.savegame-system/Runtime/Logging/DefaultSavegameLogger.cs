@@ -1,24 +1,36 @@
-﻿using System;
-
-namespace SavegameSystem.Logging
+﻿namespace SavegameSystem.Logging
 {
     public class DefaultSavegameLogger : ISavegameLogger
     {
         private const string Prefix = "[Savegame]";
 
-        public void Log(string message)
+        public void Log(object payload)
         {
-            UnityEngine.Debug.Log($"{Prefix} {message}");
+            if (UnityEngine.Debug.isDebugBuild)
+            {
+                UnityEngine.Debug.Log($"{Prefix} {ToMessage(payload)}");
+            }
         }
 
-        public void Error(string message)
+        public void Warn(object payload)
         {
-            UnityEngine.Debug.LogError($"{Prefix} {message}");
+            if (UnityEngine.Debug.isDebugBuild)
+            {
+                UnityEngine.Debug.LogWarning($"{Prefix} {ToMessage(payload)}");
+            }
         }
 
-        public void Error(Exception e)
+        public void Error(object payload)
         {
-            UnityEngine.Debug.LogError(e);
+            if (UnityEngine.Debug.isDebugBuild)
+            {
+                UnityEngine.Debug.LogError($"{Prefix} {ToMessage(payload)}");
+            }
+        }
+
+        private string ToMessage(object payload)
+        {
+            return payload?.ToString() ?? string.Empty;
         }
     }
 }
