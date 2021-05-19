@@ -8,6 +8,8 @@ namespace SavegameSystem.Serializable
         public DateTime UpdatedAtUtc { get; set; }
         public int Version { get; set; }
 
+        SavegameMetaData MetaData { get; }
+
         public T Content { get; set; }
     }
 }

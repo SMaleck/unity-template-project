@@ -68,6 +68,11 @@ namespace SavegameSystem.Storage
             try
             {
                 var savegameJson = _reader.Read();
+                if (string.IsNullOrWhiteSpace(savegameJson))
+                {
+                    return false;
+                }
+
                 savegameJson = ExecuteReadMiddlewares(savegameJson);
 
                 var migratedSavegame = _migrationProcessor.Process(savegameJson);

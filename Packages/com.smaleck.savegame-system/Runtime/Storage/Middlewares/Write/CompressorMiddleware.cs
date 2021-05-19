@@ -1,18 +1,38 @@
-﻿using SavegameSystem.Config;
+﻿using Newtonsoft.Json.Linq;
+using SavegameSystem.Config;
+using SavegameSystem.Utility;
 
 namespace SavegameSystem.Storage.Middlewares.Write
 {
     public class CompressorMiddleware : AbstractStorageMiddleware, ISavegameWriteMiddleware
     {
-        public CompressorMiddleware() 
+        private readonly ISavegameSettings _settings;
+
+        public CompressorMiddleware(ISavegameSettings settings)
             : base(SavegameConstants.CompressorExecutionOrder)
         {
+            _settings = settings;
         }
 
-        // ToDo SAVE Implement CompressorWriteMiddleware
         public string Process(string savegameJson)
         {
-            return savegameJson;
+            if (!_settings.UseCompression)
+            {
+                return savegameJson;
+            }
+
+            var savegame = JObject.Parse(savegameJson);
+            savegame["Content"] = GetCompressedContent(savegame);
+
+            return savegame.ToString();
+        }
+
+        private JValue GetCompressedContent(JObject savegame)
+        {
+            var content = (JObject)savegame["Content"];
+            var compressedContent = GzipCompressor.Compress(content.ToString());
+
+            return new JValue(compressedContent);
         }
     }
 }

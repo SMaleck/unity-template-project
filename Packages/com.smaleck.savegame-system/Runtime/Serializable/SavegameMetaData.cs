@@ -2,6 +2,7 @@
 
 namespace SavegameSystem.Serializable
 {
+    [Serializable]
     public class SavegameMetaData
     {
         public int Version { get; set; }

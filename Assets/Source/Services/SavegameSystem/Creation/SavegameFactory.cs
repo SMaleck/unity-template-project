@@ -23,7 +23,16 @@ namespace Source.Services.SavegameSystem.Creation
             {
                 CreatedAtUtc = _savegameTimeProvider.UtcNow,
                 UpdatedAtUtc = _savegameTimeProvider.UtcNow,
+                Version = 0,
+                MetaData = CreateMetaData(),
                 Content = _contentFactory.Create()
+            };
+        }
+
+        public SavegameMetaData CreateMetaData()
+        {
+            return new SavegameMetaData()
+            {
             };
         }
     }
