@@ -1,6 +1,6 @@
 ﻿using System.IO;
-using SavegameSystem.Config;
 using SavegameSystem.Logging;
+using SavegameSystem.Settings;
 
 namespace SavegameSystem.Storage.Dal
 {

@@ -1,6 +1,6 @@
 ﻿using SavegameSystem.Serializable;
 
-namespace SavegameSystem.Storage.Processors
+namespace SavegameSystem.Storage.Serialization
 {
     public interface ISerializationProcessor
     {

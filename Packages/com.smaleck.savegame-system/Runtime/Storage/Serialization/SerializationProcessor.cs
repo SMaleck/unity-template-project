@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
-using SavegameSystem.Config;
 using SavegameSystem.Serializable;
+using SavegameSystem.Settings;
 
-namespace SavegameSystem.Storage.Processors
+namespace SavegameSystem.Storage.Serialization
 {
     public class SerializationProcessor : ISerializationProcessor
     {

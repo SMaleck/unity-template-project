@@ -1,4 +1,4 @@
-﻿using SavegameSystem.Config;
+﻿using SavegameSystem.Settings;
 using Source.Frameworks;
 using Source.Services.Audio.Config;
 using Source.Services.SceneManagement.Config;

@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace SavegameSystem.Config
+namespace SavegameSystem.Settings
 {
     public interface ISerializationSettings
     {
         JsonSerializerSettings DefaultSettings { get; }
-        JsonSerializerSettings CompressionSettings { get; }
     }
 }

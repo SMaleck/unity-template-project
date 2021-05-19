@@ -1,4 +1,4 @@
-﻿namespace SavegameSystem.Storage.Processors
+﻿namespace SavegameSystem.Storage.Migration
 {
     public class MigrationProcessor : IMigrationProcessor
     {

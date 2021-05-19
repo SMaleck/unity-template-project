@@ -1,4 +1,4 @@
-﻿using SavegameSystem.Config;
+﻿using SavegameSystem.Settings;
 
 namespace SavegameSystem.Storage.Middlewares
 {

@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
-using SavegameSystem.Config;
+using SavegameSystem.Settings;
 using SavegameSystem.Utility;
 
 namespace SavegameSystem.Storage.Middlewares.Write

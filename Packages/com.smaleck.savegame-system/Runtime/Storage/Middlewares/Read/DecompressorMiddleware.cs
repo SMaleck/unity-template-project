@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json.Linq;
-using SavegameSystem.Config;
 using SavegameSystem.Logging;
 using SavegameSystem.Utility;
 using System;
+using SavegameSystem.Settings;
 
 namespace SavegameSystem.Storage.Middlewares.Read
 {

@@ -1,7 +1,8 @@
-﻿using Source.Services.SavegameSystem;
-using System.Text;
+﻿using Newtonsoft.Json;
 using SavegameSystem.Serializable;
+using Source.Services.SavegameSystem;
 using Source.Services.SavegameSystem.Serializable;
+using System.Text;
 using UtilitiesGeneral.Logging;
 
 namespace Source.Features.SavegameFeature
@@ -12,11 +13,11 @@ namespace Source.Features.SavegameFeature
             Savegame<SavegameContent> savegame,
             ISavegameService savegameService)
         {
+            var savegameJson = JsonConvert.SerializeObject(savegame, Formatting.Indented);
+
             var sb = new StringBuilder()
                 .AppendLine("CURRENT SAVEGAME:")
-                .AppendLine($"{nameof(savegame.Version)}: {savegame.Version}")
-                .AppendLine($"{nameof(savegame.CreatedAtUtc)}: {savegame.CreatedAtUtc}")
-                .AppendLine($"{nameof(savegame.UpdatedAtUtc)}: {savegame.UpdatedAtUtc}");
+                .AppendLine($"{savegameJson}");
 
             StaticLogger.Log(sb.ToString());
 

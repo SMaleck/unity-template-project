@@ -1,4 +1,4 @@
-﻿namespace SavegameSystem.Config
+﻿namespace SavegameSystem.Settings
 {
     public static class SavegameConstants
     {

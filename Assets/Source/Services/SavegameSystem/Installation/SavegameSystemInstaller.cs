@@ -1,12 +1,13 @@
-﻿using SavegameSystem.Config;
-using SavegameSystem.Logging;
+﻿using SavegameSystem.Logging;
 using SavegameSystem.Serializable;
+using SavegameSystem.Settings;
 using SavegameSystem.Storage;
 using SavegameSystem.Storage.Dal;
 using SavegameSystem.Storage.Middlewares.PreWrite;
 using SavegameSystem.Storage.Middlewares.Read;
 using SavegameSystem.Storage.Middlewares.Write;
-using SavegameSystem.Storage.Processors;
+using SavegameSystem.Storage.Migration;
+using SavegameSystem.Storage.Serialization;
 using Source.Services.SavegameSystem.Creation;
 using Zenject;
 
@@ -34,7 +35,9 @@ namespace Source.Services.SavegameSystem.Installation
 
             // ------------------------------- CLIENT Bindings
             Container.BindInterfacesTo<SavegameFactory>().AsSingle();
+            Container.BindInterfacesTo<SavegameMetaDataFactory>().AsSingle();
             Container.BindInterfacesTo<SavegameContentFactory>().AsSingle();
+
             Container.BindInterfacesTo<SavegameService>().AsSingle();
         }
     }
