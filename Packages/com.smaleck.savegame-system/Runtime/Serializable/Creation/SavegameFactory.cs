@@ -1,7 +1,4 @@
-﻿using SavegameSystem.Serializable;
-using Source.Services.SavegameSystem.Serializable;
-
-namespace Source.Services.SavegameSystem.Creation
+﻿namespace SavegameSystem.Serializable.Creation
 {
     public class SavegameFactory : ISavegameFactory
     {
@@ -16,12 +13,12 @@ namespace Source.Services.SavegameSystem.Creation
             _contentFactory = contentFactory;
         }
 
-        public ISavegame<SavegameContent> Create()
+        public ISavegame<T> Create<T>() where T : class
         {
-            return new Savegame<SavegameContent>()
+            return new Savegame<T>()
             {
                 MetaData = _metaDataFactory.Create(),
-                Content = _contentFactory.Create()
+                Content = _contentFactory.Create<T>()
             };
         }
     }

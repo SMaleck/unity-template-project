@@ -1,9 +1,8 @@
 ﻿using System;
-using SavegameSystem.Storage;
 
 namespace Source.Services.Time
 {
-    public interface ITimeService : ISavegameTimeProvider
+    public interface ITimeService
     {
         DateTime Min { get; }
         DateTime UtcNow { get; }

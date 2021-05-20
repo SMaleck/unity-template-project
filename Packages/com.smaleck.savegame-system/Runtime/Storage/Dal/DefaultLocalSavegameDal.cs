@@ -1,6 +1,6 @@
-﻿using System.IO;
-using SavegameSystem.Logging;
+﻿using SavegameSystem.Logging;
 using SavegameSystem.Settings;
+using System.IO;
 
 namespace SavegameSystem.Storage.Dal
 {
@@ -15,8 +15,7 @@ namespace SavegameSystem.Storage.Dal
         {
             _logger = logger;
 
-            var basePath = UnityEngine.Application.persistentDataPath;
-            _filePath = Path.Combine(basePath, savegameSettings.Filename);
+            _filePath = Path.Combine(savegameSettings.Path, savegameSettings.Filename);
         }
 
         public string Read()

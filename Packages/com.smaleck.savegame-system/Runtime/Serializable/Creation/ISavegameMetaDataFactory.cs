@@ -1,6 +1,4 @@
-﻿using SavegameSystem.Serializable;
-
-namespace Source.Services.SavegameSystem.Creation
+﻿namespace SavegameSystem.Serializable.Creation
 {
     public interface ISavegameMetaDataFactory
     {

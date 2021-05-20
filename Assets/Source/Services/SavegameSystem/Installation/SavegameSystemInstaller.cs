@@ -1,5 +1,5 @@
 ﻿using SavegameSystem.Logging;
-using SavegameSystem.Serializable;
+using SavegameSystem.Serializable.Creation;
 using SavegameSystem.Settings;
 using SavegameSystem.Storage;
 using SavegameSystem.Storage.Dal;
@@ -18,11 +18,15 @@ namespace Source.Services.SavegameSystem.Installation
         public override void InstallBindings()
         {
             // ------------------------------- PACKAGE Bindings
-            Container.BindInterfacesTo<SavegameStorage>().AsSingle();
-            Container.BindInterfacesTo<DefaultLocalSavegameDal>().AsSingle();
             Container.BindInterfacesTo<DefaultSavegameLogger>().AsSingle();
             Container.BindInterfacesTo<SerializationSettings>().AsSingle();
             Container.BindInterfacesTo<JsonConvertersProvider>().AsSingle();
+            Container.BindInterfacesTo<SavegameStorage>().AsSingle();
+            Container.BindInterfacesTo<DefaultLocalSavegameDal>().AsSingle();
+
+            // --------------- PACKAGE Creation
+            Container.BindInterfacesTo<SavegameFactory>().AsSingle();
+            Container.BindInterfacesTo<SavegameMetaDataFactory>().AsSingle();
 
             // --------------- PACKAGE Processors
             Container.BindInterfacesTo<MigrationProcessor>().AsSingle().NonLazy();
@@ -34,10 +38,7 @@ namespace Source.Services.SavegameSystem.Installation
             Container.BindInterfacesTo<UpdateTimestampMiddleware>().AsSingle().NonLazy();
 
             // ------------------------------- CLIENT Bindings
-            Container.BindInterfacesTo<SavegameFactory>().AsSingle();
-            Container.BindInterfacesTo<SavegameMetaDataFactory>().AsSingle();
             Container.BindInterfacesTo<SavegameContentFactory>().AsSingle();
-
             Container.BindInterfacesTo<SavegameService>().AsSingle();
         }
     }

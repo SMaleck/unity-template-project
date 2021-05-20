@@ -18,7 +18,7 @@ namespace SavegameSystem.Settings
 
         public void Reset()
         {
-            _savegameFilename = "player.sav";
+            _savegameFilename = "savegame.json";
             _useCompression = true;
         }
 

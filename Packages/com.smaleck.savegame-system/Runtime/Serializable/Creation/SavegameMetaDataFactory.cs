@@ -1,7 +1,6 @@
-﻿using SavegameSystem.Serializable;
-using SavegameSystem.Storage;
+﻿using SavegameSystem.Storage;
 
-namespace Source.Services.SavegameSystem.Creation
+namespace SavegameSystem.Serializable.Creation
 {
     public class SavegameMetaDataFactory : ISavegameMetaDataFactory
     {
