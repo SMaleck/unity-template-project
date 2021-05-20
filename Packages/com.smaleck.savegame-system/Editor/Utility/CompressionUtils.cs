@@ -1,6 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
-using SavegameSystem.Utility;
-using System;
+﻿using SavegameSystem.Logging;
+using SavegameSystem.Storage.Middlewares.Read;
 
 namespace SavegameSystem.Editor.Utility
 {
@@ -13,27 +12,10 @@ namespace SavegameSystem.Editor.Utility
                 return "INVALID JSON";
             }
 
-            var savegame = JObject.Parse(savegameJson);
-            savegame["Content"] = GetDecompressedContent(savegame);
+            var logger = new DefaultSavegameLogger();
+            var decompressionMiddleware = new DecompressorMiddleware(logger);
 
-            return savegame.ToString();
-        }
-
-        private static JObject GetDecompressedContent(JObject savegame)
-        {
-            var savegameContent = (JObject)savegame["Content"];
-            try
-            {
-                var contentJson = savegameContent?.ToString();
-                var decompressedContent = GzipCompressor.Decompress(contentJson);
-
-                return JObject.Parse(decompressedContent);
-            }
-            catch (FormatException)
-            {
-                UnityEngine.Debug.LogWarning("Savegame Content was not a valid Base64 string, probably the savegame was not compressed. Returning as is.");
-                return savegameContent;
-            }
+            return decompressionMiddleware.Process(savegameJson);
         }
     }
 }

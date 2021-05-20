@@ -1,52 +1,44 @@
 ﻿using Newtonsoft.Json.Linq;
 using SavegameSystem.Logging;
+using SavegameSystem.Settings;
 using SavegameSystem.Utility;
 using System;
-using SavegameSystem.Settings;
 
 namespace SavegameSystem.Storage.Middlewares.Read
 {
     public class DecompressorMiddleware : AbstractStorageMiddleware, ISavegameReadMiddleware
     {
         private readonly ISavegameLogger _logger;
-        private readonly ISavegameSettings _settings;
 
-        public DecompressorMiddleware(
-            ISavegameLogger logger,
-            ISavegameSettings settings)
+        public DecompressorMiddleware(ISavegameLogger logger)
             : base(SavegameConstants.DecompressorExecutionOrder)
         {
             _logger = logger;
-            _settings = settings;
         }
 
         public string Process(string savegameJson)
         {
-            if (!_settings.UseCompression)
-            {
-                return savegameJson;
-            }
+            // Always attempt decompression, regardless of settings
+            // Otherwise a previously compressed savegame cannot be loaded anymore
 
             var savegame = JObject.Parse(savegameJson);
-            savegame["Content"] = GetDecompressedContent(savegame);
+            savegame["Content"] = ProcessContent(savegame);
 
             return savegame.ToString();
         }
 
-        private JObject GetDecompressedContent(JObject savegame)
+        private JObject ProcessContent(JObject savegame)
         {
-            var savegameContent = (JObject)savegame["Content"];
             try
             {
-                var contentJson = savegameContent?.ToString();
+                var contentJson = savegame["Content"]?.ToString();
                 var decompressedContent = GzipCompressor.Decompress(contentJson);
-
                 return JObject.Parse(decompressedContent);
             }
             catch (FormatException)
             {
                 _logger.Warn("Savegame Content was not a valid Base64 string, probably the savegame was not compressed. Returning as is.");
-                return savegameContent;
+                return (JObject)savegame["Content"];
             }
         }
     }
