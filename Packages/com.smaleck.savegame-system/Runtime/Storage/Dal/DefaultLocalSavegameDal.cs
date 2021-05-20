@@ -9,6 +9,7 @@ namespace SavegameSystem.Storage.Dal
         private readonly ISavegameLogger _logger;
         private readonly string _filePath;
 
+        // ToDo SAVE Replace Settings dependency with a path provider
         public DefaultLocalSavegameDal(
             ISavegameLogger logger,
             ISavegameSettings savegameSettings)

@@ -7,6 +7,7 @@ using SavegameSystem.Storage.Middlewares.PreWrite;
 using SavegameSystem.Storage.Middlewares.Read;
 using SavegameSystem.Storage.Middlewares.Write;
 using SavegameSystem.Storage.Migration;
+using SavegameSystem.Storage.ResourceProviders;
 using SavegameSystem.Storage.Serialization;
 using Source.Services.SavegameSystem.Creation;
 using Zenject;
@@ -23,6 +24,7 @@ namespace Source.Services.SavegameSystem.Installation
             Container.BindInterfacesTo<JsonConvertersProvider>().AsSingle();
             Container.BindInterfacesTo<SavegameStorage>().AsSingle();
             Container.BindInterfacesTo<DefaultLocalSavegameDal>().AsSingle();
+            Container.BindInterfacesTo<DefaultSavegameIdProvider>().AsSingle();
 
             // --------------- PACKAGE Creation
             Container.BindInterfacesTo<SavegameFactory>().AsSingle();
@@ -39,6 +41,7 @@ namespace Source.Services.SavegameSystem.Installation
 
             // ------------------------------- CLIENT Bindings
             Container.BindInterfacesTo<SavegameContentFactory>().AsSingle();
+            Container.BindInterfacesTo<SavegameResourcesProvider>().AsSingle();
             Container.BindInterfacesTo<SavegameService>().AsSingle();
         }
     }

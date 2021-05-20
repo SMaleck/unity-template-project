@@ -13,8 +13,6 @@ using SavegameSystem.Storage.Migration;
 using SavegameSystem.Storage.Serialization;
 
 // ToDo SAVE make all of this async
-// ToDo SAVE add ID
-// ToDo SAVE add ClientVersion & Build
 namespace SavegameSystem.Storage
 {
     /// <summary>

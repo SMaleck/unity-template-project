@@ -1,4 +1,5 @@
 ﻿using SavegameSystem.Serializable;
+using SavegameSystem.Storage.ResourceProviders;
 
 namespace SavegameSystem.Storage.Middlewares.PreWrite
 {
