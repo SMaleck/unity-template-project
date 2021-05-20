@@ -1,11 +1,20 @@
-﻿using System.IO;
+﻿using SavegameSystem.Settings;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace SavegameSystem.Editor.EditorMenus
+namespace SavegameSystem.Editor.Utility
 {
     public static class EditorUtils
     {
+        /// <summary>
+        /// Returns TRUE if asset was found and loaded
+        /// Returns FALSE if asset had to be created
+        /// </summary>
+        /// <typeparam name="TAsset"></typeparam>
+        /// <param name="filePath"></param>
+        /// <param name="asset"></param>
+        /// <returns></returns>
         public static bool LoadOrCreateAsset<TAsset>(string filePath, out TAsset asset) where TAsset : ScriptableObject
         {
             Directory.CreateDirectory(Path.GetDirectoryName(filePath));
@@ -31,6 +40,24 @@ namespace SavegameSystem.Editor.EditorMenus
         {
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
+        }
+
+        public static string GetLocalSavegamePath()
+        {
+            var settings = LoadOrCreateSettingsObject();
+            return Path.Combine(settings.Path, settings.Filename);
+        }
+
+        public static SavegameSettings LoadOrCreateSettingsObject()
+        {
+            if (!EditorUtils.LoadOrCreateAsset<SavegameSettings>(
+                SavegameSettings.SettingsPath,
+                out var settings))
+            {
+                settings.Reset();
+            }
+
+            return settings;
         }
     }
 }
