@@ -18,6 +18,7 @@ namespace SavegameSystem.Settings
 
         public void Reset()
         {
+            _savegamePath = SavegamePath.DataPath;
             _savegameFilename = "savegame.json";
             _useCompression = true;
         }
