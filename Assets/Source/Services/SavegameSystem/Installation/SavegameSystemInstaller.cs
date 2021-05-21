@@ -37,6 +37,7 @@ namespace Source.Services.SavegameSystem.Installation
             // --------------- PACKAGE Middlewares
             Container.BindInterfacesTo<DecompressorMiddleware>().AsSingle().NonLazy();
             Container.BindInterfacesTo<CompressorMiddleware>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<UpdateVersionMiddleware>().AsSingle().NonLazy();
             Container.BindInterfacesTo<UpdateTimestampMiddleware>().AsSingle().NonLazy();
 
             // ------------------------------- CLIENT Bindings
