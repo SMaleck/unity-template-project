@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using SavegameSystem.Logging;
+﻿using SavegameSystem.Logging;
 using SavegameSystem.Serializable;
 using SavegameSystem.Storage.Dal;
 using SavegameSystem.Storage.Middlewares;
@@ -11,6 +8,9 @@ using SavegameSystem.Storage.Middlewares.Read;
 using SavegameSystem.Storage.Middlewares.Write;
 using SavegameSystem.Storage.Migration;
 using SavegameSystem.Storage.Serialization;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 // ToDo SAVE make all of this async
 namespace SavegameSystem.Storage
@@ -60,7 +60,7 @@ namespace SavegameSystem.Storage
                 .ToArray();
         }
 
-        public bool TryLoad<T>(out ISavegame<T> savegame)
+        public bool TryLoad<T>(out ISavegame<T> savegame) where T : class
         {
             savegame = null;
 
@@ -90,7 +90,7 @@ namespace SavegameSystem.Storage
             }
         }
 
-        public bool TrySave<T>(ISavegame<T> savegame)
+        public bool TrySave<T>(ISavegame<T> savegame) where T : class
         {
             try
             {
@@ -113,8 +113,9 @@ namespace SavegameSystem.Storage
 
         private string ExecuteReadMiddlewares(string savegame)
         {
-            foreach (var mw in _readMiddlewares)
+            for (var i = 0; i < _readMiddlewares.Length; i++)
             {
+                var mw = _readMiddlewares[i];
                 savegame = mw.Process(savegame);
             }
 
@@ -122,9 +123,11 @@ namespace SavegameSystem.Storage
         }
 
         private ISavegame<T> ExecutePostReadMiddlewares<T>(ISavegame<T> savegame)
+            where T : class
         {
-            foreach (var mw in _postReadMiddlewares)
+            for (var i = 0; i < _postReadMiddlewares.Length; i++)
             {
+                var mw = _postReadMiddlewares[i];
                 savegame = mw.Process(savegame);
             }
 
@@ -132,9 +135,11 @@ namespace SavegameSystem.Storage
         }
 
         private ISavegame<T> ExecutePreWriteMiddlewares<T>(ISavegame<T> savegame)
+            where T : class
         {
-            foreach (var mw in _preWriteMiddlewares)
+            for (var i = 0; i < _preWriteMiddlewares.Length; i++)
             {
+                var mw = _preWriteMiddlewares[i];
                 savegame = mw.Process(savegame);
             }
 
@@ -143,8 +148,9 @@ namespace SavegameSystem.Storage
 
         private string ExecuteWriteMiddlewares(string savegame)
         {
-            foreach (var mw in _writeMiddlewares)
+            for (var i = 0; i < _writeMiddlewares.Length; i++)
             {
+                var mw = _writeMiddlewares[i];
                 savegame = mw.Process(savegame);
             }
 

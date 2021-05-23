@@ -13,6 +13,7 @@ namespace SavegameSystem.Storage.Middlewares.PreWrite
         }
 
         public ISavegame<T> Process<T>(ISavegame<T> savegame)
+            where T : class
         {
             savegame.MetaData.UpdatedAtUtc = _timeProvider.UtcNow;
 

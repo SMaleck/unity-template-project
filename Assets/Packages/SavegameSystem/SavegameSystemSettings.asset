@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a70036e5516af04e8b840546f08f5f6, type: 3}
   m_Name: SavegameSystemSettings
   m_EditorClassIdentifier: 
-  _savegameFilename: player.sav
+  _savegamePath: 0
+  _savegameFilename: player.json
   _useCompression: 1

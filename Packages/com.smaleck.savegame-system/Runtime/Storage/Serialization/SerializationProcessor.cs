@@ -14,6 +14,7 @@ namespace SavegameSystem.Storage.Serialization
         }
 
         public string Serialize<T>(ISavegame<T> savegame)
+            where T : class
         {
             return JsonConvert.SerializeObject(
                 savegame,
@@ -21,6 +22,7 @@ namespace SavegameSystem.Storage.Serialization
         }
 
         public Savegame<T> Deserialize<T>(string savegameJson)
+            where T : class
         {
             return JsonConvert.DeserializeObject<Savegame<T>>(
                 savegameJson,

@@ -13,6 +13,7 @@ namespace SavegameSystem.Storage.Middlewares.PreWrite
         }
 
         public ISavegame<T> Process<T>(ISavegame<T> savegame)
+            where T : class
         {
             savegame.MetaData.ClientVersion = _clientVersionProvider.ClientVersion;
             savegame.MetaData.ClientBuild = _clientVersionProvider.ClientBuild;
