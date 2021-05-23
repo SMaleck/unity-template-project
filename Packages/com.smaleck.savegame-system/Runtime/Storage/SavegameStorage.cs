@@ -1,6 +1,5 @@
 ﻿using SavegameSystem.Logging;
 using SavegameSystem.Serializable;
-using SavegameSystem.Storage.Dal;
 using SavegameSystem.Storage.Middlewares;
 using SavegameSystem.Storage.Middlewares.PostRead;
 using SavegameSystem.Storage.Middlewares.PreWrite;
@@ -11,6 +10,7 @@ using SavegameSystem.Storage.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using SavegameSystem.Storage.Strategies;
 
 // ToDo SAVE make all of this async
 namespace SavegameSystem.Storage
@@ -21,8 +21,7 @@ namespace SavegameSystem.Storage
     public class SavegameStorage : ISavegameStorage
     {
         private readonly ISavegameLogger _logger;
-        private readonly ISavegameReader _reader;
-        private readonly ISavegameWriter _writer;
+        private readonly ISavegameStorageStrategy _storageStrategy;
         private readonly IMigrationProcessor _migrationProcessor;
         private readonly ISerializationProcessor _serializationProcessor;
 
@@ -33,15 +32,13 @@ namespace SavegameSystem.Storage
 
         public SavegameStorage(
             ISavegameLogger logger,
-            ISavegameReader reader,
-            ISavegameWriter writer,
+            ISavegameStorageStrategy storageStrategy,
             IMigrationProcessor migrationProcessor,
             ISerializationProcessor serializationProcessor,
             List<ISavegameStorageMiddleware> middlewares)
         {
             _logger = logger;
-            _reader = reader;
-            _writer = writer;
+            _storageStrategy = storageStrategy;
             _migrationProcessor = migrationProcessor;
             _serializationProcessor = serializationProcessor;
 
@@ -66,7 +63,7 @@ namespace SavegameSystem.Storage
 
             try
             {
-                var savegameJson = _reader.Read();
+                var savegameJson = _storageStrategy.Read();
                 if (string.IsNullOrWhiteSpace(savegameJson))
                 {
                     return false;
@@ -98,7 +95,7 @@ namespace SavegameSystem.Storage
                 var savegameJson = _serializationProcessor.Serialize<T>(savegame);
                 savegameJson = ExecuteWriteMiddlewares(savegameJson);
 
-                _writer.Write(savegameJson);
+                _storageStrategy.Write(savegameJson);
             }
             catch (Exception e)
             {

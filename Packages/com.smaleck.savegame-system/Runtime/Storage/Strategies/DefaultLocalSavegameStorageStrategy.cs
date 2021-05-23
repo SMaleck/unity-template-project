@@ -1,16 +1,16 @@
-﻿using SavegameSystem.Logging;
+﻿using System.IO;
+using SavegameSystem.Logging;
 using SavegameSystem.Settings;
-using System.IO;
 
-namespace SavegameSystem.Storage.Dal
+namespace SavegameSystem.Storage.Strategies
 {
-    public class DefaultLocalSavegameDal : ISavegameReader, ISavegameWriter
+    public class DefaultLocalSavegameStorageStrategy : ISavegameStorageStrategy
     {
         private readonly ISavegameLogger _logger;
         private readonly string _filePath;
 
         // ToDo SAVE Replace Settings dependency with a path provider
-        public DefaultLocalSavegameDal(
+        public DefaultLocalSavegameStorageStrategy(
             ISavegameLogger logger,
             ISavegameSettings savegameSettings)
         {
