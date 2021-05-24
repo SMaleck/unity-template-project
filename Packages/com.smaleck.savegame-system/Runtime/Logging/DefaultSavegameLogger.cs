@@ -1,12 +1,22 @@
-﻿namespace SavegameSystem.Logging
+﻿using SavegameSystem.Storage.ResourceProviders;
+
+namespace SavegameSystem.Logging
 {
     public class DefaultSavegameLogger : ISavegameLogger
     {
         private const string Prefix = "[Savegame]";
+        private readonly ISavegameEnvironmentProvider _environmentProvider;
+
+        private bool IsDebug => _environmentProvider.IsDebug;
+
+        public DefaultSavegameLogger(ISavegameEnvironmentProvider environmentProvider)
+        {
+            _environmentProvider = environmentProvider;
+        }
 
         public void Log(object payload)
         {
-            if (UnityEngine.Debug.isDebugBuild)
+            if (IsDebug)
             {
                 UnityEngine.Debug.Log($"{Prefix} {ToMessage(payload)}");
             }
@@ -14,7 +24,7 @@
 
         public void Warn(object payload)
         {
-            if (UnityEngine.Debug.isDebugBuild)
+            if (IsDebug)
             {
                 UnityEngine.Debug.LogWarning($"{Prefix} {ToMessage(payload)}");
             }
@@ -22,7 +32,7 @@
 
         public void Error(object payload)
         {
-            if (UnityEngine.Debug.isDebugBuild)
+            if (IsDebug)
             {
                 UnityEngine.Debug.LogError($"{Prefix} {ToMessage(payload)}");
             }

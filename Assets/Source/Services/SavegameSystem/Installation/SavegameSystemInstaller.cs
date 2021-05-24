@@ -28,6 +28,7 @@ namespace Source.Services.SavegameSystem.Installation
             // --------------- PACKAGE Resources
             Container.BindInterfacesTo<DefaultSavegameIdProvider>().AsSingle();
             Container.BindInterfacesTo<DefaultSavegamePathProvider>().AsSingle();
+            Container.BindInterfacesTo<DefaultSavegameEnvironmentProvider>().AsSingle();
 
             // --------------- PACKAGE Creation
             Container.BindInterfacesTo<SavegameFactory>().AsSingle();

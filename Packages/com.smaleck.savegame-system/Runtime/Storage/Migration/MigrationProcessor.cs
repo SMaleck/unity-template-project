@@ -9,13 +9,16 @@ namespace SavegameSystem.Storage.Migration
     public class MigrationProcessor : IMigrationProcessor
     {
         private readonly ISavegameLogger _logger;
+        private readonly IMigrationDebugger _migrationDebugger;
         private readonly IReadOnlyList<ISavegameMigration> _migrations;
 
         public MigrationProcessor(
             ISavegameLogger logger,
+            IMigrationDebugger migrationDebugger,
             List<ISavegameMigration> migrations)
         {
             _logger = logger;
+            _migrationDebugger = migrationDebugger;
             _migrations = migrations.OrderBy(e => e.Version).ToArray();
 
             ValidateMigrations();
@@ -35,7 +38,9 @@ namespace SavegameSystem.Storage.Migration
                         continue;
                     }
 
+                    _migrationDebugger.BeforeMigration(version, migration.Version, savegame);
                     Migrate(savegame, migration);
+                    _migrationDebugger.AfterMigration(version, migration.Version, savegame);
                 }
 
                 return savegame.ToString();
