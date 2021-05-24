@@ -1,8 +1,10 @@
-﻿namespace SavegameSystem.Storage.Migration
+﻿using Newtonsoft.Json.Linq;
+
+namespace SavegameSystem.Storage.Migration
 {
     public interface ISavegameMigration
     {
         int Version { get; }
-        string Migrate(string savegameJson);
+        JObject Migrate(JObject savegameJson);
     }
 }

@@ -24,7 +24,10 @@ namespace Source.Services.SavegameSystem.Installation
             Container.BindInterfacesTo<JsonConvertersProvider>().AsSingle();
             Container.BindInterfacesTo<SavegameStorage>().AsSingle();
             Container.BindInterfacesTo<DefaultLocalSavegameStorageStrategy>().AsSingle();
+
+            // --------------- PACKAGE Resources
             Container.BindInterfacesTo<DefaultSavegameIdProvider>().AsSingle();
+            Container.BindInterfacesTo<DefaultSavegamePathProvider>().AsSingle();
 
             // --------------- PACKAGE Creation
             Container.BindInterfacesTo<SavegameFactory>().AsSingle();

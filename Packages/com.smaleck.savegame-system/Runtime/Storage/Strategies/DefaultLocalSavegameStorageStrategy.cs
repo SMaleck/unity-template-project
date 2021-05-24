@@ -1,47 +1,46 @@
-﻿using System.IO;
-using SavegameSystem.Logging;
-using SavegameSystem.Settings;
+﻿using SavegameSystem.Logging;
+using SavegameSystem.Storage.ResourceProviders;
+using System.IO;
 
 namespace SavegameSystem.Storage.Strategies
 {
     public class DefaultLocalSavegameStorageStrategy : ISavegameStorageStrategy
     {
         private readonly ISavegameLogger _logger;
-        private readonly string _filePath;
+        private readonly ISavegamePathProvider _pathProvider;
+        private string FilePath => _pathProvider.GetFilePath();
 
-        // ToDo SAVE Replace Settings dependency with a path provider
         public DefaultLocalSavegameStorageStrategy(
             ISavegameLogger logger,
-            ISavegameSettings savegameSettings)
+            ISavegamePathProvider pathProvider)
         {
             _logger = logger;
-
-            _filePath = Path.Combine(savegameSettings.Path, savegameSettings.Filename);
+            _pathProvider = pathProvider;
         }
 
         public string Read()
         {
-            _logger.Log($"Reading savegame from {_filePath}");
+            _logger.Log($"Reading savegame from {FilePath}");
 
-            if (!File.Exists(_filePath))
+            if (!File.Exists(FilePath))
             {
                 return string.Empty;
             }
 
-            return File.ReadAllText(_filePath);
+            return File.ReadAllText(FilePath);
         }
 
         public void Write(string serializedSavegame)
         {
-            _logger.Log($"Writing savegame to {_filePath}");
+            _logger.Log($"Writing savegame to {FilePath}");
 
-            var directory = Path.GetDirectoryName(_filePath);
+            var directory = Path.GetDirectoryName(FilePath);
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
             }
 
-            File.WriteAllText(_filePath, serializedSavegame);
+            File.WriteAllText(FilePath, serializedSavegame);
         }
     }
 }
