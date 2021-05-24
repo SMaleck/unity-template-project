@@ -10,6 +10,9 @@ using SavegameSystem.Storage.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using SavegameSystem.Storage.ResourceProviders;
 using SavegameSystem.Storage.Strategies;
 
 // ToDo SAVE make all of this async
@@ -21,6 +24,7 @@ namespace SavegameSystem.Storage
     public class SavegameStorage : ISavegameStorage
     {
         private readonly ISavegameLogger _logger;
+        private readonly ISavegameAccessLockProvider _accessLockProvider;
         private readonly ISavegameStorageStrategy _storageStrategy;
         private readonly IMigrationProcessor _migrationProcessor;
         private readonly ISerializationProcessor _serializationProcessor;
@@ -30,14 +34,18 @@ namespace SavegameSystem.Storage
         private readonly ISavegamePreWriteMiddleware[] _preWriteMiddlewares;
         private readonly ISavegameWriteMiddleware[] _writeMiddlewares;
 
+        private CancellationTokenSource _tokenSource;
+
         public SavegameStorage(
             ISavegameLogger logger,
+            ISavegameAccessLockProvider accessLockProvider,
             ISavegameStorageStrategy storageStrategy,
             IMigrationProcessor migrationProcessor,
             ISerializationProcessor serializationProcessor,
             List<ISavegameStorageMiddleware> middlewares)
         {
             _logger = logger;
+            _accessLockProvider = accessLockProvider;
             _storageStrategy = storageStrategy;
             _migrationProcessor = migrationProcessor;
             _serializationProcessor = serializationProcessor;
@@ -59,53 +67,59 @@ namespace SavegameSystem.Storage
 
         public bool TryLoad<T>(out ISavegame<T> savegame) where T : class
         {
-            savegame = null;
-
-            try
+            lock (_accessLockProvider)
             {
-                var savegameJson = _storageStrategy.Read();
-                if (string.IsNullOrWhiteSpace(savegameJson))
+                savegame = null;
+
+                try
                 {
+                    var savegameJson = _storageStrategy.Read();
+                    if (string.IsNullOrWhiteSpace(savegameJson))
+                    {
+                        return false;
+                    }
+
+                    savegameJson = ExecuteReadMiddlewares(savegameJson);
+
+                    var migratedSavegame = _migrationProcessor.Process(savegameJson);
+                    savegame = _serializationProcessor.Deserialize<T>(migratedSavegame);
+
+                    savegame = ExecutePostReadMiddlewares(savegame);
+
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    _logger.Error("Failed to Load Savegame");
+                    _logger.Error(e);
+
                     return false;
                 }
-
-                savegameJson = ExecuteReadMiddlewares(savegameJson);
-
-                var migratedSavegame = _migrationProcessor.Process(savegameJson);
-                savegame = _serializationProcessor.Deserialize<T>(migratedSavegame);
-
-                savegame = ExecutePostReadMiddlewares(savegame);
-
-                return true;
-            }
-            catch (Exception e)
-            {
-                _logger.Error("Failed to Load Savegame");
-                _logger.Error(e);
-
-                return false;
             }
         }
 
         public bool TrySave<T>(ISavegame<T> savegame) where T : class
         {
-            try
+            lock (_accessLockProvider)
             {
-                savegame = ExecutePreWriteMiddlewares(savegame);
-                var savegameJson = _serializationProcessor.Serialize<T>(savegame);
-                savegameJson = ExecuteWriteMiddlewares(savegameJson);
+                try
+                {
+                    savegame = ExecutePreWriteMiddlewares(savegame);
+                    var savegameJson = _serializationProcessor.Serialize<T>(savegame);
+                    savegameJson = ExecuteWriteMiddlewares(savegameJson);
 
-                _storageStrategy.Write(savegameJson);
+                    _storageStrategy.Write(savegameJson);
+                }
+                catch (Exception e)
+                {
+                    _logger.Error("Failed to Save Savegame");
+                    _logger.Error(e);
+
+                    return false;
+                }
+
+                return true;
             }
-            catch (Exception e)
-            {
-                _logger.Error("Failed to Save Savegame");
-                _logger.Error(e);
-
-                return false;
-            }
-
-            return true;
         }
 
         private string ExecuteReadMiddlewares(string savegame)

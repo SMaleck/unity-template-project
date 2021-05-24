@@ -1,5 +1,6 @@
 ﻿using SavegameSystem.Logging;
 using SavegameSystem.Storage.Middlewares.Read;
+using SavegameSystem.Storage.ResourceProviders;
 
 namespace SavegameSystem.Editor.Utility
 {
@@ -12,7 +13,7 @@ namespace SavegameSystem.Editor.Utility
                 return "INVALID JSON";
             }
 
-            var logger = new DefaultSavegameLogger();
+            var logger = new DefaultSavegameLogger(new DefaultSavegameEnvironmentProvider());
             var decompressionMiddleware = new DecompressorMiddleware(logger);
 
             return decompressionMiddleware.Process(savegameJson);
