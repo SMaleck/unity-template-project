@@ -49,17 +49,25 @@ namespace SavegameSystem.Storage.Migration
 
         private void ValidateMigrations()
         {
-            for (var i = 1; i < _migrations.Count; i++)
+            if (!_migrations.Any())
             {
-                if (_migrations[i - 1].Version != _migrations[i].Version - 1)
-                {
-                    _logger.Warn($"Detected gap in Migration Versions. Missing: { _migrations[i].Version - 1}");
-                }
+                return;
             }
 
             if (_migrations[0].Version != 2)
             {
                 _logger.Warn($"Detected incoherent Version for 1st Migration: [{ _migrations[0].Version}] Expected: [2]");
+            }
+
+            if (_migrations.Count >= 2)
+            {
+                for (var i = 1; i < _migrations.Count; i++)
+                {
+                    if (_migrations[i - 1].Version != _migrations[i].Version - 1)
+                    {
+                        _logger.Warn($"Detected gap in Migration Versions. Missing: { _migrations[i].Version - 1}");
+                    }
+                }
             }
         }
 
