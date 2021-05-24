@@ -6,16 +6,13 @@ using SavegameSystem.Storage.Middlewares.PreWrite;
 using SavegameSystem.Storage.Middlewares.Read;
 using SavegameSystem.Storage.Middlewares.Write;
 using SavegameSystem.Storage.Migration;
+using SavegameSystem.Storage.ResourceProviders;
 using SavegameSystem.Storage.Serialization;
+using SavegameSystem.Storage.Strategies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using SavegameSystem.Storage.ResourceProviders;
-using SavegameSystem.Storage.Strategies;
 
-// ToDo SAVE make all of this async
 namespace SavegameSystem.Storage
 {
     /// <summary>
@@ -33,8 +30,6 @@ namespace SavegameSystem.Storage
         private readonly ISavegamePostReadMiddleware[] _postReadMiddlewares;
         private readonly ISavegamePreWriteMiddleware[] _preWriteMiddlewares;
         private readonly ISavegameWriteMiddleware[] _writeMiddlewares;
-
-        private CancellationTokenSource _tokenSource;
 
         public SavegameStorage(
             ISavegameLogger logger,
@@ -65,18 +60,18 @@ namespace SavegameSystem.Storage
                 .ToArray();
         }
 
-        public bool TryLoad<T>(out ISavegame<T> savegame) where T : class
+        public SavegameLoadResult<T> Load<T>() where T : class
         {
             lock (_accessLockProvider)
             {
-                savegame = null;
-
                 try
                 {
+                    var savegame = (ISavegame<T>)null;
+
                     var savegameJson = _storageStrategy.Read();
                     if (string.IsNullOrWhiteSpace(savegameJson))
                     {
-                        return false;
+                        return SavegameLoadResult<T>.FromError(SavegameError.JsonNullOrEmpty);
                     }
 
                     savegameJson = ExecuteReadMiddlewares(savegameJson);
@@ -86,19 +81,19 @@ namespace SavegameSystem.Storage
 
                     savegame = ExecutePostReadMiddlewares(savegame);
 
-                    return true;
+                    return SavegameLoadResult<T>.FromSuccess(savegame);
                 }
                 catch (Exception e)
                 {
                     _logger.Error("Failed to Load Savegame");
                     _logger.Error(e);
 
-                    return false;
+                    return SavegameLoadResult<T>.FromError(SavegameError.Unknown, e);
                 }
             }
         }
 
-        public bool TrySave<T>(ISavegame<T> savegame) where T : class
+        public SavegameSaveResult Save<T>(ISavegame<T> savegame) where T : class
         {
             lock (_accessLockProvider)
             {
@@ -115,10 +110,10 @@ namespace SavegameSystem.Storage
                     _logger.Error("Failed to Save Savegame");
                     _logger.Error(e);
 
-                    return false;
+                    return SavegameSaveResult.FromError(SavegameError.Unknown, e);
                 }
 
-                return true;
+                return SavegameSaveResult.FromSuccess();
             }
         }
 

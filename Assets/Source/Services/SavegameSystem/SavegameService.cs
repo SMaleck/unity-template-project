@@ -36,7 +36,8 @@ namespace Source.Services.SavegameSystem
 
         public ISavegame<SavegameContent> Load()
         {
-            if (!_savegameStorage.TryLoad(out _savegame))
+            var loadResult = _savegameStorage.Load<SavegameContent>();
+            if (!loadResult.Success)
             {
                 _logger.Warn("Failed to load Savegame. Creating new one.");
 
@@ -49,7 +50,12 @@ namespace Source.Services.SavegameSystem
 
         public void Save()
         {
-            _savegameStorage.TrySave(_savegame);
+            var saveResult = _savegameStorage.Save(_savegame);
+            if (!saveResult.Success)
+            {
+                _logger.Warn("Failed to save Savegame.");
+                _logger.Error(saveResult.Exception);
+            }
         }
     }
 }
