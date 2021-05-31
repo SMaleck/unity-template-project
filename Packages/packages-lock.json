@@ -8,21 +8,23 @@
       "url": "https://package.openupm.com"
     },
     "com.smaleck.excel-importer": {
-      "version": "git://github.com/SMaleck/unity-excel-importer.git#v1.0.0",
+      "version": "git://github.com/SMaleck/unity-excel-importer.git#v1.0.1",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.test-framework": "^1.1.24"
       },
-      "hash": "824114d6745e25bbfc038520bab341512626d320"
+      "hash": "6d7390a9a58c69db971aee7ad1f8913c5041cced"
     },
     "com.smaleck.savegame-system": {
-      "version": "file:com.smaleck.savegame-system",
+      "version": "git://github.com/SMaleck/unity-savegame-system.git#v1.0.0",
       "depth": 0,
-      "source": "embedded",
+      "source": "git",
       "dependencies": {
-        "com.unity.test-framework": "^1.1.24"
-      }
+        "com.unity.test-framework": "^1.1.24",
+        "jillejr.newtonsoft.json-for-unity": "13.0.102"
+      },
+      "hash": "6fcedc795b2e6045ef471613c7de17fed89fca8e"
     },
     "com.smaleck.utilities-general": {
       "version": "git://github.com/SMaleck/unity-utilities-general.git#v1.0.0",
