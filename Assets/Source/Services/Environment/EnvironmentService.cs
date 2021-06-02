@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using SavegameSystem.Storage.ResourceProviders;
+using UnityEngine;
 
 namespace Source.Services.Environment
 {
-    public class EnvironmentService : IEnvironmentService
+    public class EnvironmentService : IEnvironmentService, ISavegameEnvironmentProvider
     {
         public static bool IsDebugStatic => UnityEngine.Debug.isDebugBuild;
 

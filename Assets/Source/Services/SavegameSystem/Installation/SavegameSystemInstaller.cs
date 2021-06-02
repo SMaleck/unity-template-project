@@ -37,6 +37,7 @@ namespace Source.Services.SavegameSystem.Installation
 
             // --------------- PACKAGE Processors
             Container.BindInterfacesTo<MigrationProcessor>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<MigrationDebugger>().AsSingle();
             Container.BindInterfacesTo<SerializationProcessor>().AsSingle().NonLazy();
 
             // --------------- PACKAGE Middlewares

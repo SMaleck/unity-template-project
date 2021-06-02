@@ -14,35 +14,35 @@
       "dependencies": {
         "com.unity.test-framework": "^1.1.24"
       },
-      "hash": "6d7390a9a58c69db971aee7ad1f8913c5041cced"
+      "hash": "302e5b7098beb82e36105c1f50fc2050295a6bfd"
     },
     "com.smaleck.savegame-system": {
-      "version": "git://github.com/SMaleck/unity-savegame-system.git#v1.0.0",
+      "version": "git://github.com/SMaleck/unity-savegame-system.git#v0.1.0",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.test-framework": "^1.1.24",
         "jillejr.newtonsoft.json-for-unity": "13.0.102"
       },
-      "hash": "6fcedc795b2e6045ef471613c7de17fed89fca8e"
+      "hash": "7c0e5d5fd1763a8954a160de74049d3a81a1a731"
     },
     "com.smaleck.utilities-general": {
-      "version": "git://github.com/SMaleck/unity-utilities-general.git#v1.0.0",
+      "version": "git://github.com/SMaleck/unity-utilities-general.git#v1.0.1",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.test-framework": "^1.1.24"
       },
-      "hash": "4b0ec72a2b096cfff54c0cf7ac972f19d3b02a2e"
+      "hash": "64f6236a5e17f53c024daa802f478592f91d6b0c"
     },
     "com.smaleck.utilities-unirx": {
-      "version": "git://github.com/SMaleck/unity-utilities-unirx.git#v1.0.0",
+      "version": "git://github.com/SMaleck/unity-utilities-unirx.git#v1.0.1",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.neuecc.unirx": "7.1.0"
       },
-      "hash": "1c0e5574f0dfa4aa6782f0d3264b5b31f1aadc31"
+      "hash": "46c1ace3077d3e815a7b1094b1246788a4285ddd"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",

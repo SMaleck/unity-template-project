@@ -37,11 +37,15 @@ namespace Source.Services.SavegameSystem
         public ISavegame<SavegameContent> Load()
         {
             var loadResult = _savegameStorage.Load<SavegameContent>();
-            if (!loadResult.Success)
+            if (loadResult.Success)
+            {
+                _savegame = loadResult.Savegame;
+            }
+            else
             {
                 _logger.Warn("Failed to load Savegame. Creating new one.");
-
                 _savegame = _savegameFactory.Create<SavegameContent>();
+
                 Save();
             }
 

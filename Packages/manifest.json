@@ -2,9 +2,9 @@
   "dependencies": {
     "com.neuecc.unirx": "7.1.0",
     "com.smaleck.excel-importer": "git://github.com/SMaleck/unity-excel-importer.git#v1.0.1",
-    "com.smaleck.savegame-system": "git://github.com/SMaleck/unity-savegame-system.git#v1.0.0",
-    "com.smaleck.utilities-general": "git://github.com/SMaleck/unity-utilities-general.git#v1.0.0",
-    "com.smaleck.utilities-unirx": "git://github.com/SMaleck/unity-utilities-unirx.git#v1.0.0",
+    "com.smaleck.savegame-system": "git://github.com/SMaleck/unity-savegame-system.git#v0.1.0",
+    "com.smaleck.utilities-general": "git://github.com/SMaleck/unity-utilities-general.git#v1.0.1",
+    "com.smaleck.utilities-unirx": "git://github.com/SMaleck/unity-utilities-unirx.git#v1.0.1",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.ads": "3.6.1",
@@ -14,6 +14,7 @@
     "com.unity.test-framework": "1.1.24",
     "com.unity.textmeshpro": "3.0.1",
     "com.unity.ugui": "1.0.0",
+    "jillejr.newtonsoft.json-for-unity": "13.0.102",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
@@ -44,8 +45,7 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0",
-    "jillejr.newtonsoft.json-for-unity": "13.0.102"
+    "com.unity.modules.xr": "1.0.0"
   },
   "scopedRegistries": [
     {

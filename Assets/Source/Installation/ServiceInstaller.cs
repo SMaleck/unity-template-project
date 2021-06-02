@@ -2,6 +2,7 @@
 using Source.Services.Audio.Config;
 using Source.Services.Random;
 using Source.Services.SavegameSystem.Installation;
+using Source.Services.SceneManagement.Installation;
 using Source.Services.Time;
 using Source.ServicesStatic.Localization;
 using Source.ServicesStatic.Localization.Data;
@@ -25,6 +26,7 @@ namespace Source.Installation
 
             TextService.Initialize(new TextDataSource());
 
+            SceneManagementInstaller.Install(Container);
             SavegameSystemInstaller.Install(Container);
         }
     }
